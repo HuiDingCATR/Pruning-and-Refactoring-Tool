@@ -1,6 +1,6 @@
 # Pruning-and-Refactoring-Tool
 
-Running the Pruning and Refactoring tool requires the same environment as the uml yang mapping tool. The User can  refer to the User Guide https://github.com/OpenNetworkingFoundation/EAGLE-Open-Model-Profile-and-Tools/blob/UmlYangTools/UML-Yang%20Mapping%20Tool%20User%20Guide-v1.3_0601.docx
+Running the Pruning and Refactoring tool requires the same environment as the uml yang mapping tool, nodejs and its xmlreader module. The user can  refer to the User Guide https://github.com/OpenNetworkingFoundation/EAGLE-Open-Model-Profile-and-Tools/blob/UmlYangTools/UML-Yang%20Mapping%20Tool%20User%20Guide-v1.3_0601.docx
 
 
 An introduction video on Youtube https://www.youtube.com/watch?v=6At3YFrE8Ag&feature=youtu.be. 
