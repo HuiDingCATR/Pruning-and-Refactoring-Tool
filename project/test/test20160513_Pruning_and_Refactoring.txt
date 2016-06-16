@@ -1,0 +1,28 @@
+****************************************************************************************************
+* Name: Pruning and Refactoring Tool
+* Copyright 2015 CAICT (China Academy of Information and Communication Technology (former China Academy of Telecommunication Research)). All Rights Reserved.
+*
+* Time : 2016-05-17 15:46:23
+* Input  File : test20160513.xml
+* Output File : test20160513_Pruning_and_Refactoring.txt
+*
+* The above copyright information should be included in all distribution, reproduction or derivative works of this software.
+*
+****************************************************************************************************
+
+Class Comparison     : 
+
+supplier : Class1				client : Class2			Class'name is changed.
+
+Attribute Comparison : 
+
+supplier      : attri1			client      : attr1			Attribute'name is changed.
+supplierClass : Class1			clientClass : Class2
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf			Attribute's nodeTypes aren't the same.
+			min-elements : 1				min-elements : undefined			Attribute's min-elements are the same.
+			max-elements : *				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : uint64				name : uint64			names of types are the same.
+				range : 0..5				range : 0..3			ranges of types aren't the same.
+				units : minute				units : minute			units of types are the same.

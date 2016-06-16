@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OpenModel_Profile="http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14 ../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w">
+  <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_LYfOYBNdEeahS5Ls-fqhjg" name="testDiff">
+    <packagedElement xmi:type="uml:Class" xmi:id="_hXgDYBNdEeahS5Ls-fqhjg" name="ClassA">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_EGZrYBNeEeahS5Ls-fqhjg" name="attribute1"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_HwkQABNeEeahS5Ls-fqhjg" name="attribute2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_n9oC0BNdEeahS5Ls-fqhjg" name="CopyOf_ClassA_1">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LCsvIBNeEeahS5Ls-fqhjg" name="attribute1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Realization" xmi:id="_q5IKoBNdEeahS5Ls-fqhjg" client="_n9oC0BNdEeahS5Ls-fqhjg" supplier="_hXgDYBNdEeahS5Ls-fqhjg"/>
+  </uml:Model>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_CtC2oLoYEeWgnN4av0rtYw" base_Realization="_q5IKoBNdEeahS5Ls-fqhjg"/>
+</xmi:XMI>

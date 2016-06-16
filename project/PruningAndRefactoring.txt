@@ -1,0 +1,2276 @@
+****************************************************************************************************
+* Name: Pruning and Refactoring Tool
+* Copyright 2015 CAICT (China Academy of Information and Communication Technology (former China Academy of Telecommunication Research)). All Rights Reserved.
+*
+* Time : Thu Jun 16 2016 10:33:21 GMT+0800 (中国标准时间)
+* Input  File : source.uml
+*               
+* Output File : PruningAndRefactoring.txt
+*
+* The above copyright information should be included in all distribution, reproduction or derivative works of this software.
+*
+****************************************************************************************************
+
+Class Comparison     : 
+
+supplier     : Tapi_Topology				client     : Tapi_Topology			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_Context				client     : Tapi_Context			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_Node				client     : Tapi_Node			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_Link				client     : Tapi_Link			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_NodeEdgePoint				client     : Tapi_NodeEdgePoint			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ServiceEndPoint				client     : Tapi_ServiceEndPoint			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ConnectionEndPoint				client     : Tapi_ConnectionEndPoint			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ConnectivityService				client     : Tapi_ConnectivityService			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_Connection				client     : Tapi_Connection			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_Route				client     : Tapi_Route			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_LinkPort				client     : Tapi_LinkPort			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ServicePort				client     : Tapi_ServicePort			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ConnectionPort				client     : Tapi_ConnectionPort			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_LayerProtocol				client     : Tapi_LayerProtocol			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_TransferCostPac				client     : Tapi_TransferCostPac			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_RiskParameterPac				client     : Tapi_RiskParameterPac			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_LayerProtocolTransitionPac				client     : Tapi_LayerProtocolTransitionPac			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_TransferTimingPac				client     : Tapi_TransferTimingPac			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_TransferIntegrityPac				client     : Tapi_TransferIntegrityPac			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_TransferCapacityPac				client     : Tapi_TransferCapacityPac			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ValidationPac				client     : Tapi_ValidationPac			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_TeLink				client     : Tapi_TeLink			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_Path				client     : Tapi_Path			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ServiceType				client     : Tapi_ServiceType			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_FixedCapacityValue				client     : Tapi_FixedCapacityValue			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ConnectivityConstraint				client     : Tapi_ConnectivityConstraint			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ScheduleInfo				client     : Tapi_ScheduleInfo			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_PortRole				client     : Tapi_PortRole			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_LayerProtocolName				client     : Tapi_LayerProtocolName			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_NameAndValue				client     : Tapi_NameAndValue			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_UniversalId				client     : Tapi_UniversalId			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ForwardingDirection				client     : Tapi_ForwardingDirection			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_TerminationDirection				client     : Tapi_TerminationDirection			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_PortDirection				client     : Tapi_PortDirection			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_OperationalState				client     : Tapi_OperationalState			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_AdministrativeState				client     : Tapi_AdministrativeState			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_LifecycleState				client     : Tapi_LifecycleState			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_TerminationState				client     : Tapi_TerminationState			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_Capacity				client     : Tapi_Capacity			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_CostCharacteristic				client     : Tapi_CostCharacteristic			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_QueuingLatency				client     : Tapi_QueuingLatency			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_RiskCharacteristic				client     : Tapi_RiskCharacteristic			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_ValidationMechanism				client     : Tapi_ValidationMechanism			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_PathOptimizationConstraint				client     : Tapi_PathOptimizationConstraint			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_DirectiveValue				client     : Tapi_DirectiveValue			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Tapi_PathObjectiveFunction				client     : Tapi_PathObjectiveFunction			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getTopologyDetails				client     : getTopologyDetails			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getNodeDetails				client     : getNodeDetails			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getNodeEdgePointDetails				client     : getNodeEdgePointDetails			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getLinkDetails				client     : getLinkDetails			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getConnectionDetails				client     : getConnectionDetails			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getConnectivityServiceList				client     : getConnectivityServiceList			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getConnectionEndPointDetails				client     : getConnectionEndPointDetails			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getServiceEndPointDetails				client     : getServiceEndPointDetails			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getConnectivityServiceDetails				client     : getConnectivityServiceDetails			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : getServiceEndPointList				client     : getServiceEndPointList			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : createConnectivityService				client     : createConnectivityService			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : updateConnectivityService				client     : updateConnectivityService			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : deleteConnectivityService				client     : deleteConnectivityService			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : computeP2PPath				client     : computeP2PPath			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : optimizeP2PPath				client     : optimizeP2PPath			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+
+Attribute Comparison : 
+
+supplier      : _node			client      : _node			Attribute'name isn't changed.
+supplierClass : Tapi_Topology			clientClass : Tapi_Topology
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_Node				isUses : Tapi_Node			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _xImb0OK4EeSq5fATALSQkQ				type : _xImb0OK4EeSq5fATALSQkQ			Attribute's types are the same.
+supplier      : _link			client      : _link			Attribute'name isn't changed.
+supplierClass : Tapi_Topology			clientClass : Tapi_Topology
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_Link				isUses : Tapi_Link			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _37fFQOMCEeSdZOEXoN8VDQ				type : _37fFQOMCEeSdZOEXoN8VDQ			Attribute's types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_Topology			clientClass : Tapi_Topology
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_Topology			clientClass : Tapi_Topology
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_Topology			clientClass : Tapi_Topology
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_Topology			clientClass : Tapi_Topology
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : layerProtocolName			client      : layerProtocolName			Attribute'name isn't changed.
+supplierClass : Tapi_Topology			clientClass : Tapi_Topology
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName			names of types are the same.
+supplier      : _topology			client      : _topology			Attribute'name isn't changed.
+supplierClass : Tapi_Context			clientClass : Tapi_Context
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_Topology/uuid'				path : path '/Tapi_Topology/uuid'			paths of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_Context			clientClass : Tapi_Context
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_Context			clientClass : Tapi_Context
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_Context			clientClass : Tapi_Context
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_Context			clientClass : Tapi_Context
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : _ownedNodeEdgePoint			client      : _ownedNodeEdgePoint			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_NodeEdgePoint				isUses : Tapi_NodeEdgePoint			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _i1UzkD-3EeWNAdBR30aJhw				type : _i1UzkD-3EeWNAdBR30aJhw			Attribute's types are the same.
+supplier      : _aggregatedNodeEdgePoint			client      : _aggregatedNodeEdgePoint			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_NodeEdgePoint/uuid'				path : path '/Tapi_NodeEdgePoint/uuid'			paths of types are the same.
+supplier      : _encapTopology			client      : _encapTopology			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_Topology/uuid'				path : path '/Tapi_Topology/uuid'			paths of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : layerProtocolName			client      : layerProtocolName			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName			names of types are the same.
+supplier      : administrativeState			client      : administrativeState			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_AdministrativeState				name : TapiModule-TypeDefinitions:Tapi_AdministrativeState			names of types are the same.
+supplier      : operationalState			client      : operationalState			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_OperationalState				name : TapiModule-TypeDefinitions:Tapi_OperationalState			names of types are the same.
+supplier      : lifecycleState			client      : lifecycleState			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LifecycleState				name : TapiModule-TypeDefinitions:Tapi_LifecycleState			names of types are the same.
+supplier      : _transferCapacity			client      : _transferCapacity			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCapacityPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCapacityPac/'			paths of types are the same.
+supplier      : _transferCost			client      : _transferCost			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCostPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCostPac/'			paths of types are the same.
+supplier      : _transferTiming			client      : _transferTiming			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferTimingPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferTimingPac/'			paths of types are the same.
+supplier      : _transferIntegrity			client      : _transferIntegrity			Attribute'name isn't changed.
+supplierClass : Tapi_Node			clientClass : Tapi_Node
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferIntegrityPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferIntegrityPac/'			paths of types are the same.
+supplier      : _linkPort			client      : _linkPort			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_LinkPort				isUses : Tapi_LinkPort			Attribute's isUses are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			min-elements : 2				min-elements : 2			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _7vdU8Gh_EeWZEqTYAF8eqA				type : _7vdU8Gh_EeWZEqTYAF8eqA			Attribute's types are the same.
+supplier      : _node			client      : _node			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 2				min-elements : 2			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_Node/uuid'				path : path '/Tapi_Node/uuid'			paths of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : layerProtocolName			client      : layerProtocolName			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName			names of types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_ForwardingDirection				name : TapiModule-TypeDefinitions:Tapi_ForwardingDirection			names of types are the same.
+supplier      : administrativeState			client      : administrativeState			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_AdministrativeState				name : TapiModule-TypeDefinitions:Tapi_AdministrativeState			names of types are the same.
+supplier      : operationalState			client      : operationalState			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_OperationalState				name : TapiModule-TypeDefinitions:Tapi_OperationalState			names of types are the same.
+supplier      : lifecycleState			client      : lifecycleState			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LifecycleState				name : TapiModule-TypeDefinitions:Tapi_LifecycleState			names of types are the same.
+supplier      : _transferCapacity			client      : _transferCapacity			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCapacityPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCapacityPac/'			paths of types are the same.
+supplier      : _transferCost			client      : _transferCost			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCostPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCostPac/'			paths of types are the same.
+supplier      : _transferTiming			client      : _transferTiming			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferTimingPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferTimingPac/'			paths of types are the same.
+supplier      : _transferIntegrity			client      : _transferIntegrity			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferIntegrityPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferIntegrityPac/'			paths of types are the same.
+supplier      : _risk			client      : _risk			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_RiskParameterPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_RiskParameterPac/'			paths of types are the same.
+supplier      : _validation			client      : _validation			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_ValidationPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_ValidationPac/'			paths of types are the same.
+supplier      : _layerTransition			client      : _layerTransition			Attribute'name isn't changed.
+supplierClass : Tapi_Link			clientClass : Tapi_Link
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_LayerProtocolTransitionPac/'				path : path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_LayerProtocolTransitionPac/'			paths of types are the same.
+supplier      : _layerProtocol			client      : _layerProtocol			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_LayerProtocol				isUses : Tapi_LayerProtocol			Attribute's isUses are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _r01pEL6nEeWRz-VHgA3LJQ				type : _r01pEL6nEeWRz-VHgA3LJQ			Attribute's types are the same.
+supplier      : _clientNodeEdgePoint			client      : _clientNodeEdgePoint			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_TerminationDirection				name : TapiModule-TypeDefinitions:Tapi_TerminationDirection			names of types are the same.
+supplier      : administrativeState			client      : administrativeState			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_AdministrativeState				name : TapiModule-TypeDefinitions:Tapi_AdministrativeState			names of types are the same.
+supplier      : operationalState			client      : operationalState			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_OperationalState				name : TapiModule-TypeDefinitions:Tapi_OperationalState			names of types are the same.
+supplier      : lifecycleState			client      : lifecycleState			Attribute'name isn't changed.
+supplierClass : Tapi_NodeEdgePoint			clientClass : Tapi_NodeEdgePoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LifecycleState				name : TapiModule-TypeDefinitions:Tapi_LifecycleState			names of types are the same.
+supplier      : _layerProtocol			client      : _layerProtocol			Attribute'name isn't changed.
+supplierClass : Tapi_ServiceEndPoint			clientClass : Tapi_ServiceEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_LayerProtocol				isUses : Tapi_LayerProtocol			Attribute's isUses are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _r01pEL6nEeWRz-VHgA3LJQ				type : _r01pEL6nEeWRz-VHgA3LJQ			Attribute's types are the same.
+supplier      : _mappedNodeEdgePoint			client      : _mappedNodeEdgePoint			Attribute'name isn't changed.
+supplierClass : Tapi_ServiceEndPoint			clientClass : Tapi_ServiceEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_NodeEdgePoint/uuid'				path : path '/Tapi_NodeEdgePoint/uuid'			paths of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_ServiceEndPoint			clientClass : Tapi_ServiceEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_ServiceEndPoint			clientClass : Tapi_ServiceEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_ServiceEndPoint			clientClass : Tapi_ServiceEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_ServiceEndPoint			clientClass : Tapi_ServiceEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_ServiceEndPoint			clientClass : Tapi_ServiceEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_TerminationDirection				name : TapiModule-TypeDefinitions:Tapi_TerminationDirection			names of types are the same.
+supplier      : operationalState			client      : operationalState			Attribute'name isn't changed.
+supplierClass : Tapi_ServiceEndPoint			clientClass : Tapi_ServiceEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_OperationalState				name : TapiModule-TypeDefinitions:Tapi_OperationalState			names of types are the same.
+supplier      : _layerProtocol			client      : _layerProtocol			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_LayerProtocol				isUses : Tapi_LayerProtocol			Attribute's isUses are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _r01pEL6nEeWRz-VHgA3LJQ				type : _r01pEL6nEeWRz-VHgA3LJQ			Attribute's types are the same.
+supplier      : _clientNodeEdgePoint			client      : _clientNodeEdgePoint			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_NodeEdgePoint/uuid'				path : path '/Tapi_NodeEdgePoint/uuid'			paths of types are the same.
+supplier      : _serverNodeEdgePoint			client      : _serverNodeEdgePoint			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_NodeEdgePoint/uuid'				path : path '/Tapi_NodeEdgePoint/uuid'			paths of types are the same.
+supplier      : _peerConnectionEndPoint			client      : _peerConnectionEndPoint			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_ConnectionEndPoint/uuid'				path : path '/Tapi_ConnectionEndPoint/uuid'			paths of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_TerminationDirection				name : TapiModule-TypeDefinitions:Tapi_TerminationDirection			names of types are the same.
+supplier      : operationalState			client      : operationalState			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionEndPoint			clientClass : Tapi_ConnectionEndPoint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_OperationalState				name : TapiModule-TypeDefinitions:Tapi_OperationalState			names of types are the same.
+supplier      : _servicePort			client      : _servicePort			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_ServicePort				isUses : Tapi_ServicePort			Attribute's isUses are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			min-elements : 2				min-elements : 2			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _MIWTIGh5EeWZEqTYAF8eqA				type : _MIWTIGh5EeWZEqTYAF8eqA			Attribute's types are the same.
+supplier      : _connection			client      : _connection			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_Connection				isUses : Tapi_Connection			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _IZ3vcEHbEeWqPKyD1j6LMg				type : _IZ3vcEHbEeWqPKyD1j6LMg			Attribute's types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : layerProtocolName			client      : layerProtocolName			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName			names of types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_ForwardingDirection				name : TapiModule-TypeDefinitions:Tapi_ForwardingDirection			names of types are the same.
+supplier      : administrativeState			client      : administrativeState			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_AdministrativeState				name : TapiModule-TypeDefinitions:Tapi_AdministrativeState			names of types are the same.
+supplier      : operationalState			client      : operationalState			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_OperationalState				name : TapiModule-TypeDefinitions:Tapi_OperationalState			names of types are the same.
+supplier      : lifecycleState			client      : lifecycleState			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityService			clientClass : Tapi_ConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LifecycleState				name : TapiModule-TypeDefinitions:Tapi_LifecycleState			names of types are the same.
+supplier      : _connectionPort			client      : _connectionPort			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_ConnectionPort				isUses : Tapi_ConnectionPort			Attribute's isUses are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			min-elements : 2				min-elements : 2			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _sIutIGh-EeWZEqTYAF8eqA				type : _sIutIGh-EeWZEqTYAF8eqA			Attribute's types are the same.
+supplier      : _path			client      : _path			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_Route				isUses : Tapi_Route			Attribute's isUses are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _kkzTEEUbEeWKAbXi7_SowQ				type : _kkzTEEUbEeWKAbXi7_SowQ			Attribute's types are the same.
+supplier      : _node			client      : _node			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_Node/uuid'				path : path '/Tapi_Node/uuid'			paths of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : name			client      : name			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : label			client      : label			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : extension			client      : extension			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue				isUses : TapiModule-TypeDefinitions:Tapi_NameAndValue			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _6efrYNnVEeWIOYiRCk5bbQ				type : _6efrYNnVEeWIOYiRCk5bbQ			Attribute's types are the same.
+supplier      : layerProtocolName			client      : layerProtocolName			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName			names of types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_ForwardingDirection				name : TapiModule-TypeDefinitions:Tapi_ForwardingDirection			names of types are the same.
+supplier      : operationalState			client      : operationalState			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_OperationalState				name : TapiModule-TypeDefinitions:Tapi_OperationalState			names of types are the same.
+supplier      : lifecycleState			client      : lifecycleState			Attribute'name isn't changed.
+supplierClass : Tapi_Connection			clientClass : Tapi_Connection
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LifecycleState				name : TapiModule-TypeDefinitions:Tapi_LifecycleState			names of types are the same.
+supplier      : _lowerConnection			client      : _lowerConnection			Attribute'name isn't changed.
+supplierClass : Tapi_Route			clientClass : Tapi_Route
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_Connection/uuid'				path : path '/Tapi_Connection/uuid'			paths of types are the same.
+supplier      : localId			client      : localId			Attribute'name isn't changed.
+supplierClass : Tapi_Route			clientClass : Tapi_Route
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : _nodeEdgePoint			client      : _nodeEdgePoint			Attribute'name isn't changed.
+supplierClass : Tapi_LinkPort			clientClass : Tapi_LinkPort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_NodeEdgePoint/uuid'				path : path '/Tapi_NodeEdgePoint/uuid'			paths of types are the same.
+supplier      : localId			client      : localId			Attribute'name isn't changed.
+supplierClass : Tapi_LinkPort			clientClass : Tapi_LinkPort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : role			client      : role			Attribute'name isn't changed.
+supplierClass : Tapi_LinkPort			clientClass : Tapi_LinkPort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_PortRole				name : TapiModule-TypeDefinitions:Tapi_PortRole			names of types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_LinkPort			clientClass : Tapi_LinkPort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_PortDirection				name : TapiModule-TypeDefinitions:Tapi_PortDirection			names of types are the same.
+supplier      : _serviceEndPoint			client      : _serviceEndPoint			Attribute'name isn't changed.
+supplierClass : Tapi_ServicePort			clientClass : Tapi_ServicePort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_ServiceEndPoint/uuid'				path : path '/Tapi_ServiceEndPoint/uuid'			paths of types are the same.
+supplier      : localId			client      : localId			Attribute'name isn't changed.
+supplierClass : Tapi_ServicePort			clientClass : Tapi_ServicePort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : role			client      : role			Attribute'name isn't changed.
+supplierClass : Tapi_ServicePort			clientClass : Tapi_ServicePort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_PortRole				name : TapiModule-TypeDefinitions:Tapi_PortRole			names of types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_ServicePort			clientClass : Tapi_ServicePort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_PortDirection				name : TapiModule-TypeDefinitions:Tapi_PortDirection			names of types are the same.
+supplier      : serviceLayer			client      : serviceLayer			Attribute'name isn't changed.
+supplierClass : Tapi_ServicePort			clientClass : Tapi_ServicePort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName			names of types are the same.
+supplier      : _connectionEndPoint			client      : _connectionEndPoint			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionPort			clientClass : Tapi_ConnectionPort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_ConnectionEndPoint/uuid'				path : path '/Tapi_ConnectionEndPoint/uuid'			paths of types are the same.
+supplier      : localId			client      : localId			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionPort			clientClass : Tapi_ConnectionPort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : role			client      : role			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionPort			clientClass : Tapi_ConnectionPort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_PortRole				name : TapiModule-TypeDefinitions:Tapi_PortRole			names of types are the same.
+supplier      : direction			client      : direction			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectionPort			clientClass : Tapi_ConnectionPort
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_PortDirection				name : TapiModule-TypeDefinitions:Tapi_PortDirection			names of types are the same.
+supplier      : _lpSpec			client      : _lpSpec			Attribute'name isn't changed.
+supplierClass : Tapi_LayerProtocol			clientClass : Tapi_LayerProtocol
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : localId			client      : localId			Attribute'name isn't changed.
+supplierClass : Tapi_LayerProtocol			clientClass : Tapi_LayerProtocol
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : layerProtocolName			client      : layerProtocolName			Attribute'name isn't changed.
+supplierClass : Tapi_LayerProtocol			clientClass : Tapi_LayerProtocol
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName				name : TapiModule-TypeDefinitions:Tapi_LayerProtocolName			names of types are the same.
+supplier      : terminationDirection			client      : terminationDirection			Attribute'name isn't changed.
+supplierClass : Tapi_LayerProtocol			clientClass : Tapi_LayerProtocol
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_TerminationDirection				name : TapiModule-TypeDefinitions:Tapi_TerminationDirection			names of types are the same.
+supplier      : terminationState			client      : terminationState			Attribute'name isn't changed.
+supplierClass : Tapi_LayerProtocol			clientClass : Tapi_LayerProtocol
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_TerminationState				name : TapiModule-TypeDefinitions:Tapi_TerminationState			names of types are the same.
+supplier      : costCharacteristicList			client      : costCharacteristicList			Attribute'name isn't changed.
+supplierClass : Tapi_TransferCostPac			clientClass : Tapi_TransferCostPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_CostCharacteristic				isUses : TapiModule-TypeDefinitions:Tapi_CostCharacteristic			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _8ZRqwdv-EeWowYqZXEhn3A				type : _8ZRqwdv-EeWowYqZXEhn3A			Attribute's types are the same.
+supplier      : riskCharacteristicList			client      : riskCharacteristicList			Attribute'name isn't changed.
+supplierClass : Tapi_RiskParameterPac			clientClass : Tapi_RiskParameterPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_RiskCharacteristic				isUses : TapiModule-TypeDefinitions:Tapi_RiskCharacteristic			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _8ZRqz9v-EeWowYqZXEhn3A				type : _8ZRqz9v-EeWowYqZXEhn3A			Attribute's types are the same.
+supplier      : transitionedLayerProtocolName			client      : transitionedLayerProtocolName			Attribute'name isn't changed.
+supplierClass : Tapi_LayerProtocolTransitionPac			clientClass : Tapi_LayerProtocolTransitionPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : _nodeEdgePoint			client      : _nodeEdgePoint			Attribute'name isn't changed.
+supplierClass : Tapi_LayerProtocolTransitionPac			clientClass : Tapi_LayerProtocolTransitionPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses:Tapi_NodeEdgePoint/uuid'				path : path '/TapiModule-ObjectClasses:Tapi_NodeEdgePoint/uuid'			paths of types are the same.
+supplier      : fixedLatencyCharacteristic			client      : fixedLatencyCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferTimingPac			clientClass : Tapi_TransferTimingPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : jitterCharacteristic			client      : jitterCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferTimingPac			clientClass : Tapi_TransferTimingPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : wanderCharacteristic			client      : wanderCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferTimingPac			clientClass : Tapi_TransferTimingPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : queuingLatency			client      : queuingLatency			Attribute'name isn't changed.
+supplierClass : Tapi_TransferTimingPac			clientClass : Tapi_TransferTimingPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : errorCharacteristic			client      : errorCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferIntegrityPac			clientClass : Tapi_TransferIntegrityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : lossCharacteristic			client      : lossCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferIntegrityPac			clientClass : Tapi_TransferIntegrityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : repeatDeliveryCharacteristic			client      : repeatDeliveryCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferIntegrityPac			clientClass : Tapi_TransferIntegrityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : deliveryOrderCharacteristic			client      : deliveryOrderCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferIntegrityPac			clientClass : Tapi_TransferIntegrityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : unavailableTimeCharacteristic			client      : unavailableTimeCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferIntegrityPac			clientClass : Tapi_TransferIntegrityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : serverIntegrityProcessCharacteristic			client      : serverIntegrityProcessCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_TransferIntegrityPac			clientClass : Tapi_TransferIntegrityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : totalPotentialCapacity			client      : totalPotentialCapacity			Attribute'name isn't changed.
+supplierClass : Tapi_TransferCapacityPac			clientClass : Tapi_TransferCapacityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_Capacity				isUses : TapiModule-TypeDefinitions:Tapi_Capacity			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _rNbewL1-EeWdore3Cxez9g				type : _rNbewL1-EeWdore3Cxez9g			Attribute's types are the same.
+supplier      : availableCapacity			client      : availableCapacity			Attribute'name isn't changed.
+supplierClass : Tapi_TransferCapacityPac			clientClass : Tapi_TransferCapacityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_Capacity				isUses : TapiModule-TypeDefinitions:Tapi_Capacity			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _rNbewL1-EeWdore3Cxez9g				type : _rNbewL1-EeWdore3Cxez9g			Attribute's types are the same.
+supplier      : capacityAssignedToUserView			client      : capacityAssignedToUserView			Attribute'name isn't changed.
+supplierClass : Tapi_TransferCapacityPac			clientClass : Tapi_TransferCapacityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_Capacity				isUses : TapiModule-TypeDefinitions:Tapi_Capacity			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _rNbewL1-EeWdore3Cxez9g				type : _rNbewL1-EeWdore3Cxez9g			Attribute's types are the same.
+supplier      : capacityInteractionAlgorithm			client      : capacityInteractionAlgorithm			Attribute'name isn't changed.
+supplierClass : Tapi_TransferCapacityPac			clientClass : Tapi_TransferCapacityPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : validationMechanism			client      : validationMechanism			Attribute'name isn't changed.
+supplierClass : Tapi_ValidationPac			clientClass : Tapi_ValidationPac
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_ValidationMechanism				isUses : TapiModule-TypeDefinitions:Tapi_ValidationMechanism			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _8ZRq69v-EeWowYqZXEhn3A				type : _8ZRq69v-EeWowYqZXEhn3A			Attribute's types are the same.
+supplier      : _node			client      : _node			Attribute'name isn't changed.
+supplierClass : Tapi_TeLink			clientClass : Tapi_TeLink
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 2				min-elements : 2			Attribute's min-elements are the same.
+			max-elements : 2				max-elements : 2			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_Node/uuid'				path : path '/Tapi_Node/uuid'			paths of types are the same.
+supplier      : _linkPort			client      : _linkPort			Attribute'name isn't changed.
+supplierClass : Tapi_TeLink			clientClass : Tapi_TeLink
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 2				max-elements : 2			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_LinkPort/localId'				path : path '/Tapi_LinkPort/localId'			paths of types are the same.
+supplier      : _link			client      : _link			Attribute'name isn't changed.
+supplierClass : Tapi_TeLink			clientClass : Tapi_TeLink
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_Link/uuid'				path : path '/Tapi_Link/uuid'			paths of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_TeLink			clientClass : Tapi_TeLink
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : _telink			client      : _telink			Attribute'name isn't changed.
+supplierClass : Tapi_Path			clientClass : Tapi_Path
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Tapi_TeLink/'				path : path '/Tapi_TeLink/'			paths of types are the same.
+supplier      : uuid			client      : uuid			Attribute'name isn't changed.
+supplierClass : Tapi_Path			clientClass : Tapi_Path
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : TapiModule-TypeDefinitions:Tapi_UniversalId				name : TapiModule-TypeDefinitions:Tapi_UniversalId			names of types are the same.
+supplier      : routingConstraint			client      : routingConstraint			Attribute'name isn't changed.
+supplierClass : Tapi_Path			clientClass : Tapi_Path
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint				isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _ntqE4L2BEeWdore3Cxez9g				type : _ntqE4L2BEeWdore3Cxez9g			Attribute's types are the same.
+supplier      : serviceType			client      : serviceType			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : Tapi_ServiceType				name : Tapi_ServiceType			names of types are the same.
+supplier      : requestedCapacity			client      : requestedCapacity			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : Tapi_Capacity				isUses : Tapi_Capacity			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+	Types Comparison :
+			type : _rNbewL1-EeWdore3Cxez9g				type : _rNbewL1-EeWdore3Cxez9g			Attribute's types are the same.
+supplier      : serviceLevel			client      : serviceLevel			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : serviceLayer			client      : serviceLayer			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : Tapi_LayerProtocolName				name : Tapi_LayerProtocolName			names of types are the same.
+supplier      : costCharacteristic			client      : costCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_CostCharacteristic				isUses : Tapi_CostCharacteristic			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _8ZRqwdv-EeWowYqZXEhn3A				type : _8ZRqwdv-EeWowYqZXEhn3A			Attribute's types are the same.
+supplier      : riskCharacteristic			client      : riskCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_RiskCharacteristic				isUses : Tapi_RiskCharacteristic			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _8ZRqz9v-EeWowYqZXEhn3A				type : _8ZRqz9v-EeWowYqZXEhn3A			Attribute's types are the same.
+supplier      : latencyCharacteristic			client      : latencyCharacteristic			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : Tapi_QueuingLatency				isUses : Tapi_QueuingLatency			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _8ZRq-dv-EeWowYqZXEhn3A				type : _8ZRq-dv-EeWowYqZXEhn3A			Attribute's types are the same.
+supplier      : includePath			client      : includePath			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses:Tapi_Path/'				path : path '/TapiModule-ObjectClasses:Tapi_Path/'			paths of types are the same.
+supplier      : excludePath			client      : excludePath			Attribute'name isn't changed.
+supplierClass : Tapi_ConnectivityConstraint			clientClass : Tapi_ConnectivityConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/TapiModule-ObjectClasses:Tapi_Path/'				path : path '/TapiModule-ObjectClasses:Tapi_Path/'			paths of types are the same.
+supplier      : startTime			client      : startTime			Attribute'name isn't changed.
+supplierClass : Tapi_ScheduleInfo			clientClass : Tapi_ScheduleInfo
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : endTime			client      : endTime			Attribute'name isn't changed.
+supplierClass : Tapi_ScheduleInfo			clientClass : Tapi_ScheduleInfo
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : valueName			client      : valueName			Attribute'name isn't changed.
+supplierClass : Tapi_NameAndValue			clientClass : Tapi_NameAndValue
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : value			client      : value			Attribute'name isn't changed.
+supplierClass : Tapi_NameAndValue			clientClass : Tapi_NameAndValue
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : _nameAndValueAuthorityRef			client      : _nameAndValueAuthorityRef			Attribute'name isn't changed.
+supplierClass : Tapi_NameAndValue			clientClass : Tapi_NameAndValue
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : totalSize			client      : totalSize			Attribute'name isn't changed.
+supplierClass : Tapi_Capacity			clientClass : Tapi_Capacity
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : maximumUsageInstances			client      : maximumUsageInstances			Attribute'name isn't changed.
+supplierClass : Tapi_Capacity			clientClass : Tapi_Capacity
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : maximumUsageSize			client      : maximumUsageSize			Attribute'name isn't changed.
+supplierClass : Tapi_Capacity			clientClass : Tapi_Capacity
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : numberingRange			client      : numberingRange			Attribute'name isn't changed.
+supplierClass : Tapi_Capacity			clientClass : Tapi_Capacity
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : costName			client      : costName			Attribute'name isn't changed.
+supplierClass : Tapi_CostCharacteristic			clientClass : Tapi_CostCharacteristic
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : costValue			client      : costValue			Attribute'name isn't changed.
+supplierClass : Tapi_CostCharacteristic			clientClass : Tapi_CostCharacteristic
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : costAlgorithm			client      : costAlgorithm			Attribute'name isn't changed.
+supplierClass : Tapi_CostCharacteristic			clientClass : Tapi_CostCharacteristic
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : trafficPropertyName			client      : trafficPropertyName			Attribute'name isn't changed.
+supplierClass : Tapi_QueuingLatency			clientClass : Tapi_QueuingLatency
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : latencyValue			client      : latencyValue			Attribute'name isn't changed.
+supplierClass : Tapi_QueuingLatency			clientClass : Tapi_QueuingLatency
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : riskCharacteristicName			client      : riskCharacteristicName			Attribute'name isn't changed.
+supplierClass : Tapi_RiskCharacteristic			clientClass : Tapi_RiskCharacteristic
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : riskIdentifierList			client      : riskIdentifierList			Attribute'name isn't changed.
+supplierClass : Tapi_RiskCharacteristic			clientClass : Tapi_RiskCharacteristic
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf-list				nodeType : leaf-list			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : validationMechanism			client      : validationMechanism			Attribute'name isn't changed.
+supplierClass : Tapi_ValidationMechanism			clientClass : Tapi_ValidationMechanism
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : layerProtocolAdjacencyValidated			client      : layerProtocolAdjacencyValidated			Attribute'name isn't changed.
+supplierClass : Tapi_ValidationMechanism			clientClass : Tapi_ValidationMechanism
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : validationRobustness			client      : validationRobustness			Attribute'name isn't changed.
+supplierClass : Tapi_ValidationMechanism			clientClass : Tapi_ValidationMechanism
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : 1				max-elements : 1			Attribute's max-elements are the same.
+	Types Comparison :
+				name : string				name : string			names of types are the same.
+supplier      : trafficInterruption			client      : trafficInterruption			Attribute'name isn't changed.
+supplierClass : Tapi_PathOptimizationConstraint			clientClass : Tapi_PathOptimizationConstraint
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : Tapi_DirectiveValue				name : Tapi_DirectiveValue			names of types are the same.
+supplier      : concurrentPaths			client      : concurrentPaths			Attribute'name isn't changed.
+supplierClass : Tapi_PathObjectiveFunction			clientClass : Tapi_PathObjectiveFunction
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : Tapi_DirectiveValue				name : Tapi_DirectiveValue			names of types are the same.
+supplier      : bandwidthOptimization			client      : bandwidthOptimization			Attribute'name isn't changed.
+supplierClass : Tapi_PathObjectiveFunction			clientClass : Tapi_PathObjectiveFunction
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : Tapi_DirectiveValue				name : Tapi_DirectiveValue			names of types are the same.
+supplier      : costOptimization			client      : costOptimization			Attribute'name isn't changed.
+supplierClass : Tapi_PathObjectiveFunction			clientClass : Tapi_PathObjectiveFunction
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : Tapi_DirectiveValue				name : Tapi_DirectiveValue			names of types are the same.
+supplier      : linkUtilization			client      : linkUtilization			Attribute'name isn't changed.
+supplierClass : Tapi_PathObjectiveFunction			clientClass : Tapi_PathObjectiveFunction
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : Tapi_DirectiveValue				name : Tapi_DirectiveValue			names of types are the same.
+supplier      : resourceSharing			client      : resourceSharing			Attribute'name isn't changed.
+supplierClass : Tapi_PathObjectiveFunction			clientClass : Tapi_PathObjectiveFunction
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : Tapi_DirectiveValue				name : Tapi_DirectiveValue			names of types are the same.
+supplier      : topologyIdOrName			client      : topologyIdOrName			Attribute'name isn't changed.
+supplierClass : getTopologyDetails			clientClass : getTopologyDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : topology			client      : topology			Attribute'name isn't changed.
+supplierClass : getTopologyDetails			clientClass : getTopologyDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_Topology				isUses : TapiModule-ObjectClasses:Tapi_Topology			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _ejyEgOKyEeSq5fATALSQkQ				type : _ejyEgOKyEeSq5fATALSQkQ			Attribute's types are the same.
+supplier      : topologyIdOrName			client      : topologyIdOrName			Attribute'name isn't changed.
+supplierClass : getNodeDetails			clientClass : getNodeDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : nodeIdOrName			client      : nodeIdOrName			Attribute'name isn't changed.
+supplierClass : getNodeDetails			clientClass : getNodeDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : node			client      : node			Attribute'name isn't changed.
+supplierClass : getNodeDetails			clientClass : getNodeDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_Node				isUses : TapiModule-ObjectClasses:Tapi_Node			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _xImb0OK4EeSq5fATALSQkQ				type : _xImb0OK4EeSq5fATALSQkQ			Attribute's types are the same.
+supplier      : topologyIdOrName			client      : topologyIdOrName			Attribute'name isn't changed.
+supplierClass : getNodeEdgePointDetails			clientClass : getNodeEdgePointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : nodeIdOrName			client      : nodeIdOrName			Attribute'name isn't changed.
+supplierClass : getNodeEdgePointDetails			clientClass : getNodeEdgePointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : epIdOrName			client      : epIdOrName			Attribute'name isn't changed.
+supplierClass : getNodeEdgePointDetails			clientClass : getNodeEdgePointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : nodeEdgePoint			client      : nodeEdgePoint			Attribute'name isn't changed.
+supplierClass : getNodeEdgePointDetails			clientClass : getNodeEdgePointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_NodeEdgePoint				isUses : TapiModule-ObjectClasses:Tapi_NodeEdgePoint			Attribute's isUses are the same.
+			isAbstract : true				isAbstract : true			Attribute's isAbstracts are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _i1UzkD-3EeWNAdBR30aJhw				type : _i1UzkD-3EeWNAdBR30aJhw			Attribute's types are the same.
+supplier      : topologyIdOrName			client      : topologyIdOrName			Attribute'name isn't changed.
+supplierClass : getLinkDetails			clientClass : getLinkDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : linkIdOrName			client      : linkIdOrName			Attribute'name isn't changed.
+supplierClass : getLinkDetails			clientClass : getLinkDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : link			client      : link			Attribute'name isn't changed.
+supplierClass : getLinkDetails			clientClass : getLinkDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_Link				isUses : TapiModule-ObjectClasses:Tapi_Link			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _37fFQOMCEeSdZOEXoN8VDQ				type : _37fFQOMCEeSdZOEXoN8VDQ			Attribute's types are the same.
+supplier      : serviceIdOrName			client      : serviceIdOrName			Attribute'name isn't changed.
+supplierClass : getConnectionDetails			clientClass : getConnectionDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : connectionIdOrName			client      : connectionIdOrName			Attribute'name isn't changed.
+supplierClass : getConnectionDetails			clientClass : getConnectionDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : connection			client      : connection			Attribute'name isn't changed.
+supplierClass : getConnectionDetails			clientClass : getConnectionDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_Connection				isUses : TapiModule-ObjectClasses:Tapi_Connection			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _IZ3vcEHbEeWqPKyD1j6LMg				type : _IZ3vcEHbEeWqPKyD1j6LMg			Attribute's types are the same.
+supplier      : serviceList			client      : serviceList			Attribute'name isn't changed.
+supplierClass : getConnectivityServiceList			clientClass : getConnectivityServiceList
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService				isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _kuDzQEHaEeWqPKyD1j6LMg				type : _kuDzQEHaEeWqPKyD1j6LMg			Attribute's types are the same.
+supplier      : serviceIdOrName			client      : serviceIdOrName			Attribute'name isn't changed.
+supplierClass : getConnectionEndPointDetails			clientClass : getConnectionEndPointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : connectionIdOrName			client      : connectionIdOrName			Attribute'name isn't changed.
+supplierClass : getConnectionEndPointDetails			clientClass : getConnectionEndPointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : connEPIdOrName			client      : connEPIdOrName			Attribute'name isn't changed.
+supplierClass : getConnectionEndPointDetails			clientClass : getConnectionEndPointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : connEP			client      : connEP			Attribute'name isn't changed.
+supplierClass : getConnectionEndPointDetails			clientClass : getConnectionEndPointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ConnectionEndPoint				isUses : TapiModule-ObjectClasses:Tapi_ConnectionEndPoint			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _oC2ZEEG_EeWAMMFKXSVi-w				type : _oC2ZEEG_EeWAMMFKXSVi-w			Attribute's types are the same.
+supplier      : serviceEPIdOrName			client      : serviceEPIdOrName			Attribute'name isn't changed.
+supplierClass : getServiceEndPointDetails			clientClass : getServiceEndPointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : serviceEP			client      : serviceEP			Attribute'name isn't changed.
+supplierClass : getServiceEndPointDetails			clientClass : getServiceEndPointDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ServiceEndPoint				isUses : TapiModule-ObjectClasses:Tapi_ServiceEndPoint			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _It0sYEG-EeWMO5szP8dKiA				type : _It0sYEG-EeWMO5szP8dKiA			Attribute's types are the same.
+supplier      : serviceIdOrName			client      : serviceIdOrName			Attribute'name isn't changed.
+supplierClass : getConnectivityServiceDetails			clientClass : getConnectivityServiceDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : service			client      : service			Attribute'name isn't changed.
+supplierClass : getConnectivityServiceDetails			clientClass : getConnectivityServiceDetails
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService				isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _kuDzQEHaEeWqPKyD1j6LMg				type : _kuDzQEHaEeWqPKyD1j6LMg			Attribute's types are the same.
+supplier      : serviceEPList			client      : serviceEPList			Attribute'name isn't changed.
+supplierClass : getServiceEndPointList			clientClass : getServiceEndPointList
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ServiceEndPoint				isUses : TapiModule-ObjectClasses:Tapi_ServiceEndPoint			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _It0sYEG-EeWMO5szP8dKiA				type : _It0sYEG-EeWMO5szP8dKiA			Attribute's types are the same.
+supplier      : servicePort			client      : servicePort			Attribute'name isn't changed.
+supplierClass : createConnectivityService			clientClass : createConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ServicePort				isUses : TapiModule-ObjectClasses:Tapi_ServicePort			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 2				min-elements : 2			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _MIWTIGh5EeWZEqTYAF8eqA				type : _MIWTIGh5EeWZEqTYAF8eqA			Attribute's types are the same.
+supplier      : connConstraint			client      : connConstraint			Attribute'name isn't changed.
+supplierClass : createConnectivityService			clientClass : createConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint				isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _ntqE4L2BEeWdore3Cxez9g				type : _ntqE4L2BEeWdore3Cxez9g			Attribute's types are the same.
+supplier      : connSchedule			client      : connSchedule			Attribute'name isn't changed.
+supplierClass : createConnectivityService			clientClass : createConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_ScheduleInfo				isUses : TapiModule-TypeDefinitions:Tapi_ScheduleInfo			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _cM_LIL2OEeWdore3Cxez9g				type : _cM_LIL2OEeWdore3Cxez9g			Attribute's types are the same.
+supplier      : connService			client      : connService			Attribute'name isn't changed.
+supplierClass : createConnectivityService			clientClass : createConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService				isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _kuDzQEHaEeWqPKyD1j6LMg				type : _kuDzQEHaEeWqPKyD1j6LMg			Attribute's types are the same.
+supplier      : serviceIdOrName			client      : serviceIdOrName			Attribute'name isn't changed.
+supplierClass : updateConnectivityService			clientClass : updateConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : connConstraint			client      : connConstraint			Attribute'name isn't changed.
+supplierClass : updateConnectivityService			clientClass : updateConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint				isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _ntqE4L2BEeWdore3Cxez9g				type : _ntqE4L2BEeWdore3Cxez9g			Attribute's types are the same.
+supplier      : connSchedule			client      : connSchedule			Attribute'name isn't changed.
+supplierClass : updateConnectivityService			clientClass : updateConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_ScheduleInfo				isUses : TapiModule-TypeDefinitions:Tapi_ScheduleInfo			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _cM_LIL2OEeWdore3Cxez9g				type : _cM_LIL2OEeWdore3Cxez9g			Attribute's types are the same.
+supplier      : connService			client      : connService			Attribute'name isn't changed.
+supplierClass : updateConnectivityService			clientClass : updateConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService				isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _kuDzQEHaEeWqPKyD1j6LMg				type : _kuDzQEHaEeWqPKyD1j6LMg			Attribute's types are the same.
+supplier      : serviceIdOrName			client      : serviceIdOrName			Attribute'name isn't changed.
+supplierClass : deleteConnectivityService			clientClass : deleteConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : connService			client      : connService			Attribute'name isn't changed.
+supplierClass : deleteConnectivityService			clientClass : deleteConnectivityService
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService				isUses : TapiModule-ObjectClasses:Tapi_ConnectivityService			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : uuid				key : uuid			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _kuDzQEHaEeWqPKyD1j6LMg				type : _kuDzQEHaEeWqPKyD1j6LMg			Attribute's types are the same.
+supplier      : servicePort			client      : servicePort			Attribute'name isn't changed.
+supplierClass : computeP2PPath			clientClass : computeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_ServicePort				isUses : TapiModule-ObjectClasses:Tapi_ServicePort			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : localId				key : localId			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 2				min-elements : 2			Attribute's min-elements are the same.
+			max-elements : 2				max-elements : 2			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _MIWTIGh5EeWZEqTYAF8eqA				type : _MIWTIGh5EeWZEqTYAF8eqA			Attribute's types are the same.
+supplier      : routingConstraint			client      : routingConstraint			Attribute'name isn't changed.
+supplierClass : computeP2PPath			clientClass : computeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint				isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _ntqE4L2BEeWdore3Cxez9g				type : _ntqE4L2BEeWdore3Cxez9g			Attribute's types are the same.
+supplier      : objectiveFunction			client      : objectiveFunction			Attribute'name isn't changed.
+supplierClass : computeP2PPath			clientClass : computeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_PathObjectiveFunction				isUses : TapiModule-TypeDefinitions:Tapi_PathObjectiveFunction			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _hiAqMN5rEeWd9KDn6x5Skg				type : _hiAqMN5rEeWd9KDn6x5Skg			Attribute's types are the same.
+supplier      : path			client      : path			Attribute'name isn't changed.
+supplierClass : computeP2PPath			clientClass : computeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_Path				isUses : TapiModule-ObjectClasses:Tapi_Path			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _aMQ88N5xEeWd9KDn6x5Skg				type : _aMQ88N5xEeWd9KDn6x5Skg			Attribute's types are the same.
+supplier      : pathIdOrName			client      : pathIdOrName			Attribute'name isn't changed.
+supplierClass : optimizeP2PPath			clientClass : optimizeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+	Types Comparison :
+			type : string				type : string			Attribute's types are the same.
+supplier      : routingConstraint			client      : routingConstraint			Attribute'name isn't changed.
+supplierClass : optimizeP2PPath			clientClass : optimizeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint				isUses : TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _ntqE4L2BEeWdore3Cxez9g				type : _ntqE4L2BEeWdore3Cxez9g			Attribute's types are the same.
+supplier      : optimizationConstraint			client      : optimizationConstraint			Attribute'name isn't changed.
+supplierClass : optimizeP2PPath			clientClass : optimizeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_PathOptimizationConstraint				isUses : TapiModule-TypeDefinitions:Tapi_PathOptimizationConstraint			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _gzqTQN5nEeWd9KDn6x5Skg				type : _gzqTQN5nEeWd9KDn6x5Skg			Attribute's types are the same.
+supplier      : objectiveFunction			client      : objectiveFunction			Attribute'name isn't changed.
+supplierClass : optimizeP2PPath			clientClass : optimizeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : container				nodeType : container			Attribute's nodeTypes are the same.
+			isUses : TapiModule-TypeDefinitions:Tapi_PathObjectiveFunction				isUses : TapiModule-TypeDefinitions:Tapi_PathObjectiveFunction			Attribute's isUses are the same.
+			rpcType : input				rpcType : input			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+			type : _hiAqMN5rEeWd9KDn6x5Skg				type : _hiAqMN5rEeWd9KDn6x5Skg			Attribute's types are the same.
+supplier      : path			client      : path			Attribute'name isn't changed.
+supplierClass : optimizeP2PPath			clientClass : optimizeP2PPath
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			nodeType : list				nodeType : list			Attribute's nodeTypes are the same.
+			isUses : TapiModule-ObjectClasses:Tapi_Path				isUses : TapiModule-ObjectClasses:Tapi_Path			Attribute's isUses are the same.
+			rpcType : output				rpcType : output			Attribute's rpcTypes are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+			min-elements : 1				min-elements : 1			Attribute's min-elements are the same.
+			max-elements : *				max-elements : *			Attribute's max-elements are the same.
+	Types Comparison :
+			type : _aMQ88N5xEeWd9KDn6x5Skg				type : _aMQ88N5xEeWd9KDn6x5Skg			Attribute's types are the same.

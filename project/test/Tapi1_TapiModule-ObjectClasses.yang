@@ -1,0 +1,742 @@
+module TapiModule-ObjectClasses {
+    namespace "urn:ONF:TapiModule-ObjectClasses";
+    prefix TapiModule-ObjectClasses;
+    import TapiModule-TypeDefinitions {
+        prefix TapiModule-TypeDefinitions;
+    }
+    import TapiModule-ObjectClasses-TopologyPacs {
+        prefix TapiModule-ObjectClasses-TopologyPacs;
+    }
+    organization "ONF (Open Networking Foundation) IMP Working Group";
+    contact "WG Web: <https://www.opennetworking.org/technical-communities/areas/services/>
+        WG List: <mailto: <wg list name>@opennetworking.org>
+        WG Chair: your-WG-chair
+                <mailto:your-WG-chair@example.com>
+        Editor: your-name
+                <mailto:your-email@example.com>";
+    description "none";
+    revision 2016-05-27 {
+        description "Latest revision";
+        reference "RFC 6020 and RFC 6087";
+    }
+    list Tapi_Topology {
+        uses Tapi_Topology;
+        description "none";
+    }
+    grouping Tapi_Topology {
+        list _node {
+            uses Tapi_Node;
+            description "none";
+        }
+        list _link {
+            uses Tapi_Link;
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        leaf-list layerProtocolName {
+            type TapiModule-TypeDefinitions:Tapi_LayerProtocolName;
+            min-elements 1;
+            description "none";
+        }
+        description "The ForwardingDomain (FD) object class models the “ForwardingDomain” topological component which is used to effect forwarding of transport characteristic information and offers the potential to enable forwarding. 
+            At the lowest level of recursion, an FD (within a network element (NE)) represents a switch matrix (i.e., a fabric). Note that an NE can encompass multiple switch matrices (FDs). ";
+    }
+    container Tapi_Context {
+        leaf _topology {
+            type leafref {
+                path '/Tapi_Topology/uuid';
+            }
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        description "The Network Control Domain (NCD) object class represents the scope of control that a particular SDN controller has with respect to a particular network, (i.e., encompassing a designated set of interconnected (virtual) network elements).";
+    }
+    list Tapi_Node {
+        uses Tapi_Node;
+        description "none";
+    }
+    grouping Tapi_Node {
+        list _ownedNodeEdgePoint {
+            uses Tapi_NodeEdgePoint;
+            description "none";
+        }
+        leaf-list _aggregatedNodeEdgePoint {
+            type leafref {
+                path '/Tapi_NodeEdgePoint/uuid';
+            }
+            description "none";
+        }
+        leaf _encapTopology {
+            type leafref {
+                path '/Tapi_Topology/uuid';
+            }
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        leaf-list layerProtocolName {
+            type TapiModule-TypeDefinitions:Tapi_LayerProtocolName;
+            min-elements 1;
+            description "none";
+        }
+        leaf administrativeState {
+            type TapiModule-TypeDefinitions:Tapi_AdministrativeState;
+            description "none";
+        }
+        leaf operationalState {
+            type TapiModule-TypeDefinitions:Tapi_OperationalState;
+            description "none";
+        }
+        leaf lifecycleState {
+            type TapiModule-TypeDefinitions:Tapi_LifecycleState;
+            description "none";
+        }
+        leaf _transferCapacity {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCapacityPac/';
+            }
+            description "none";
+        }
+        leaf _transferCost {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCostPac/';
+            }
+            description "none";
+        }
+        leaf _transferTiming {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferTimingPac/';
+            }
+            description "none";
+        }
+        leaf _transferIntegrity {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferIntegrityPac/';
+            }
+            description "none";
+        }
+        description "The ForwardingDomain (FD) object class models the “ForwardingDomain” topological component which is used to effect forwarding of transport characteristic information and offers the potential to enable forwarding. 
+            At the lowest level of recursion, an FD (within a network element (NE)) represents a switch matrix (i.e., a fabric). Note that an NE can encompass multiple switch matrices (FDs). ";
+    }
+    list Tapi_Link {
+        uses Tapi_Link;
+        description "none";
+    }
+    grouping Tapi_Link {
+        list _linkPort {
+            min-elements 2;
+            uses Tapi_LinkPort;
+            description "none";
+        }
+        leaf-list _node {
+            type leafref {
+                path '/Tapi_Node/uuid';
+            }
+            min-elements 2;
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        leaf-list layerProtocolName {
+            type TapiModule-TypeDefinitions:Tapi_LayerProtocolName;
+            min-elements 1;
+            description "none";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_ForwardingDirection;
+            description "The directionality of the Link. 
+                Is applicable to simple Links where all LinkEnds are BIDIRECTIONAL (the Link will be BIDIRECTIONAL) or UNIDIRECTIONAL (the Link will be UNIDIRECTIONAL). 
+                Is not present in more complex cases.";
+        }
+        leaf administrativeState {
+            type TapiModule-TypeDefinitions:Tapi_AdministrativeState;
+            description "none";
+        }
+        leaf operationalState {
+            type TapiModule-TypeDefinitions:Tapi_OperationalState;
+            description "none";
+        }
+        leaf lifecycleState {
+            type TapiModule-TypeDefinitions:Tapi_LifecycleState;
+            description "none";
+        }
+        leaf _transferCapacity {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCapacityPac/';
+            }
+            description "none";
+        }
+        leaf _transferCost {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferCostPac/';
+            }
+            description "none";
+        }
+        leaf _transferTiming {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferTimingPac/';
+            }
+            description "none";
+        }
+        leaf _transferIntegrity {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_TransferIntegrityPac/';
+            }
+            description "none";
+        }
+        leaf _risk {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_RiskParameterPac/';
+            }
+            description "none";
+        }
+        leaf _validation {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_ValidationPac/';
+            }
+            description "none";
+        }
+        leaf _layerTransition {
+            type leafref {
+                path '/TapiModule-ObjectClasses-TopologyPacs:Tapi_LayerProtocolTransitionPac/';
+            }
+            description "none";
+        }
+        description "The Link object class models effective adjacency between two or more ForwardingDomains (FD). ";
+    }
+    grouping Tapi_NodeEdgePoint {
+        list _layerProtocol {
+            min-elements 1;
+            uses Tapi_LayerProtocol;
+            description "none";
+        }
+        leaf-list _clientNodeEdgePoint {
+            type string;
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_TerminationDirection;
+            description "none";
+        }
+        leaf administrativeState {
+            type TapiModule-TypeDefinitions:Tapi_AdministrativeState;
+            description "none";
+        }
+        leaf operationalState {
+            type TapiModule-TypeDefinitions:Tapi_OperationalState;
+            description "none";
+        }
+        leaf lifecycleState {
+            type TapiModule-TypeDefinitions:Tapi_LifecycleState;
+            description "none";
+        }
+        description "The LogicalTerminationPoint (LTP) object class encapsulates the termination and adaptation functions of one or more transport layers. 
+            The structure of LTP supports all transport protocols including circuit and packet forms.";
+    }
+    list Tapi_ServiceEndPoint {
+        uses Tapi_ServiceEndPoint;
+        description "none";
+    }
+    grouping Tapi_ServiceEndPoint {
+        list _layerProtocol {
+            min-elements 1;
+            uses Tapi_LayerProtocol;
+            description "none";
+        }
+        leaf-list _mappedNodeEdgePoint {
+            type leafref {
+                path '/Tapi_NodeEdgePoint/uuid';
+            }
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_TerminationDirection;
+            description "none";
+        }
+        leaf operationalState {
+            type TapiModule-TypeDefinitions:Tapi_OperationalState;
+            description "none";
+        }
+        description "The LogicalTerminationPoint (LTP) object class encapsulates the termination and adaptation functions of one or more transport layers. 
+            The structure of LTP supports all transport protocols including circuit and packet forms.";
+    }
+    list Tapi_ConnectionEndPoint {
+        uses Tapi_ConnectionEndPoint;
+        description "none";
+    }
+    grouping Tapi_ConnectionEndPoint {
+        list _layerProtocol {
+            min-elements 1;
+            uses Tapi_LayerProtocol;
+            description "none";
+        }
+        leaf-list _clientNodeEdgePoint {
+            type leafref {
+                path '/Tapi_NodeEdgePoint/uuid';
+            }
+            description "none";
+        }
+        leaf _serverNodeEdgePoint {
+            type leafref {
+                path '/Tapi_NodeEdgePoint/uuid';
+            }
+            description "none";
+        }
+        leaf _peerConnectionEndPoint {
+            type leafref {
+                path '/Tapi_ConnectionEndPoint/uuid';
+            }
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_TerminationDirection;
+            description "none";
+        }
+        leaf operationalState {
+            type TapiModule-TypeDefinitions:Tapi_OperationalState;
+            description "none";
+        }
+        description "The LogicalTerminationPoint (LTP) object class encapsulates the termination and adaptation functions of one or more transport layers. 
+            The structure of LTP supports all transport protocols including circuit and packet forms.";
+    }
+    list Tapi_ConnectivityService {
+        uses Tapi_ConnectivityService;
+        description "none";
+    }
+    grouping Tapi_ConnectivityService {
+        list _servicePort {
+            min-elements 2;
+            uses Tapi_ServicePort;
+            description "none";
+        }
+        list _connection {
+            uses Tapi_Connection;
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        leaf layerProtocolName {
+            type TapiModule-TypeDefinitions:Tapi_LayerProtocolName;
+            description "none";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_ForwardingDirection;
+            description "none";
+        }
+        leaf administrativeState {
+            type TapiModule-TypeDefinitions:Tapi_AdministrativeState;
+            description "none";
+        }
+        leaf operationalState {
+            type TapiModule-TypeDefinitions:Tapi_OperationalState;
+            description "none";
+        }
+        leaf lifecycleState {
+            type TapiModule-TypeDefinitions:Tapi_LifecycleState;
+            description "none";
+        }
+        description "The ForwardingConstruct (FC) object class models enabled potential for forwarding between two or more LTPs and like the LTP supports any transport protocol including all circuit and packet forms.
+            At the lowest level of recursion, a FC represents a cross-connection within an NE.";
+    }
+    list Tapi_Connection {
+        uses Tapi_Connection;
+        description "none";
+    }
+    grouping Tapi_Connection {
+        list _connectionPort {
+            min-elements 2;
+            uses Tapi_ConnectionPort;
+            description "none";
+        }
+        list _path {
+            uses Tapi_Route;
+            description "none";
+        }
+        leaf _node {
+            type leafref {
+                path '/Tapi_Node/uuid';
+            }
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        list name {
+            min-elements 1;
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.";
+        }
+        list label {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of labels.A property of an entity with a value that is not expected to be unique and is allowed to change. A label carries no semantics with respect to the purpose of the entity and has no effect on the entity behavior or state.";
+        }
+        list extension {
+            uses TapiModule-TypeDefinitions:Tapi_NameAndValue;
+            description "List of simple name-value extentions. Extension provides an opportunity to define properties not declared in the class that extend the class enabling a realization with simple ad-hoc extension of standard classes to be conformant.";
+        }
+        leaf layerProtocolName {
+            type TapiModule-TypeDefinitions:Tapi_LayerProtocolName;
+            description "none";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_ForwardingDirection;
+            description "none";
+        }
+        leaf operationalState {
+            type TapiModule-TypeDefinitions:Tapi_OperationalState;
+            description "none";
+        }
+        leaf lifecycleState {
+            type TapiModule-TypeDefinitions:Tapi_LifecycleState;
+            description "none";
+        }
+        description "The ForwardingConstruct (FC) object class models enabled potential for forwarding between two or more LTPs and like the LTP supports any transport protocol including all circuit and packet forms.
+            At the lowest level of recursion, a FC represents a cross-connection within an NE.";
+    }
+    list Tapi_Route {
+        uses Tapi_Route;
+        description "none";
+    }
+    grouping Tapi_Route {
+        leaf-list _lowerConnection {
+            type leafref {
+                path '/Tapi_Connection/uuid';
+            }
+            min-elements 1;
+            description "none";
+        }
+        leaf localId {
+            type string;
+            description "An identifier that is unique in the context of some scope that is less than the global scope.
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself unique, and immutable. The identifier therefore represents the identity of the entity/role. An identifier carries no semantics with respect to the purpose of the entity.)";
+        }
+        description "The FC Route (FcRoute) object class models the individual routes of an FC. 
+            The route of an FC object is represented by a list of FCs at a lower level. 
+            Note that depending on the service supported by an FC, an the FC can have multiple routes.";
+    }
+    list Tapi_LinkPort {
+        uses Tapi_LinkPort;
+        description "none";
+    }
+    grouping Tapi_LinkPort {
+        leaf _nodeEdgePoint {
+            type leafref {
+                path '/Tapi_NodeEdgePoint/uuid';
+            }
+            description "none";
+        }
+        leaf localId {
+            type string;
+            description "An identifier that is unique in the context of some scope that is less than the global scope.
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself unique, and immutable. The identifier therefore represents the identity of the entity/role. An identifier carries no semantics with respect to the purpose of the entity.)";
+        }
+        leaf role {
+            type TapiModule-TypeDefinitions:Tapi_PortRole;
+            description "Each LinkEnd of the Link has a role (e.g., symmetric, hub, spoke, leaf, root)  in the context of the Link with respect to the Link function. ";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_PortDirection;
+            description "The orientation of defined flow at the LinkEnd.";
+        }
+        description "The association of the Link to LTPs is made via LinkEnd.
+            The LinkEnd object class models the access to the Link function. 
+            The traffic forwarding between the associated LinkEnds of the Link depends upon the type of Link.  
+            In cases where there is resilience the LinkEnd may convey the resilience role of the access to the Link. 
+            The Link can be considered as a component and the LinkEnd as a Port on that component";
+    }
+    list Tapi_ServicePort {
+        uses Tapi_ServicePort;
+        description "none";
+    }
+    grouping Tapi_ServicePort {
+        leaf _serviceEndPoint {
+            type leafref {
+                path '/Tapi_ServiceEndPoint/uuid';
+            }
+            description "none";
+        }
+        leaf localId {
+            type string;
+            description "An identifier that is unique in the context of some scope that is less than the global scope.
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself unique, and immutable. The identifier therefore represents the identity of the entity/role. An identifier carries no semantics with respect to the purpose of the entity.)";
+        }
+        leaf role {
+            type TapiModule-TypeDefinitions:Tapi_PortRole;
+            description "Each EP of the FC has a role (e.g., working, protection, protected, symmetric, hub, spoke, leaf, root)  in the context of the FC with respect to the FC function. ";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_PortDirection;
+            description "The orientation of defined flow at the EndPoint.";
+        }
+        leaf serviceLayer {
+            type TapiModule-TypeDefinitions:Tapi_LayerProtocolName;
+            description "none";
+        }
+        description "The association of the FC to LTPs is made via EndPoints.
+            The EndPoint (EP) object class models the access to the FC function. 
+            The traffic forwarding between the associated EPs of the FC depends upon the type of FC and may be associated with FcSwitch object instances.  
+            In cases where there is resilience the EndPoint may convey the resilience role of the access to the FC. 
+            It can represent a protected (resilient/reliable) point or a protecting (unreliable working or protection) point.
+            The EP replaces the Protection Unit of a traditional protection model. 
+            The ForwadingConstruct can be considered as a component and the EndPoint as a Port on that component";
+    }
+    list Tapi_ConnectionPort {
+        uses Tapi_ConnectionPort;
+        description "none";
+    }
+    grouping Tapi_ConnectionPort {
+        leaf _connectionEndPoint {
+            type leafref {
+                path '/Tapi_ConnectionEndPoint/uuid';
+            }
+            description "none";
+        }
+        leaf localId {
+            type string;
+            description "An identifier that is unique in the context of some scope that is less than the global scope.
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself unique, and immutable. The identifier therefore represents the identity of the entity/role. An identifier carries no semantics with respect to the purpose of the entity.)";
+        }
+        leaf role {
+            type TapiModule-TypeDefinitions:Tapi_PortRole;
+            description "Each EP of the FC has a role (e.g., working, protection, protected, symmetric, hub, spoke, leaf, root)  in the context of the FC with respect to the FC function. ";
+        }
+        leaf direction {
+            type TapiModule-TypeDefinitions:Tapi_PortDirection;
+            description "The orientation of defined flow at the EndPoint.";
+        }
+        description "The association of the FC to LTPs is made via EndPoints.
+            The EndPoint (EP) object class models the access to the FC function. 
+            The traffic forwarding between the associated EPs of the FC depends upon the type of FC and may be associated with FcSwitch object instances.  
+            In cases where there is resilience the EndPoint may convey the resilience role of the access to the FC. 
+            It can represent a protected (resilient/reliable) point or a protecting (unreliable working or protection) point.
+            The EP replaces the Protection Unit of a traditional protection model. 
+            The ForwadingConstruct can be considered as a component and the EndPoint as a Port on that component";
+    }
+    list Tapi_LayerProtocol {
+        uses Tapi_LayerProtocol;
+        description "none";
+    }
+    grouping Tapi_LayerProtocol {
+        leaf _lpSpec {
+            type string;
+            description "The LpSpec identifies the interna structure of the LP explaining internal flexibilities, degree of termination and degree of adaptation on both client and server side.";
+        }
+        leaf localId {
+            type string;
+            description "An identifier that is unique in the context of some scope that is less than the global scope.
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself unique, and immutable. The identifier therefore represents the identity of the entity/role. An identifier carries no semantics with respect to the purpose of the entity.)";
+        }
+        leaf layerProtocolName {
+            type TapiModule-TypeDefinitions:Tapi_LayerProtocolName;
+            description "Indicate the specific layer-protocol described by the LayerProtocol entity.";
+        }
+        leaf terminationDirection {
+            type TapiModule-TypeDefinitions:Tapi_TerminationDirection;
+            description "The overall directionality of the LP. 
+                - A BIDIRECTIONAL LP will have some SINK and/or SOURCE flowss.
+                - A SINK LP can only contain elements with SINK flows or CONTRA_DIRECTION_SOURCE flows
+                - A SOURCE LP can only contain SOURCE flows or CONTRA_DIRECTION_SINK flows";
+        }
+        leaf terminationState {
+            type TapiModule-TypeDefinitions:Tapi_TerminationState;
+            description "Indicates whether the layer is terminated and if so how.";
+        }
+        description "Each transport layer is represented by a LayerProtocol (LP) instance. The LayerProtocol instances it can be used for controlling termination and monitoring functionality. 
+            It can also be used for controlling the adaptation (i.e. encapsulation and/or multiplexing of client signal), tandem connection monitoring, traffic conditioning and/or shaping functionality at an intermediate point along a connection. 
+            Where the client – server relationship is fixed 1:1 and immutable, the layers can be encapsulated in a single LTP instance. Where the is a n:1 relationship between client and server, the layers must be split over two separate instances of LTP. ";
+    }
+    list Tapi_TeLink {
+        uses Tapi_TeLink;
+        description "none";
+    }
+    grouping Tapi_TeLink {
+        leaf-list _node {
+            type leafref {
+                path '/Tapi_Node/uuid';
+            }
+            min-elements 2;
+            max-elements 2;
+            description "none";
+        }
+        leaf-list _linkPort {
+            type leafref {
+                path '/Tapi_LinkPort/localId';
+            }
+            max-elements 2;
+            description "none";
+        }
+        leaf _link {
+            type leafref {
+                path '/Tapi_Link/uuid';
+            }
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        description "The Link object class models effective adjacency between two or more ForwardingDomains (FD). ";
+    }
+    list Tapi_Path {
+        uses Tapi_Path;
+        description "none";
+    }
+    grouping Tapi_Path {
+        leaf-list _telink {
+            type leafref {
+                path '/Tapi_TeLink/';
+            }
+            min-elements 1;
+            description "none";
+        }
+        leaf uuid {
+            type TapiModule-TypeDefinitions:Tapi_UniversalId;
+            description "UUID: An identifier that is universally unique
+                (consider in the context of Identifier: A property of an entity/role with a value that is unique within an identifier space, where the identifier space is itself globally unique, and immutable. An identifier carries no semantics with respect to the purpose or state of the entity)";
+        }
+        container routingConstraint {
+            uses TapiModule-TypeDefinitions:Tapi_ConnectivityConstraint;
+            description "none";
+        }
+        description "Path is described by an ordered list of TE Links. A TE Link is defined by a pair of Node/NodeEdgePoint IDs. A Connection is realized by concatenating link resources (associated with a Link) and the lower-level connections (cross-connections) in the different nodes";
+    }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OpenModel_Profile="http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14 ../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w">
+  <uml:Model xmi:id="_FVrMgBwSEeaTcI5su2FfNw" name="source" URI="">
+    <packagedElement xmi:type="uml:Class" xmi:id="_hui8YBwSEeaTcI5su2FfNwHui" name="Class2">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_qtXkABzIEeaVYM7XvtFoig" name="attri1">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LaR-oB5UEeaHceiWmTzrow" value="0"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P7ya8B5UEeaHceiWmTzrow" value="5"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_bty7UB5SEeaHceiWmTzrow">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cRbM0R5SEeaHceiWmTzrow" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM0h5SEeaHceiWmTzrow" key="Version" value="0.2.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM0x5SEeaHceiWmTzrow" key="Comment" value="Stereotypes extending more than one metaclass (Cond, Choice, PassedByReference) made optional."/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM1B5SEeaHceiWmTzrow" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM1R5SEeaHceiWmTzrow" key="Date" value="2016-02-26"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM1h5SEeaHceiWmTzrow" key="Author" value=""/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cRGcsB5SEeaHceiWmTzrow" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="../OpenModelProfile/OpenModel_Profile.profile.uml#_m1xqsHBgEd6FKu9XX1078A"/>
+    </profileApplication>
+  </uml:Model>
+  <OpenModel_Profile:OpenModelClass xmi:id="_cRalwB5SEeaHceiWmTzrow" base_Class="_hui8YBwSEeaTcI5su2FfNwHui"/>
+  <OpenModel_Profile:OpenModelAttribute xmi:id="_cRbM0B5SEeaHceiWmTzrow" base_StructuralFeature="_qtXkABzIEeaVYM7XvtFoig" valueRange="0...10"/>
+</xmi:XMI>
