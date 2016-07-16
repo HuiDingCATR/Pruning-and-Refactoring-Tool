@@ -2414,9 +2414,3 @@ function xmlWrite(){
     }
 
 }
-
-
-
-
-
-/*If you have any question,please contact with Email：zhangxuan387@163.com*/
