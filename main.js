@@ -54,6 +54,8 @@ var fileName = [];
 var currentFileName;
 var supplierFileName = "source.uml";
 var clientFileName = "target.uml";
+var copyAndSplit;
+var copyClassId = [];
 
 /*function key(id, name){
     this.id = id;//localIdList and uuid 's xmi:id value
@@ -73,6 +75,7 @@ function main_Entrance(){
                     console.log(err.stack);
                     throw err.message;
                 } else{
+                    //readCopyAndSplit();
                     var fileNum = 0;
                     var clientFileFlag = 0;
                     for(var j = 0; j < files.length; j++) {
@@ -84,6 +87,7 @@ function main_Entrance(){
                         if(files[j] == clientFileName){
                             currentFileName = files[j];
                             fileNum++;
+                            copyClass();
                             parseModule(files[j]);
                             clientFileFlag = 1;
                         }
@@ -91,10 +95,12 @@ function main_Entrance(){
                     if(clientFileFlag == 0){          //If target do not exist, clone source file.
                         currentFileName = clientFileName;
                         clone();
+                        //copyClass();
                         parseModule(clientFileName);
                         fileNum++;
                     }
                     currentFileName = undefined;
+                    //read
                     if(fileNum){
                         for(var i = 0; i < Class.length; i++){
                             pflag = Class[i].id;
@@ -200,9 +206,238 @@ function main_Entrance(){
     }
 }
 
+function readCopyAndSplit(){
+    var data = fs.readFileSync("./project/CopyAndSplit.txt", {encoding: 'utf8'});
+    try{
+        if(data){
+            data = data.replace(/\r\n/g, "");
+            copyAndSplit = JSON.parse(data);
+            var tempObj1,
+                tempObj2;
+            if(copyAndSplit.copyClass != null ^ copyAndSplit.copyNumber != null){
+                console.warn('Warning: the number of copyClass is not consistent to the number of copyNumber!');
+                copyAndSplit.copyClass = null;
+                copyAndSplit.copyNumber = null;
+            }else if(copyAndSplit.copyClass != null && copyAndSplit.copyNumber != null){
+                if(copyAndSplit.copyClass.length != copyAndSplit.copyNumber.length) {
+                    console.warn('Warning: the number of copyClass is not consistent to the number of copyNumber!');
+
+                    if (copyAndSplit.copyClass.length < copyAndSplit.copyNumber.length) {
+                        tempObj1 = copyAndSplit.copyClass;
+                        tempObj2 = copyAndSplit.copyNumber;
+                    } else {
+                        tempObj1 = copyAndSplit.copyNumber;
+                        tempObj2 = copyAndSplit.copyClass;
+                    }
+                    while (tempObj1.length < tempObj2.length) {
+                        tempObj2.pop();
+                    }
+                }
+            }
+            if(copyAndSplit.splitClass != null ^ copyAndSplit.splitNumber != null){
+                console.warn('Warning: the number of splitClass is not consistent to the number of splitNumber!');
+                copyAndSplit.splitClass = null;
+                copyAndSplit.splitNumber = null;
+            }else if(copyAndSplit.splitClass != null && copyAndSplit.splitNumber != null){
+                if(copyAndSplit.splitClass.length != copyAndSplit.splitNumber.length) {
+                    console.warn('Warning: the number of splitClass is not consistent to the number of splitNumber!');
+                    if (copyAndSplit.splitClass.length < copyAndSplit.splitNumber.length) {
+                        tempObj1 = copyAndSplit.splitClass;
+                        tempObj2 = copyAndSplit.splitNumber;
+                    }else {
+                        tempObj1 = copyAndSplit.splitNumber;
+                        tempObj2 = copyAndSplit.splitClass;
+                    }
+                    while (tempObj1.length < tempObj2.length) {
+                        tempObj2.pop();
+                    }
+                }
+            }
+            //console.log('');
+
+        }else{
+            console.log('There is no \'CopyAndSplit.txt\'. Please recheck your files according to the guideline!');
+        }
+    }catch (e){
+        console.log(e.stack);
+        throw (e.message);
+    }
+    /*fs.readFile("./project/" + supplierFileName, "UTF-8", function (err, data) {
+     if (err) throw err;
+     //console.log(data);
+     try{
+     fs.writeFile("./project/" + clientFileName,data,function (error) {
+     console.log('There is no target file. We clone the source file as target file.');
+     if(error){
+     console.log(error.stack);
+     throw(error.message);
+     }
+     });
+     }catch (e){
+     console.log(e.stack);
+     throw (e.message);
+     }
+     /!*fs.writeFile("./project/" + clientFileName, data, "UTF-8", function (err) {
+     if (err) throw err;
+     console.log('There is no target file. We clone the source file as target file.');
+     });*!/
+     });*/
+}
+
 function clone(){
     var data = fs.readFileSync("./project/" + supplierFileName, {encoding: 'utf8'});
     try{
+    	data1=data.replace(/source/, "target");
+        fs.writeFileSync("./project/" + clientFileName, data1);
+        console.log('There is no target file. We clone the source file as target file.');
+    }catch (e){
+        console.log(e.stack);
+        throw (e.message);
+    }
+}
+
+function copyClass(){
+    var data = fs.readFileSync("./project/" + clientFileName, {encoding: 'utf8'});
+    try{
+        var indexCopyClass,             //the index of the name of CopyClass
+            indexSearchClass,           //the index of "<packagedElement xmi:type="uml:Class""
+            indexNewLine,               //the index of "\r\n"
+            indexEndLocate,             //the index of "</packagedElement>"
+            indexUmlEnd;                //the index of "</uml:Package>"
+        //copy class
+        for(var i = 0; i < copyAndSplit.copyClass.length; i++){
+            //copy "uml:Class" paragraph and add id postfix
+            indexCopyClass = data.indexOf(copyAndSplit.copyClass[i]);
+            indexSearchClass = data.indexOf("<packagedElement xmi:type=\"uml:Class\"");
+            while(indexCopyClass - indexSearchClass > 100){
+                indexSearchClass = data.indexOf("<packagedElement xmi:type=\"uml:Class\"", indexSearchClass + 1);
+                if(indexSearchClass == -1){
+                    break;
+                }
+            }
+            if(indexSearchClass == -1){
+                console.warn("Warning: There is no class named \"" + copyAndSplit.copyClass[i] + "\". Please recheck your source file and CopyAndSplit file!")
+                break;
+            }
+            indexNewLine = data.indexOf('\r\n');
+            while(indexSearchClass - indexNewLine > 20 && indexSearchClass > indexNewLine){
+                indexNewLine = data.indexOf("\r\n", indexNewLine + 1);
+                if(indexNewLine == -1){
+                    break;
+                }
+            }
+            if(indexNewLine == -1){
+                console.warn("Warning: There are errors in finding \"" + copyAndSplit.copyClass[i] + "\". Please recheck your source file and CopyAndSplit file!")
+                break;
+            }
+            indexEndLocate = data.indexOf("</packagedElement>", indexCopyClass);
+            var copyData = [];
+            var tempData = data.substring(indexNewLine + 2, indexEndLocate + 18);
+            var copyclassid = {};
+            var lenAttribute;
+            var obj
+            xmlreader.read(tempData, function(error, model) {
+                if (error) {
+                    console.log('There was a problem reading data from ' + filename + '. Please check your xmlreader module and nodejs!\t\n' + error.stack);
+                } else {
+                    if(model.packagedElement.attributes()["xmi:type"] == "uml:Class"){
+                        copyclassid.classId = model.packagedElement.attributes()["xmi:id"];
+                        copyclassid.className = copyAndSplit.copyClass[i];
+                        copyclassid.attributeId = [];
+                        if(model.packagedElement.ownedAttribute){
+                            model.packagedElement.ownedAttribute.array ? lenAttribute = model.packagedElement.ownedAttribute.array.length : lenAttribute = 1;
+                            for(var k = 0; k < lenAttribute; k++){
+                                lenAttribute == 1 ? obj = model.packagedElement.ownedAttribute : obj = obj = model.packagedElement.ownedAttribute.array[k];
+                                copyclassid.attributeId.push(obj.attributes()["xmi:id"]);
+                            }
+                        }
+                        copyClassId.push(copyclassid);
+                    }
+                }
+            })
+            for(var j = 0; j < parseInt(copyAndSplit.copyNumber[i]); j++){
+                       //get "uml:Class" paragraph
+                var copyLoc = 0;
+                var quoteLoc = 0;
+                var xmiLoc = 0;
+                while(tempData.indexOf("xmi:id=\"",copyLoc) != -1){         //add "_cp" postfix
+                    xmiLoc = tempData.indexOf("xmi:id=\"",copyLoc);
+                    quoteLoc = tempData.indexOf("\"",xmiLoc + 10);
+                    tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                    copyLoc = quoteLoc;
+                }
+                copyLoc = 0;
+                quoteLoc = 0;
+                xmiLoc = 0;
+                while(tempData.indexOf("annotatedElement",copyLoc) != -1){
+                    xmiLoc = tempData.indexOf("annotatedElement",copyLoc);
+                    quoteLoc = tempData.indexOf("\"",xmiLoc + 20);
+                    tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                    copyLoc = quoteLoc;
+                }
+                copyData.push(tempData);
+            }
+            data = data.substring(0, indexEndLocate + 20) + copyData.join("\r\n") + "\r\n" + data.substring(indexEndLocate + 20);
+
+        }
+        if(copyAndSplit.copyClass.length != copyClassId.length){
+            console.warn("Warning: the length of copyClass is not consistent to the length of copyClassId.");
+        }
+        indexUmlEnd = data.indexOf("</uml:Package>") + 14;
+        tempData = data.substring(indexUmlEnd);
+        var addData = "";
+        var lineData;
+        var id;
+        var indexId;
+        var indexXmiId;
+        var indexLineStart;
+        var indexLineEnd;
+        var test = 0;
+        for(var i = 0; i < copyClassId.length; i++){
+            id = copyClassId[i].classId;
+            for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
+                addPostfix(id, k + 1);
+            }
+
+            for(var j = 0; j < copyClassId[i].attributeId.length; j++){
+                for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
+                    id = copyClassId[i].attributeId[j];
+                    addPostfix(id, k + 1);
+                }
+            }
+        }
+
+        data = data.substring(0, indexUmlEnd) + addData + data.substring(indexUmlEnd);
+
+        function addPostfix(id, count){
+            var index = 0;
+            while(tempData.indexOf(id, index) != -1){
+                indexId = tempData.indexOf(id, index);
+                indexLineEnd = tempData.indexOf("\r\n", indexId);
+                if(indexId < 160){
+                    indexLineStart = 0;
+                }else{
+                    indexLineStart = tempData.indexOf("\r\n", indexId - 160);
+                }
+                lineData = tempData.substring(indexLineStart, indexLineEnd);
+                var lineDataArray = lineData.split("\"");
+                lineDataArray[1] += "_cp" + count;
+                lineDataArray[3] += "_cp" + count;
+                if(lineDataArray[5] != undefined && lineDataArray[5] == id){
+                    lineDataArray += "_cp" + count;
+                }
+                test++;
+                lineData = lineDataArray.join("\"");
+                console.log(lineData);
+
+                addData += lineData;
+                index = indexLineEnd;
+            }
+
+        }
+
+
+
         fs.writeFileSync("./project/" + clientFileName, data);
         console.log('There is no target file. We clone the source file as target file.');
     }catch (e){
@@ -1023,37 +1258,56 @@ function createAssociation(obj) {
     var associationName = obj.attributes().name;
     var ownedEndName;
     var associationType;
-    var type;       //uml:Property--attribute  others?
+    //var type;       //uml:Property--attribute  others?
     var upperValue;
     var lowerValue;
-    obj.ownedEnd.attributes()["name"] ? ownedEndName = obj.ownedEnd.attributes()["name"] : ownedEndName = null;
+    //obj.ownedEnd.attributes()["name"] ? ownedEndName = obj.ownedEnd.attributes()["name"] : ownedEndName = null;
+    ownedEndName = "";
+    if(obj.ownedEnd){
+        if(obj.ownedEnd.array){
+            associationType = 2;
+        }else{
+            associationType = 1;
+        }
+    }else{
+        associationType = 0;
+    }
     memberEnd = obj.attributes().memberEnd.split(" ");
-    if(memberEnd[0] == obj.ownedEnd.attributes()["xmi:id"]){
-        memberEnd1 = memberEnd[1];
-    }else if(memberEnd[1] == obj.ownedEnd.attributes()["xmi:id"]){
+    if(associationType == 0){
         memberEnd1 = memberEnd[0];
-    }else{
-        console.warn("Warning!!!");
-    }
-    type = obj.ownedEnd.attributes()["type"];
-    obj.ownedEnd.upperValue ? upperValue = obj.ownedEnd.upperValue.attributes().value : upperValue = "*";
-    obj.ownedEnd.lowerValue ? lowerValue = obj.ownedEnd.lowerValue.attributes().value : lowerValue = 0;
-    if(obj.ownedEnd.attributes()["xmi:type"] == "uml:Property"){
-        associationType = "attribute";
-    }else{
-        associationType = "class";
-    }
-    for(var i = 0; i < Class.length; i++){
-        for(var j = 0; j < Class[i].attribute.length; j++){
-            if(Class[i].attribute[j].association == id){
-                memberEnd2 = Class[i].attribute[j].id;
+        memberEnd2 = memberEnd[1];
+    }else if(associationType == 1){
+        if(memberEnd[0] == obj.ownedEnd.attributes()["xmi:id"]){
+            memberEnd1 = memberEnd[1];
+        }else if(memberEnd[1] == obj.ownedEnd.attributes()["xmi:id"]){
+            memberEnd1 = memberEnd[0];
+        }else{
+            console.warn("Warning!!!");
+        }
+        for(var i = 0; i < Class.length; i++){
+            for(var j = 0; j < Class[i].attribute.length; j++){
+                if(Class[i].attribute[j].association == id){
+                    memberEnd2 = Class[i].attribute[j].id;
+                    break;
+                }
+            }
+            if(memberEnd2 != undefined){
                 break;
             }
         }
-        if(memberEnd2 != undefined){
-            break;
+    }else if(associationType == 2){
+        if(obj.ownedEnd.array.length == 2){
+            memberEnd1 = obj.ownedEnd.array[0].attributes().type;
+            memberEnd2 = obj.ownedEnd.array[1].attributes().type;
+        }else{
+            console.warn("Warning: the association of xmi:id=" + id + " need two ownedEnds.")
         }
     }
+    type = "";
+    //type = obj.ownedEnd.attributes()["type"];
+    obj.ownedEnd.upperValue ? upperValue = obj.ownedEnd.upperValue.attributes().value : upperValue = "*";
+    obj.ownedEnd.lowerValue ? lowerValue = obj.ownedEnd.lowerValue.attributes().value : lowerValue = 0;
+
     for(var i = 0; i < association.length; i++){
         if(id == association[i].id && currentFileName == association.fileName){
             break;
@@ -1921,6 +2175,7 @@ function writeUml() {
     log += "";
     log += "";
     log += "";
+    log += "\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"_FVrMgBwSEeaTcI5su2Ffie\" name=\"Classes and Attributes\">\r\n";
     for(var i = 0; i < classCompare.length; i++){
     //for(var i = 0; i < classCompare.length; i++){
         client = classCompare[i].client;
@@ -1930,31 +2185,28 @@ function writeUml() {
         for(var j = 0; j < arrayClass.length; j++) {
             if (supplier[arrayClass[j]] || client[arrayClass[j]]) {
                 if (supplier[arrayClass[j]] == client[arrayClass[j]]) {
-                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
-                    comparison += "\t\t\t\t\t<body>" + arrayClass[j] + " same." + "</body>\r\n";
-                    comparison += "\t\t\t\t</ownedComment>\r\n";
+                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t\t\t<body>" + arrayClass[j] + " same." + "</body>\r\n";
+                    comparison += "\t\t\t\t\t</ownedComment>\r\n";
                 } else {
                     //comparison += arrayAtt[k] + " not same." + "\r\n";
-                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
                     //comparison += "\t\t\t\t\t<body>" + arrayClass[j] + " not same." + "</body>\r\n";
-                    comparison += "\t\t\t\t\t<body>" + arrayClass[j] + " not same." + "\r\n";
-                    comparison += "\t\t\t\t\t\t\t\t\tSupplier : " + supplier[arrayClass[j]] + "\r\n";
-                    comparison += "\t\t\t\t\t\t\t\t\tClient   : " + client[arrayClass[j]] + "\r\n";
-                    comparison += "\t\t\t\t\t</body>\r\n";
-                    comparison += "\t\t\t\t</ownedComment>\r\n";
+                    comparison += "\t\t\t\t\t\t<body>" + arrayClass[j] + " not same." + "\r\n";
+                    comparison += "\t\t\t\t\t\t\t\t\t\tSupplier : " + supplier[arrayClass[j]] + "\r\n";
+                    comparison += "\t\t\t\t\t\t\t\t\t\tClient   : " + client[arrayClass[j]] + "\r\n";
+                    comparison += "\t\t\t\t\t\t</body>\r\n";
+                    comparison += "\t\t\t\t\t</ownedComment>\r\n";
                 }
 
             }
         }
-        log += "\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"" + supplier.id + "_Package\" name=\"" + supplier.name + "\">\r\n";
-        log += "\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + supplier.id + "_PR\" name=\"" + supplier.name + "\">\r\n";
-        log += "\t\t\t\t<supplier xmi:type=\"uml:Class\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
-        log += "\t\t\t\t<client xmi:type=\"uml:Class\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
-        //log += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
-        //log += "\t\t\t\t\t<body>" + comparison + "</body>\r\n";
+        log += "\t\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"" + supplier.id + "_Package\" name=\"" + supplier.name + "\">\r\n";
+        log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + supplier.id + "_PR\" name=\"" + supplier.name + "\">\r\n";
+        log += "\t\t\t\t\t<supplier xmi:type=\"uml:Class\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
+        log += "\t\t\t\t\t<client xmi:type=\"uml:Class\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
         log += comparison;
-        //log += "\t\t\t\t</ownedComment>\r\n";
-        log += "\t\t\t</packagedElement>\r\n";
+        log += "\t\t\t\t</packagedElement>\r\n";
         for(var j = 0; j < attributeCompare.length; j++){
             if(client.id == attributeCompare[j].clientClass.id){
                 temp = 1;
@@ -1965,18 +2217,18 @@ function writeUml() {
                         //array[k] = array[k].replace(/s$/g, "");
                         if(attributeCompare[j].supplier[arrayAtt[k]] == attributeCompare[j].client[arrayAtt[k]]){
                             //comparisonAtt += arrayAtt[k] + " same." + "\r\n";
-                            comparisonAtt += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
-                            comparisonAtt += "\t\t\t\t\t<body>" + arrayAtt[k] + " same." + "</body>\r\n";
-                            comparisonAtt += "\t\t\t\t</ownedComment>\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + " same." + "</body>\r\n";
+                            comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }else{
                             //comparisonAtt += arrayAtt[k] + " not same." + "\r\n";
-                            comparisonAtt += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                             //comparisonAtt += "\t\t\t\t\t<body>" + arrayAtt[k] + " not same." + "</body>\r\n";
-                            comparisonAtt += "\t\t\t\t\t<body>" + arrayAtt[k] + " not same." + "\r\n";
-                            comparisonAtt += "\t\t\t\t\t\t\t\t\tSupplier : " + attributeCompare[j].supplier[arrayAtt[k]] + "\r\n";
-                            comparisonAtt += "\t\t\t\t\t\t\t\t\tClient   : " + attributeCompare[j].client[arrayAtt[k]] + "\r\n";
-                            comparisonAtt += "\t\t\t\t\t</body>\r\n";
-                            comparisonAtt += "\t\t\t\t</ownedComment>\r\n";
+                            comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + " not same." + "\r\n";
+                            comparisonAtt += "\t\t\t\t\t\t\t\t\t\tSupplier : " + attributeCompare[j].supplier[arrayAtt[k]] + "\r\n";
+                            comparisonAtt += "\t\t\t\t\t\t\t\t\t\tClient   : " + attributeCompare[j].client[arrayAtt[k]] + "\r\n";
+                            comparisonAtt += "\t\t\t\t\t\t</body>\r\n";
+                            comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }
                     }
                 }
@@ -1986,14 +2238,14 @@ function writeUml() {
                     if(typeof attributeCompare[j].supplier.type == "string" && typeof attributeCompare[j].client.type == "string"){
                         if(attributeCompare[j].supplier.type == attributeCompare[j].client.type){
                             //comparisonAtt += "type same.\r\n";
-                            comparisonAtt += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
-                            comparisonAtt += "\t\t\t\t\t<body>type same." + "</body>\r\n";
-                            comparisonAtt += "\t\t\t\t</ownedComment>\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t\t<body>type same." + "</body>\r\n";
+                            comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }else{
                             //comparisonAtt += "type note same.\r\n";
-                            comparisonAtt += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
-                            comparisonAtt += "\t\t\t\t\t<body>type not same." + "</body>\r\n";
-                            comparisonAtt += "\t\t\t\t</ownedComment>\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t\t<body>type not same." + "</body>\r\n";
+                            comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }
                     }
                     if(typeof attributeCompare[j].supplier.type == "object" && typeof attributeCompare[j].client.type == "object"){
@@ -2002,14 +2254,14 @@ function writeUml() {
                             if(attributeCompare[j].client.type[typeMumber[m]] || attributeCompare[j].supplier.type[typeMumber[m]]){
                                 if(attributeCompare[j].supplier.type[typeMumber[m]] == attributeCompare[j].client.type[typeMumber[m]]){
                                     //comparisonAtt += typeMumber[m] + " of type same." + "\r\n";
-                                    comparisonAtt += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
-                                    comparisonAtt += "\t\t\t\t\t<body>" + typeMumber[m] + " of type same." + "</body>\r\n";
-                                    comparisonAtt += "\t\t\t\t</ownedComment>\r\n";
+                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                                    comparisonAtt += "\t\t\t\t\t\t<body>" + typeMumber[m] + " of type same." + "</body>\r\n";
+                                    comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                                 }else{
                                     //comparisonAtt += typeMumber[m] + " of type not same." + "\r\n";
-                                    comparisonAtt += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
-                                    comparisonAtt += "\t\t\t\t\t<body>" + typeMumber[m] + " of type not same." + "</body>\r\n";
-                                    comparisonAtt += "\t\t\t\t</ownedComment>\r\n";
+                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                                    comparisonAtt += "\t\t\t\t\t\t<body>" + typeMumber[m] + " of type not same." + "</body>\r\n";
+                                    comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                                 }
                             }
                         }
@@ -2020,19 +2272,21 @@ function writeUml() {
 
                 //comparisonAtt = comparisonAtt.replace(/\r\n$/g, '');
                 //comparisonAtt = comparisonAtt.replace(/\r\n/g, '\r\n\t\t\t\t\t\t');
-                log += "\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].supplier.id + "_PR\" name=\"" + attributeCompare[j].supplier.name + "\">\r\n";
-                log += "\t\t\t\t<supplier xmi:type=\"uml:Attribute\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
-                log += "\t\t\t\t<client xmi:type=\"uml:Attribute\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
+                log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].supplier.id + "_PR\" name=\"" + attributeCompare[j].supplier.name + "\">\r\n";
+                log += "\t\t\t\t\t<supplier xmi:type=\"uml:Attribute\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
+                log += "\t\t\t\t\t<client xmi:type=\"uml:Attribute\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
                 /*log += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                 log += "\t\t\t\t\t<body>" + comparisonAtt + "</body>\r\n";
                 log += "\t\t\t\t</ownedComment>\r\n";*/
                 log += comparisonAtt;
-                log += "\t\t\t</packagedElement>\r\n";
+                log += "\t\t\t\t</packagedElement>\r\n";
             }
         }
-        log += "\t\t</packagedElement>\r\n";
+        log += "\t\t\t</packagedElement>\r\n";
 
     }
+    log += "\t\t</packagedElement>\r\n";
+
     log += "\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"_JarZQOKxEeSq5fATALSQkQ\" name=\"Associations\">\r\n";
     for(var i = 0; i < associationCompare.length; i++){
         temp = 1;

@@ -15,7 +15,9 @@ function association(id, name, memberEnd1, memberEnd2, associationType, type, ow
     this.name = name;
     this.memberEnd1 = memberEnd1;
     this.memberEnd2 = memberEnd2;
-    this.associationType = associationType;
+    this.associationType = associationType;                 //choices: 0:noWayNavigableAssociation
+                                                            //         1:oneWayNavigableAssociation
+                                                            //         2:twoWayNavigableAssociation
     this.type = type;
     this.ownedEndName = ownedEndName;
     this.upperValue = upperValue;
