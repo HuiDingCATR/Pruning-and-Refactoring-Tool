@@ -75,7 +75,9 @@ function main_Entrance(){
                     console.log(err.stack);
                     throw err.message;
                 } else{
-                    //readCopyAndSplit();
+                    if(fs.existsSync("./project/CopyAndSplit.txt")){
+                        readCopyAndSplit();
+                    }
                     var fileNum = 0;
                     var clientFileFlag = 0;
                     for(var j = 0; j < files.length; j++) {
@@ -95,7 +97,7 @@ function main_Entrance(){
                     if(clientFileFlag == 0){          //If target do not exist, clone source file.
                         currentFileName = clientFileName;
                         clone();
-                        //copyClass();
+                        copyClass();
                         parseModule(clientFileName);
                         fileNum++;
                     }
@@ -287,8 +289,11 @@ function readCopyAndSplit(){
 function clone(){
     var data = fs.readFileSync("./project/" + supplierFileName, {encoding: 'utf8'});
     try{
-    	data1=data.replace(/source/, "target");
-        fs.writeFileSync("./project/" + clientFileName, data1);
+        var indexStart = data.indexOf("name=");
+        var indexEnd = data.indexOf("\"", indexStart + 7);
+        var name = data.substring(indexStart + 6, indexEnd);
+    	data = data.replace(name, "target");
+        fs.writeFileSync("./project/" + clientFileName, data);
         console.log('There is no target file. We clone the source file as target file.');
     }catch (e){
         console.log(e.stack);
@@ -299,115 +304,117 @@ function clone(){
 function copyClass(){
     var data = fs.readFileSync("./project/" + clientFileName, {encoding: 'utf8'});
     try{
-        var indexCopyClass,             //the index of the name of CopyClass
-            indexSearchClass,           //the index of "<packagedElement xmi:type="uml:Class""
-            indexNewLine,               //the index of "\r\n"
-            indexEndLocate,             //the index of "</packagedElement>"
-            indexUmlEnd;                //the index of "</uml:Package>"
-        //copy class
-        for(var i = 0; i < copyAndSplit.copyClass.length; i++){
-            //copy "uml:Class" paragraph and add id postfix
-            indexCopyClass = data.indexOf(copyAndSplit.copyClass[i]);
-            indexSearchClass = data.indexOf("<packagedElement xmi:type=\"uml:Class\"");
-            while(indexCopyClass - indexSearchClass > 100){
-                indexSearchClass = data.indexOf("<packagedElement xmi:type=\"uml:Class\"", indexSearchClass + 1);
-                if(indexSearchClass == -1){
-                    break;
-                }
-            }
-            if(indexSearchClass == -1){
-                console.warn("Warning: There is no class named \"" + copyAndSplit.copyClass[i] + "\". Please recheck your source file and CopyAndSplit file!")
-                break;
-            }
-            indexNewLine = data.indexOf('\r\n');
-            while(indexSearchClass - indexNewLine > 20 && indexSearchClass > indexNewLine){
-                indexNewLine = data.indexOf("\r\n", indexNewLine + 1);
-                if(indexNewLine == -1){
-                    break;
-                }
-            }
-            if(indexNewLine == -1){
-                console.warn("Warning: There are errors in finding \"" + copyAndSplit.copyClass[i] + "\". Please recheck your source file and CopyAndSplit file!")
-                break;
-            }
-            indexEndLocate = data.indexOf("</packagedElement>", indexCopyClass);
-            var copyData = [];
-            var tempData = data.substring(indexNewLine + 2, indexEndLocate + 18);
-            var copyclassid = {};
-            var lenAttribute;
-            var obj
-            xmlreader.read(tempData, function(error, model) {
-                if (error) {
-                    console.log('There was a problem reading data from ' + filename + '. Please check your xmlreader module and nodejs!\t\n' + error.stack);
-                } else {
-                    if(model.packagedElement.attributes()["xmi:type"] == "uml:Class"){
-                        copyclassid.classId = model.packagedElement.attributes()["xmi:id"];
-                        copyclassid.className = copyAndSplit.copyClass[i];
-                        copyclassid.attributeId = [];
-                        if(model.packagedElement.ownedAttribute){
-                            model.packagedElement.ownedAttribute.array ? lenAttribute = model.packagedElement.ownedAttribute.array.length : lenAttribute = 1;
-                            for(var k = 0; k < lenAttribute; k++){
-                                lenAttribute == 1 ? obj = model.packagedElement.ownedAttribute : obj = obj = model.packagedElement.ownedAttribute.array[k];
-                                copyclassid.attributeId.push(obj.attributes()["xmi:id"]);
-                            }
-                        }
-                        copyClassId.push(copyclassid);
+        if(fs.existsSync("./project/CopyAndSplit.txt")){
+            var indexCopyClass,             //the index of the name of CopyClass
+                indexSearchClass,           //the index of "<packagedElement xmi:type="uml:Class""
+                indexNewLine,               //the index of "\r\n"
+                indexEndLocate,             //the index of "</packagedElement>"
+                indexUmlEnd;                //the index of "</uml:Package>"
+            //copy class
+            for(var i = 0; i < copyAndSplit.copyClass.length; i++){
+                //copy "uml:Class" paragraph and add id postfix
+                indexCopyClass = data.indexOf(copyAndSplit.copyClass[i]);
+                indexSearchClass = data.indexOf("<packagedElement xmi:type=\"uml:Class\"");
+                while(indexCopyClass - indexSearchClass > 100){
+                    indexSearchClass = data.indexOf("<packagedElement xmi:type=\"uml:Class\"", indexSearchClass + 1);
+                    if(indexSearchClass == -1){
+                        break;
                     }
                 }
-            })
-            for(var j = 0; j < parseInt(copyAndSplit.copyNumber[i]); j++){
-                       //get "uml:Class" paragraph
-                var copyLoc = 0;
-                var quoteLoc = 0;
-                var xmiLoc = 0;
-                while(tempData.indexOf("xmi:id=\"",copyLoc) != -1){         //add "_cp" postfix
-                    xmiLoc = tempData.indexOf("xmi:id=\"",copyLoc);
-                    quoteLoc = tempData.indexOf("\"",xmiLoc + 10);
-                    tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
-                    copyLoc = quoteLoc;
+                if(indexSearchClass == -1){
+                    console.warn("Warning: There is no class named \"" + copyAndSplit.copyClass[i] + "\". Please recheck your source file and CopyAndSplit file!")
+                    break;
                 }
-                copyLoc = 0;
-                quoteLoc = 0;
-                xmiLoc = 0;
-                while(tempData.indexOf("annotatedElement",copyLoc) != -1){
-                    xmiLoc = tempData.indexOf("annotatedElement",copyLoc);
-                    quoteLoc = tempData.indexOf("\"",xmiLoc + 20);
-                    tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
-                    copyLoc = quoteLoc;
+                indexNewLine = data.indexOf('\r\n');
+                while(indexSearchClass - indexNewLine > 20 && indexSearchClass > indexNewLine){
+                    indexNewLine = data.indexOf("\r\n", indexNewLine + 1);
+                    if(indexNewLine == -1){
+                        break;
+                    }
                 }
-                copyData.push(tempData);
-            }
-            data = data.substring(0, indexEndLocate + 20) + copyData.join("\r\n") + "\r\n" + data.substring(indexEndLocate + 20);
+                if(indexNewLine == -1){
+                    console.warn("Warning: There are errors in finding \"" + copyAndSplit.copyClass[i] + "\". Please recheck your source file and CopyAndSplit file!")
+                    break;
+                }
+                indexEndLocate = data.indexOf("</packagedElement>", indexCopyClass);
+                var copyData = [];
+                var tempData = data.substring(indexNewLine + 2, indexEndLocate + 18);
+                var copyclassid = {};
+                var lenAttribute;
+                var obj
+                xmlreader.read(tempData, function(error, model) {
+                    if (error) {
+                        console.log('There was a problem reading data from ' + filename + '. Please check your xmlreader module and nodejs!\t\n' + error.stack);
+                    } else {
+                        if(model.packagedElement.attributes()["xmi:type"] == "uml:Class"){
+                            copyclassid.classId = model.packagedElement.attributes()["xmi:id"];
+                            copyclassid.className = copyAndSplit.copyClass[i];
+                            copyclassid.attributeId = [];
+                            if(model.packagedElement.ownedAttribute){
+                                model.packagedElement.ownedAttribute.array ? lenAttribute = model.packagedElement.ownedAttribute.array.length : lenAttribute = 1;
+                                for(var k = 0; k < lenAttribute; k++){
+                                    lenAttribute == 1 ? obj = model.packagedElement.ownedAttribute : obj = obj = model.packagedElement.ownedAttribute.array[k];
+                                    copyclassid.attributeId.push(obj.attributes()["xmi:id"]);
+                                }
+                            }
+                            copyClassId.push(copyclassid);
+                        }
+                    }
+                })
+                for(var j = 0; j < parseInt(copyAndSplit.copyNumber[i]); j++){
+                    //get "uml:Class" paragraph
+                    var copyLoc = 0;
+                    var quoteLoc = 0;
+                    var xmiLoc = 0;
+                    while(tempData.indexOf("xmi:id=\"",copyLoc) != -1){         //add "_cp" postfix
+                        xmiLoc = tempData.indexOf("xmi:id=\"",copyLoc);
+                        quoteLoc = tempData.indexOf("\"",xmiLoc + 10);
+                        tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                        copyLoc = quoteLoc;
+                    }
+                    copyLoc = 0;
+                    quoteLoc = 0;
+                    xmiLoc = 0;
+                    while(tempData.indexOf("annotatedElement",copyLoc) != -1){
+                        xmiLoc = tempData.indexOf("annotatedElement",copyLoc);
+                        quoteLoc = tempData.indexOf("\"",xmiLoc + 20);
+                        tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                        copyLoc = quoteLoc;
+                    }
+                    copyData.push(tempData);
+                }
+                data = data.substring(0, indexEndLocate + 20) + copyData.join("\r\n") + "\r\n" + data.substring(indexEndLocate + 20);
 
-        }
-        if(copyAndSplit.copyClass.length != copyClassId.length){
-            console.warn("Warning: the length of copyClass is not consistent to the length of copyClassId.");
-        }
-        indexUmlEnd = data.indexOf("</uml:Package>") + 14;
-        tempData = data.substring(indexUmlEnd);
-        var addData = "";
-        var lineData;
-        var id;
-        var indexId;
-        var indexXmiId;
-        var indexLineStart;
-        var indexLineEnd;
-        var test = 0;
-        for(var i = 0; i < copyClassId.length; i++){
-            id = copyClassId[i].classId;
-            for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
-                addPostfix(id, k + 1);
             }
-
-            for(var j = 0; j < copyClassId[i].attributeId.length; j++){
+            if(copyAndSplit.copyClass.length != copyClassId.length){
+                console.warn("Warning: the length of copyClass is not consistent to the length of copyClassId.");
+            }
+            indexUmlEnd = data.indexOf("</uml:Package>") + 14;
+            tempData = data.substring(indexUmlEnd);
+            var addData = "";
+            var lineData;
+            var id;
+            var indexId;
+            var indexXmiId;
+            var indexLineStart;
+            var indexLineEnd;
+            var test = 0;
+            for(var i = 0; i < copyClassId.length; i++){
+                id = copyClassId[i].classId;
                 for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
-                    id = copyClassId[i].attributeId[j];
                     addPostfix(id, k + 1);
                 }
+
+                for(var j = 0; j < copyClassId[i].attributeId.length; j++){
+                    for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
+                        id = copyClassId[i].attributeId[j];
+                        addPostfix(id, k + 1);
+                    }
+                }
             }
+            data = data.substring(0, indexUmlEnd) + addData + data.substring(indexUmlEnd);
         }
 
-        data = data.substring(0, indexUmlEnd) + addData + data.substring(indexUmlEnd);
 
         function addPostfix(id, count){
             var index = 0;
