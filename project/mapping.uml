@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OpenModel_Profile="http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14 ../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w">
+  <uml:Model xmi:id="_FVrMgBwSEeaTcI5su2FfNw" name="mapping">
+    <packagedElement xmi:type="uml:Package" xmi:id="_FVrMgBwSEeaTcI5su2Ffie" name="Classes and Attributes">
+      <packagedElement xmi:type="uml:Package" xmi:id="_abcdef_Class1_Package" name="Class1">
+        <packagedElement xmi:type="uml:Realization" xmi:id="_abcdef_Class1_PR" name="Class1">
+          <supplier xmi:type="uml:Class" href="source.uml#_abcdef_Class1"/>
+          <client xmi:type="uml:Class" href="target.uml#_abcdef_Class1"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class1_com1" annotatedElement="_abcdef_Class1_PR">
+            <body>name same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class1_com2" annotatedElement="_abcdef_Class1_PR">
+            <body>nodeType same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class1_com3" annotatedElement="_abcdef_Class1_PR">
+            <body>config same.</body>
+          </ownedComment>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Realization" xmi:id="_abcdef_assoc_class2_PR" name="class2">
+          <supplier xmi:type="uml:Attribute" href="source.uml#_abcdef_assoc_class2"/>
+          <client xmi:type="uml:Attribute" href="target.uml#_abcdef_assoc_class2"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com1" annotatedElement="_abcdef_assoc_class2_PR">
+            <body>config same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com2" annotatedElement="_abcdef_assoc_class2_PR">
+            <body>nodeType same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com3" annotatedElement="_abcdef_assoc_class2_PR">
+            <body>isUses same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com4" annotatedElement="_abcdef_assoc_class2_PR">
+            <body>isleafRef same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com5" annotatedElement="_abcdef_assoc_class2_PR">
+            <body>name of type same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com6" annotatedElement="_abcdef_assoc_class2_PR">
+            <body>path of type same.</body>
+          </ownedComment>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_abcdef_Class2_Package" name="Class2">
+        <packagedElement xmi:type="uml:Realization" xmi:id="_abcdef_Class2_PR" name="Class2">
+          <supplier xmi:type="uml:Class" href="source.uml#_abcdef_Class2"/>
+          <client xmi:type="uml:Class" href="target.uml#_abcdef_Class2"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class2_com1" annotatedElement="_abcdef_Class2_PR">
+            <body>name same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class2_com2" annotatedElement="_abcdef_Class2_PR">
+            <body>nodeType same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class2_com3" annotatedElement="_abcdef_Class2_PR">
+            <body>config same.</body>
+          </ownedComment>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_JarZQOKxEeSq5fATALSQkQ" name="Associations">
+      <packagedElement xmi:type="uml:Realization" xmi:id="_abcdef_Association1_PR" name="undefined">
+        <supplier xmi:type="uml:Association" href="source.uml#_abcdef_Association1"/>
+        <client xmi:type="uml:Association" href="target.uml#_abcdef_Association1"/>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Association1_com1" annotatedElement="_abcdef_Association1_PR">
+          <body>memberEnd1 same.</body>
+        </ownedComment>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Association1_com2" annotatedElement="_abcdef_Association1_PR">
+          <body>memberEnd2 same.</body>
+        </ownedComment>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Association1_com3" annotatedElement="_abcdef_Association1_PR">
+          <body>associationType same.</body>
+        </ownedComment>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Association1_com4" annotatedElement="_abcdef_Association1_PR">
+          <body>upperValue same.</body>
+        </ownedComment>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_bty7UB5SEeaHceiWmTzrow">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cRbM0R5SEeaHceiWmTzrow" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM0h5SEeaHceiWmTzrow" key="Version" value="0.2.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM0x5SEeaHceiWmTzrow" key="Comment" value="Stereotypes extending more than one metaclass (Cond, Choice, PassedByReference) made optional."/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM1B5SEeaHceiWmTzrow" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM1R5SEeaHceiWmTzrow" key="Date" value="2016-02-26"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cRbM1h5SEeaHceiWmTzrow" key="Author" value=""/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cRGcsB5SEeaHceiWmTzrow" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="../OpenModelProfile/OpenModel_Profile.profile.uml#_m1xqsHBgEd6FKu9XX1078A"/>
+    </profileApplication>
+  </uml:Model>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_abcdef_Class1_PR2" base_Realization="_abcdef_Class1_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_abcdef_Class2_PR2" base_Realization="_abcdef_Class2_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_abcdef_assoc_class2_PR2" base_Realization="_abcdef_assoc_class2_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_abcdef_Association1_PR2" base_Realization="_abcdef_Association1_PR"/>
+</xmi:XMI>

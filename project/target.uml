@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_KPkx8Eo5EeasEaHB4dOOGg" name="target">
+  <packagedElement xmi:type="uml:Class" xmi:id="_abcdef_Class1" name="Class1">
+  	<ownedAttribute xmi:type="uml:Property" xmi:id="_abcdef_assoc_class2" name="class2" type="_abcdef_Class2" association="_abcdef_Association1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_abcdef_Class2" name="Class2"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_abcdef_Association1" memberEnd="_abcdef_assoc_class2 _abcdef_assoc_class1">
+  	<eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YxLWAEpAEeasEaHB4dOOGg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YxMkIEpAEeasEaHB4dOOGg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_abcdef_assoc_class1" name="class1" type="_abcdef_Class1" association="_abcdef_Association1"/>
+  </packagedElement>
+</uml:Model>

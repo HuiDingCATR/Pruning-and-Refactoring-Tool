@@ -1,0 +1,33 @@
+****************************************************************************************************
+* Name: Pruning and Refactoring Tool
+* Copyright 2015 CAICT (China Academy of Information and Communication Technology (former China Academy of Telecommunication Research)). All Rights Reserved.
+*
+* Time : Wed Jul 20 2016 16:05:31 GMT+0800 (中国标准时间)
+* Input  File : source.uml
+*               
+* Output File : PruningAndRefactoring.txt
+*
+* The above copyright information should be included in all distribution, reproduction or derivative works of this software.
+*
+****************************************************************************************************
+
+Class Comparison     : 
+
+supplier     : Class1				client     : Class1			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Class2				client     : Class2			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+
+Attribute Comparison : 
+
+supplier      : class2			client      : class2			Attribute'name isn't changed.
+supplierClass : Class1			clientClass : Class1
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+			config : true				config : true			Attribute's configs are the same.
+			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
+			isUses : true				isUses : true			Attribute's isUses are the same.
+			key : 				key : 			Attribute's keys aren't the same.
+			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
+	Types Comparison :
+				name : leafref				name : leafref			names of types are the same.
+				path : path '/Class2/'				path : path '/Class2/'			paths of types are the same.
