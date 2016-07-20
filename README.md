@@ -20,6 +20,9 @@ When the user runs the tool for the first time, a target.uml file that clones th
 If the source.uml and target.uml are both existed before running the tool, the mapping.uml is updated to reflect the differences between classes, attributes and associations in the source and the target model. The comparison results are nested as comments inside the specific pruning and refactoring realization.
 
 Future Work
+
 1. Detailed comparison results between the source and the target model will be included in the mapping model.
+
 2. Refactoring function: the refactoring function is under development which will allow the user to copy or split a object class in the target model. The user will need to feed the tool with the class name and the number of copies or splits following a certain format in a text file.
+
 3. Reverse pruning function: the reverse pruning function will allow the user to add the non-experimental elements in the target model back to the source model. 
