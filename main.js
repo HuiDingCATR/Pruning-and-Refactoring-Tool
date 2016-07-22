@@ -2280,8 +2280,8 @@ function writeUml() {
                 //comparisonAtt = comparisonAtt.replace(/\r\n$/g, '');
                 //comparisonAtt = comparisonAtt.replace(/\r\n/g, '\r\n\t\t\t\t\t\t');
                 log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].supplier.id + "_PR\" name=\"" + attributeCompare[j].supplier.name + "\">\r\n";
-                log += "\t\t\t\t\t<supplier xmi:type=\"uml:Attribute\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
-                log += "\t\t\t\t\t<client xmi:type=\"uml:Attribute\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
+                log += "\t\t\t\t\t<supplier xmi:type=\"uml:Property\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
+                log += "\t\t\t\t\t<client xmi:type=\"uml:Property\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
                 /*log += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                 log += "\t\t\t\t\t<body>" + comparisonAtt + "</body>\r\n";
                 log += "\t\t\t\t</ownedComment>\r\n";*/
