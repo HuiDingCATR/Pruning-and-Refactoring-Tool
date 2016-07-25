@@ -52,8 +52,8 @@ var keylist = [];
 var isInstantiated = [];//The array of case that the class is composited by the other class
 var fileName = [];
 var currentFileName;
-var supplierFileName = "source.uml";
-var clientFileName = "target.uml";
+var supplierFileName = "SOURCE.uml";
+var clientFileName = "Target.uml";
 var copyAndSplit;
 var copyClassId = [];
 
@@ -81,12 +81,13 @@ function main_Entrance(){
                     var fileNum = 0;
                     var clientFileFlag = 0;
                     for(var j = 0; j < files.length; j++) {
-                        if(files[j] == supplierFileName){
+                        if(files[j].toLowerCase() == supplierFileName.toLowerCase()){
+                            supplierFileName = files[j];
                             currentFileName = files[j];
                             fileNum++;
                             parseModule(files[j]);
                         }
-                        if(files[j] == clientFileName){
+                        if(files[j].toLowerCase() == clientFileName.toLowerCase()){
                             currentFileName = files[j];
                             fileNum++;
                             copyClass();
@@ -355,6 +356,7 @@ function copyClass(){
                                 for(var k = 0; k < lenAttribute; k++){
                                     lenAttribute == 1 ? obj = model.packagedElement.ownedAttribute : obj = obj = model.packagedElement.ownedAttribute.array[k];
                                     copyclassid.attributeId.push(obj.attributes()["xmi:id"]);
+                                    //copyclassid.attributeName.push(obj.attributes()["name"]);
                                 }
                             }
                             copyClassId.push(copyclassid);
@@ -381,6 +383,16 @@ function copyClass(){
                         tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
                         copyLoc = quoteLoc;
                     }
+                    copyLoc = 0;
+                    quoteLoc = 0;
+                    xmiLoc = 0;
+                    while(tempData.indexOf("name=\"",copyLoc) != -1){
+                        xmiLoc = tempData.indexOf("name=\"",copyLoc);
+                        quoteLoc = tempData.indexOf("\"",xmiLoc + 7);
+                        tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                        copyLoc = quoteLoc;
+                    }
+
                     copyData.push(tempData);
                 }
                 data = data.substring(0, indexEndLocate + 20) + copyData.join("\r\n") + "\r\n" + data.substring(indexEndLocate + 20);
@@ -416,10 +428,10 @@ function copyClass(){
         }
 
 
-        function addPostfix(id, count){
+        function addPostfix(element, count){
             var index = 0;
-            while(tempData.indexOf(id, index) != -1){
-                indexId = tempData.indexOf(id, index);
+            while(tempData.indexOf(element, index) != -1){
+                indexId = tempData.indexOf(element, index);
                 indexLineEnd = tempData.indexOf("\r\n", indexId);
                 if(indexId < 160){
                     indexLineStart = 0;
@@ -431,7 +443,7 @@ function copyClass(){
                 lineDataArray[1] += "_cp" + count;
                 lineDataArray[3] += "_cp" + count;
                 if(lineDataArray[5] != undefined && lineDataArray[5] == id){
-                    lineDataArray += "_cp" + count;
+                    lineDataArray[5] += "_cp" + count;
                 }
                 test++;
                 lineData = lineDataArray.join("\"");
