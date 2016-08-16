@@ -20,20 +20,24 @@ function Class(name, id, type, comment, nodeType, path, config, isOrdered, fileN
     this.path = path;
     this.nodeType = nodeType;
     this.description = comment;
+    this.config = config;
+    this.isOrdered = isOrdered;
+    this.fileName = fileName;
     this.Gname;
     this.support;
+    this.condition;                 //new
     this.status;
     this.generalization = [];
     this.instancePath = "";
     this.isGrouping = false;
-    this.isAbstract = false;//"class" is abstract
-    this.config = config;
-    this.isOrdered = isOrdered;
+    this.isAbstract = false;
+    this.isInRealization = false;
+    this.isActive = false;          //new
+    this.isLeaf = false;            //new
+    this.visibility = "public";     //new
     this.association;
     this.attribute = [];
     this.key = [];
-    this.fileName = fileName;
-    this.isInRealization = false;
 }
 Class.prototype.isEnum = function(){
     var result;
@@ -152,8 +156,25 @@ Class.prototype.buildAttribute = function(att){
         isLeaf = true;
     }
     var attribute = new Attribute(id, name, type, comment, association, isReadOnly, isOrdered, this.fileName);//build a attribute
-    if(att.attributes().aggregation && att.attributes().aggregation == "composite"){
+    /*if(att.attributes().aggregation && att.attributes().aggregation == "composite"){
         attribute.isleafRef = false;
+    }*/
+    if(att.attributes().aggregation){
+        if(att.attributes().aggregation == "composite"){
+            attribute.isleafRef = false;
+            attribute.aggregation = "composite";
+        }else{
+            attribute.aggregation = att.attributes().aggregation;
+        }
+    }
+    if (att.attributes().visibility) {
+        attribute.visibility = att.attributes().visibility;
+    }
+    if (att.attributes().isStatic == "true") {
+        attribute.isStatic = true;
+    }
+    if (att.attributes().isUnique == "false") {
+        attribute.isUnique = false;
     }
     attribute.giveValue(att);
     attribute.giveNodeType(isLeaf);
