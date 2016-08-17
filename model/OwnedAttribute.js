@@ -18,21 +18,26 @@ function ownedAttribute(id, name, type, comment, assoc, isReadOnly, isOrdered, f
     this.description = comment;
     this.association = assoc;
     this.config = !isReadOnly;
+    this.isOrdered = isOrdered;
+    this.fileName = fileName;
     this.nodeType;
     this.defaultValue;
-    this.isUses = false;
     this.status;
+    this.isUses = false;
     this.isAbstract = false;
+    this.isleafRef = true;
+    this.isInRealization = false;
+    this.isStatic = false;              //new
+    this.isUnique = true;               //new
+    this.aggregation = "none";          //new
+    this.visibility = "public";         //new
     this.rpcType;
     this.key;
     this.path;
     this.support;
-    this.isleafRef = true;
-    this.isOrdered = isOrdered;
+    this.condition;                 //new
     this['min-elements'];
     this['max-elements'];
-    this.fileName = fileName;
-    this.isInRealization = false;
 }
 
 ownedAttribute.prototype.giveValue = function(obj){

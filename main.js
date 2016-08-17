@@ -52,8 +52,8 @@ var keylist = [];
 var isInstantiated = [];//The array of case that the class is composited by the other class
 var fileName = [];
 var currentFileName;
-var supplierFileName = "source.uml";
-var clientFileName = "target.uml";
+var supplierFileName = "SOURCE.uml";
+var clientFileName = "Target.uml";
 var copyAndSplit;
 var copyClassId = [];
 
@@ -81,12 +81,13 @@ function main_Entrance(){
                     var fileNum = 0;
                     var clientFileFlag = 0;
                     for(var j = 0; j < files.length; j++) {
-                        if(files[j] == supplierFileName){
+                        if(files[j].toLowerCase() == supplierFileName.toLowerCase()){
+                            supplierFileName = files[j];
                             currentFileName = files[j];
                             fileNum++;
                             parseModule(files[j]);
                         }
-                        if(files[j] == clientFileName){
+                        if(files[j].toLowerCase() == clientFileName.toLowerCase()){
                             currentFileName = files[j];
                             fileNum++;
                             copyClass();
@@ -157,6 +158,7 @@ function main_Entrance(){
                                 if(openModelclass[k].id == Class[i].id && openModelclass[k].fileName == Class[i].fileName){
                                     if(openModelclass[k].condition){
                                         Class[i].support = openModelclass[k].support;
+                                        Class[i].condition = openModelclass[k].condition;
                                     }
                                     if(openModelclass[k].status){
                                         Class[i].status = openModelclass[k].status;
@@ -355,6 +357,7 @@ function copyClass(){
                                 for(var k = 0; k < lenAttribute; k++){
                                     lenAttribute == 1 ? obj = model.packagedElement.ownedAttribute : obj = obj = model.packagedElement.ownedAttribute.array[k];
                                     copyclassid.attributeId.push(obj.attributes()["xmi:id"]);
+                                    //copyclassid.attributeName.push(obj.attributes()["name"]);
                                 }
                             }
                             copyClassId.push(copyclassid);
@@ -381,6 +384,16 @@ function copyClass(){
                         tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
                         copyLoc = quoteLoc;
                     }
+                    copyLoc = 0;
+                    quoteLoc = 0;
+                    xmiLoc = 0;
+                    while(tempData.indexOf("name=\"",copyLoc) != -1){
+                        xmiLoc = tempData.indexOf("name=\"",copyLoc);
+                        quoteLoc = tempData.indexOf("\"",xmiLoc + 7);
+                        tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                        copyLoc = quoteLoc;
+                    }
+
                     copyData.push(tempData);
                 }
                 data = data.substring(0, indexEndLocate + 20) + copyData.join("\r\n") + "\r\n" + data.substring(indexEndLocate + 20);
@@ -416,10 +429,10 @@ function copyClass(){
         }
 
 
-        function addPostfix(id, count){
+        function addPostfix(element, count){
             var index = 0;
-            while(tempData.indexOf(id, index) != -1){
-                indexId = tempData.indexOf(id, index);
+            while(tempData.indexOf(element, index) != -1){
+                indexId = tempData.indexOf(element, index);
                 indexLineEnd = tempData.indexOf("\r\n", indexId);
                 if(indexId < 160){
                     indexLineStart = 0;
@@ -431,11 +444,11 @@ function copyClass(){
                 lineDataArray[1] += "_cp" + count;
                 lineDataArray[3] += "_cp" + count;
                 if(lineDataArray[5] != undefined && lineDataArray[5] == id){
-                    lineDataArray += "_cp" + count;
+                    lineDataArray[5] += "_cp" + count;
                 }
                 test++;
                 lineData = lineDataArray.join("\"");
-                console.log(lineData);
+                //console.log(lineData);
 
                 addData += lineData;
                 index = indexLineEnd;
@@ -1052,6 +1065,15 @@ function createClass(obj, nodeType) {
         var node = new CLASS(name, id, type, comment, nodeType, path, config, isOrdered, currentFileName);
         if (obj.attributes().isAbstract == "true") {
             node.isAbstract = true;
+        }
+        if (obj.attributes().isLeaf == "true") {
+            node.isLeaf = true;
+        }
+        if (obj.attributes().isActive == "true") {
+            node.isActive = true;
+        }
+        if (obj.attributes().visibility) {
+            node.visibility = obj.attributes().visibility;
         }
         if (obj['generalization']) {
             var len;
@@ -1920,7 +1942,7 @@ function pruningAndRefactoring(realization){
     for(var i = 0; i < Class.length; i++){
         //flag = 0;
         for(var j = i + 1; j < Class.length; j++){
-            if(Class[i].id == Class[j].id && Class[i].fileName != Class[j].fileName){
+            if(Class[i].id.substring(0, 23) == Class[j].id.substring(0, 23) && Class[i].fileName != Class[j].fileName){
                 if(Class[i].fileName == clientFileName && Class[j].fileName == supplierFileName){
                     client = Class[i];
                     supplier = Class[j];
@@ -1928,7 +1950,8 @@ function pruningAndRefactoring(realization){
                     client = Class[j];
                     supplier = Class[i];
                 }else{
-                    console.warn("Warning : The file name of project isn't consistent with clientFileName or supplierFileName setted !");
+                    continue;
+                    //console.warn("Warning : The file name of project isn't consistent with clientFileName or supplierFileName setted !");
                 }
                 if(client && supplier){
                     var temp = new ClassCompare(client, supplier);
@@ -1937,10 +1960,8 @@ function pruningAndRefactoring(realization){
                     supplier.isInRealization = true;
                     client = "";
                     supplier = "";
-                    //flag = 1;
-                    break;
+                    //break;
                 }
-                //if(Class[i].fileName == )
             }
         }
     }
@@ -1949,7 +1970,7 @@ function pruningAndRefactoring(realization){
         supplier = classCompare[i].supplier;
         for(var j = 0;j < client.attribute.length; j++){
             for(var k = 0;k < supplier.attribute.length; k++){
-                if(client.attribute[j].id == supplier.attribute[k].id && client.attribute[j].id && supplier.attribute[k].id){
+                if(client.attribute[j].id && supplier.attribute[k].id && client.attribute[j].id.substring(0, 23) == supplier.attribute[k].id.substring(0, 23)){
                     client.attribute[j].isInRealization = true;
                     supplier.attribute[k].isInRealization = true;
                     var temp = new AttributeCompare(client.attribute[j], supplier.attribute[k], client, supplier);
@@ -2171,13 +2192,21 @@ function writeUml() {
     var supplier;
     var comparisonAtt = "";
     var comparison = "";
-    var arrayAtt = ["config", "nodeType", "defaultValue", "isUses", "status", "isAbstract", "rpcType", "path", "support", "isleafRef", "isOrdered", "min-elements", "max-elements"];
-    var arrayClass = ["name", "nodeType", "support", "status", "isAbstract", "config", "isOrdered"];
+    var arrayAtt = ["name", "config", "defaultValue", "isUses", "status", "isAbstract", "rpcType", "path", "support", "condition", "isleafRef", "isOrdered", "isStatic", "isUnique", "aggregation", "visibility", "min-elements", "max-elements"];
+    var arrayClass = ["name", "support", "condition", "status", "isAbstract", "config", "isOrdered", "isActive", "isLeaf", "visibility"];
     var arrayAssociation = ["name", "memberEnd1", "memberEnd2", "associationType", "type", "ownedEndName", "upperValue", "lowerValue"];
     log += "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
     log += "<xmi:XMI xmi:version=\"20131001\" xmlns:xmi=\"http://www.omg.org/spec/XMI/20131001\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:OpenModel_Profile=\"http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14\" xmlns:ecore=\"http://www.eclipse.org/emf/2002/Ecore\" xmlns:uml=\"http://www.eclipse.org/uml2/5.0.0/UML\"";
     log += " xsi:schemaLocation=\"http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14 ../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w\">\r\n";
     log += "\t<uml:Model xmi:id=\"_FVrMgBwSEeaTcI5su2FfNw\" name=\"mapping\">\r\n";
+    log += "\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"_FVrMgBwSEeaTcI5su2FfNe\" name=\"Imports\">\r\n";
+    log += "\t\t\t<packageImport xmi:type=\"uml:PackageImport\" xmi:id=\"_FVrMgBwSEeaTcI5su2Ffnj\">\r\n";
+    log += "\t\t\t\t<importedPackage xmi:type=\"uml:Package\" href=\""+ clientFileName +"#_x9n08N36EeSMBfBYLVyuMA\"/>\r\n";
+    log += "\t\t\t</packageImport>\r\n";
+    log += "\t\t\t<packageImport xmi:type=\"uml:PackageImport\" xmi:id=\"_FVrMgBwSEeaTcI5su2Ffnt\">\r\n";
+    log += "\t\t\t\t<importedPackage xmi:type=\"uml:Package\" href=\""+ supplierFileName +"#_x9n08N36EeSMBfBYLVyuMA\"/>\r\n";
+    log += "\t\t\t</packageImport>\r\n";
+    log += "\t\t</packagedElement>\r\n";
     log += "";
     log += "";
     log += "";
@@ -2192,12 +2221,12 @@ function writeUml() {
         for(var j = 0; j < arrayClass.length; j++) {
             if (supplier[arrayClass[j]] || client[arrayClass[j]]) {
                 if (supplier[arrayClass[j]] == client[arrayClass[j]]) {
-                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" name=\"" + arrayClass[j] + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
                     comparison += "\t\t\t\t\t\t<body>" + arrayClass[j] + " same." + "</body>\r\n";
                     comparison += "\t\t\t\t\t</ownedComment>\r\n";
                 } else {
                     //comparison += arrayAtt[k] + " not same." + "\r\n";
-                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" name=\"" + arrayClass[j] + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
                     //comparison += "\t\t\t\t\t<body>" + arrayClass[j] + " not same." + "</body>\r\n";
                     comparison += "\t\t\t\t\t\t<body>" + arrayClass[j] + " not same." + "\r\n";
                     comparison += "\t\t\t\t\t\t\t\t\t\tSupplier : " + supplier[arrayClass[j]] + "\r\n";
@@ -2224,12 +2253,12 @@ function writeUml() {
                         //array[k] = array[k].replace(/s$/g, "");
                         if(attributeCompare[j].supplier[arrayAtt[k]] == attributeCompare[j].client[arrayAtt[k]]){
                             //comparisonAtt += arrayAtt[k] + " same." + "\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + " same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }else{
                             //comparisonAtt += arrayAtt[k] + " not same." + "\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                             //comparisonAtt += "\t\t\t\t\t<body>" + arrayAtt[k] + " not same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + " not same." + "\r\n";
                             comparisonAtt += "\t\t\t\t\t\t\t\t\t\tSupplier : " + attributeCompare[j].supplier[arrayAtt[k]] + "\r\n";
@@ -2245,12 +2274,12 @@ function writeUml() {
                     if(typeof attributeCompare[j].supplier.type == "string" && typeof attributeCompare[j].client.type == "string"){
                         if(attributeCompare[j].supplier.type == attributeCompare[j].client.type){
                             //comparisonAtt += "type same.\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>type same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }else{
                             //comparisonAtt += "type note same.\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>type not same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }
@@ -2261,12 +2290,12 @@ function writeUml() {
                             if(attributeCompare[j].client.type[typeMumber[m]] || attributeCompare[j].supplier.type[typeMumber[m]]){
                                 if(attributeCompare[j].supplier.type[typeMumber[m]] == attributeCompare[j].client.type[typeMumber[m]]){
                                     //comparisonAtt += typeMumber[m] + " of type same." + "\r\n";
-                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                                     comparisonAtt += "\t\t\t\t\t\t<body>" + typeMumber[m] + " of type same." + "</body>\r\n";
                                     comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                                 }else{
                                     //comparisonAtt += typeMumber[m] + " of type not same." + "\r\n";
-                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
+                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                                     comparisonAtt += "\t\t\t\t\t\t<body>" + typeMumber[m] + " of type not same." + "</body>\r\n";
                                     comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                                 }
@@ -2280,8 +2309,8 @@ function writeUml() {
                 //comparisonAtt = comparisonAtt.replace(/\r\n$/g, '');
                 //comparisonAtt = comparisonAtt.replace(/\r\n/g, '\r\n\t\t\t\t\t\t');
                 log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].supplier.id + "_PR\" name=\"" + attributeCompare[j].supplier.name + "\">\r\n";
-                log += "\t\t\t\t\t<supplier xmi:type=\"uml:Attribute\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
-                log += "\t\t\t\t\t<client xmi:type=\"uml:Attribute\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
+                log += "\t\t\t\t\t<supplier xmi:type=\"uml:Property\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
+                log += "\t\t\t\t\t<client xmi:type=\"uml:Property\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
                 /*log += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
                 log += "\t\t\t\t\t<body>" + comparisonAtt + "</body>\r\n";
                 log += "\t\t\t\t</ownedComment>\r\n";*/
@@ -2303,12 +2332,12 @@ function writeUml() {
         for(var j = 0; j < arrayAssociation.length; j++) {
             if (supplier[arrayAssociation[j]] || client[arrayAssociation[j]]) {
                 if (supplier[arrayAssociation[j]] == client[arrayAssociation[j]]) {
-                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
                     comparison += "\t\t\t\t\t<body>" + arrayAssociation[j] + " same." + "</body>\r\n";
                     comparison += "\t\t\t\t</ownedComment>\r\n";
                 } else {
                     //comparison += arrayAtt[k] + " not same." + "\r\n";
-                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + supplier.id + "_com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + supplier.id + "_PR\">\r\n";
                     comparison += "\t\t\t\t\t<body>" + arrayAssociation[j] + " not same." + "</body>\r\n";
                     comparison += "\t\t\t\t</ownedComment>\r\n";
                 }
