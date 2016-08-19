@@ -346,7 +346,7 @@ function copyClass(){
                 var tempData = data.substring(indexNewLine + 2, indexEndLocate + 18);
                 var copyclassid = {};
                 var lenAttribute;
-                var obj
+                var obj;
                 xmlreader.read(tempData, function(error, model) {
                     if (error) {
                         console.log('There was a problem reading data from ' + filename + '. Please check your xmlreader module and nodejs!\t\n' + error.stack);
@@ -2206,7 +2206,7 @@ function writeUml() {
     var arrayAssociation = ["name", "memberEnd1", "memberEnd2", "associationType", "type", "ownedEndName", "upperValue", "lowerValue"];
     log += "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
     log += "<xmi:XMI xmi:version=\"20131001\" xmlns:xmi=\"http://www.omg.org/spec/XMI/20131001\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:OpenModel_Profile=\"http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14\" xmlns:ecore=\"http://www.eclipse.org/emf/2002/Ecore\" xmlns:uml=\"http://www.eclipse.org/uml2/5.0.0/UML\"";
-    log += " xsi:schemaLocation=\"http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14 ../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w\">\r\n";
+    log += " xsi:schemaLocation=\"http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14 ../../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w\">\r\n";
     log += "\t<uml:Model xmi:id=\"_FVrMgBwSEeaTcI5su2FfNw\" name=\"mapping\">\r\n";
     log += "\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"_FVrMgBwSEeaTcI5su2FfNe\" name=\"Imports\">\r\n";
     log += "\t\t\t<packageImport xmi:type=\"uml:PackageImport\" xmi:id=\"_FVrMgBwSEeaTcI5su2Ffnj\">\r\n";
@@ -2230,12 +2230,13 @@ function writeUml() {
         for(var j = 0; j < arrayClass.length; j++) {
             if (supplier[arrayClass[j]] || client[arrayClass[j]]) {
                 if (supplier[arrayClass[j]] == client[arrayClass[j]]) {
-                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayClass[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    //comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayClass[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
                     comparison += "\t\t\t\t\t\t<body>" + arrayClass[j] + " same." + "</body>\r\n";
                     comparison += "\t\t\t\t\t</ownedComment>\r\n";
                 } else {
-                    //comparison += arrayAtt[k] + " not same." + "\r\n";
-                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayClass[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    //comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayClass[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
                     //comparison += "\t\t\t\t\t<body>" + arrayClass[j] + " not same." + "</body>\r\n";
                     comparison += "\t\t\t\t\t\t<body>" + arrayClass[j] + " not same." + "\r\n";
                     comparison += "\t\t\t\t\t\t\t\t\t\tSupplier : " + supplier[arrayClass[j]] + "\r\n";
@@ -2248,9 +2249,9 @@ function writeUml() {
         }
         log += "\t\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"" + client.id + "_pk\" name=\"" + client.name + "\">\r\n";
         log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + client.id + "_PR\" name=\"" + client.name + "\">\r\n";
-        log += "\t\t\t\t\t<supplier xmi:type=\"uml:Class\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
-        log += "\t\t\t\t\t<client xmi:type=\"uml:Class\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
         log += comparison;
+        log += "\t\t\t\t\t<client xmi:type=\"uml:Class\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
+        log += "\t\t\t\t\t<supplier xmi:type=\"uml:Class\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
         log += "\t\t\t\t</packagedElement>\r\n";
         for(var j = 0; j < attributeCompare.length; j++){
             if(client.id == attributeCompare[j].clientClass.id){
@@ -2262,12 +2263,14 @@ function writeUml() {
                         //array[k] = array[k].replace(/s$/g, "");
                         if(attributeCompare[j].supplier[arrayAtt[k]] == attributeCompare[j].client[arrayAtt[k]]){
                             //comparisonAtt += arrayAtt[k] + " same." + "\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + " same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }else{
                             //comparisonAtt += arrayAtt[k] + " not same." + "\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
                             //comparisonAtt += "\t\t\t\t\t<body>" + arrayAtt[k] + " not same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + " not same." + "\r\n";
                             comparisonAtt += "\t\t\t\t\t\t\t\t\t\tSupplier : " + attributeCompare[j].supplier[arrayAtt[k]] + "\r\n";
@@ -2283,12 +2286,14 @@ function writeUml() {
                     if(typeof attributeCompare[j].supplier.type == "string" && typeof attributeCompare[j].client.type == "string"){
                         if(attributeCompare[j].supplier.type == attributeCompare[j].client.type){
                             //comparisonAtt += "type same.\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>type same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }else{
                             //comparisonAtt += "type note same.\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>type not same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }
@@ -2299,12 +2304,14 @@ function writeUml() {
                             if(attributeCompare[j].client.type[typeMumber[m]] || attributeCompare[j].supplier.type[typeMumber[m]]){
                                 if(attributeCompare[j].supplier.type[typeMumber[m]] == attributeCompare[j].client.type[typeMumber[m]]){
                                     //comparisonAtt += typeMumber[m] + " of type same." + "\r\n";
-                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                                    //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
                                     comparisonAtt += "\t\t\t\t\t\t<body>" + typeMumber[m] + " of type same." + "</body>\r\n";
                                     comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                                 }else{
                                     //comparisonAtt += typeMumber[m] + " of type not same." + "\r\n";
-                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                                    //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
                                     comparisonAtt += "\t\t\t\t\t\t<body>" + typeMumber[m] + " of type not same." + "</body>\r\n";
                                     comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                                 }
@@ -2318,12 +2325,9 @@ function writeUml() {
                 //comparisonAtt = comparisonAtt.replace(/\r\n$/g, '');
                 //comparisonAtt = comparisonAtt.replace(/\r\n/g, '\r\n\t\t\t\t\t\t');
                 log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].client.id + "_PR\" name=\"" + attributeCompare[j].client.name + "\">\r\n";
-                log += "\t\t\t\t\t<supplier xmi:type=\"uml:Property\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
-                log += "\t\t\t\t\t<client xmi:type=\"uml:Property\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
-                /*log += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].supplier.id + "_com\" annotatedElement=\"" + attributeCompare[j].supplier.id + "_PR\">\r\n";
-                log += "\t\t\t\t\t<body>" + comparisonAtt + "</body>\r\n";
-                log += "\t\t\t\t</ownedComment>\r\n";*/
                 log += comparisonAtt;
+                log += "\t\t\t\t\t<client xmi:type=\"uml:Property\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
+                log += "\t\t\t\t\t<supplier xmi:type=\"uml:Property\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
                 log += "\t\t\t\t</packagedElement>\r\n";
             }
         }
@@ -2341,12 +2345,14 @@ function writeUml() {
         for(var j = 0; j < arrayAssociation.length; j++) {
             if (supplier[arrayAssociation[j]] || client[arrayAssociation[j]]) {
                 if (supplier[arrayAssociation[j]] == client[arrayAssociation[j]]) {
-                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    //comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
                     comparison += "\t\t\t\t\t<body>" + arrayAssociation[j] + " same." + "</body>\r\n";
                     comparison += "\t\t\t\t</ownedComment>\r\n";
                 } else {
                     //comparison += arrayAtt[k] + " not same." + "\r\n";
-                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    //comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
                     comparison += "\t\t\t\t\t<body>" + arrayAssociation[j] + " not same." + "</body>\r\n";
                     comparison += "\t\t\t\t</ownedComment>\r\n";
                 }
@@ -2354,9 +2360,9 @@ function writeUml() {
             }
         }
         log += "\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + client.id + "_PR\" name=\"" + client.name + "\">\r\n";
-        log += "\t\t\t\t<supplier xmi:type=\"uml:Association\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
-        log += "\t\t\t\t<client xmi:type=\"uml:Association\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
         log += comparison;
+        log += "\t\t\t\t<client xmi:type=\"uml:Association\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
+        log += "\t\t\t\t<supplier xmi:type=\"uml:Association\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
         log += "\t\t\t</packagedElement>\r\n";
     }
     log += "\t\t</packagedElement>\r\n";
