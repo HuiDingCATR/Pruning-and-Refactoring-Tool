@@ -310,6 +310,10 @@ function copyClass(){
     var data = fs.readFileSync("./project/" + clientFileName, {encoding: 'utf8'});
     try{
         if(fs.existsSync("./project/CopyAndSplit.txt")){
+            if(data.indexOf(copyAndSplit.copyClass[0] + "_cp") != -1){
+                console.log(" ");
+                return;
+            }
             var indexCopyClass,             //the index of the name of CopyClass
                 indexSearchClass,           //the index of "<packagedElement xmi:type="uml:Class""
                 indexNewLine,               //the index of "\r\n"
@@ -372,6 +376,8 @@ function copyClass(){
                     var copyLoc = 0;
                     var quoteLoc = 0;
                     var xmiLoc = 0;
+                    //var tempCopyData;
+                    tempData = data.substring(indexNewLine + 2, indexEndLocate + 18);
                     while(tempData.indexOf("xmi:id=\"",copyLoc) != -1){         //add "_cp" postfix
                         xmiLoc = tempData.indexOf("xmi:id=\"",copyLoc);
                         quoteLoc = tempData.indexOf("\"",xmiLoc + 10);
@@ -424,7 +430,7 @@ function copyClass(){
                 for(var j = 0; j < copyClassId[i].attributeId.length; j++){
                     for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
                         id = copyClassId[i].attributeId[j];
-                        addPostfix(id, k + 1);
+                        addPostfix("\"" + id + "\"", k + 1);
                     }
                 }
             }
@@ -1152,6 +1158,7 @@ function createClass(obj, nodeType) {
                             }
                             if(openModelAtt[k].key){
                                 att.attributes().name ? node.key[openModelAtt[k].key-1] = att.attributes().name : null;
+                                node.attribute[i].partOfObjectKey = openModelAtt[k].key;
                             }
                         }
                     }
@@ -1172,6 +1179,7 @@ function createClass(obj, nodeType) {
                     if(openModelAtt[k].id == node.attribute[i].id && openModelAtt[k].fileName == node.attribute[i].fileName){
                         if(openModelAtt[k].key){
                             att.attributes().name ? node.key[openModelAtt[k].key-1] = att.attributes().name : null;
+                            node.attribute[i].partOfObjectKey = openModelAtt[k].key;
                         }
                     }
                 }
@@ -1257,7 +1265,8 @@ function createClass(obj, nodeType) {
                                 break;
                             }
                             if(openModelAtt[k].key){
-                                att.attributes().name ? node.key[openModelAtt[k].key-1] = att.attributes().name : null;
+                                att.attributes().name ? node.key[openModelAtt[k].key - 1] = att.attributes().name : null;
+                                node.attribute[i].partOfObjectKey = openModelAtt[k].key;
                             }
                         }
                     }
@@ -1267,6 +1276,7 @@ function createClass(obj, nodeType) {
                     if(openModelAtt[k].id == node.attribute[i].id && openModelAtt[k].fileName == node.attribute[i].fileName){
                         if(openModelAtt[k].key){
                             att.attributes().name ? node.key[openModelAtt[k].key-1] = att.attributes().name : null;
+                            node.attribute[i].partOfObjectKey = openModelAtt[k].key;
                         }
                     }
                 }
@@ -2201,7 +2211,7 @@ function writeUml() {
     var supplier;
     var comparisonAtt = "";
     var comparison = "";
-    var arrayAtt = ["name", "config", "defaultValue", "isUses", "status", "isAbstract", "rpcType", "path", "support", "condition", "isleafRef", "isOrdered", "isStatic", "isUnique", "aggregation", "visibility", "min-elements", "max-elements"];
+    var arrayAtt = ["name", "config", "defaultValue", "isUses", "status", "isAbstract", "rpcType", "path", "support", "condition", "isleafRef", "isOrdered", "isStatic", "isUnique", "aggregation", "visibility", "min-elements", "max-elements", "partOfObjectKey"];
     var arrayClass = ["name", "support", "condition", "status", "isAbstract", "config", "isOrdered", "isActive", "isLeaf", "visibility"];
     var arrayAssociation = ["name", "memberEnd1", "memberEnd2", "associationType", "type", "ownedEndName", "upperValue", "lowerValue"];
     log += "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
