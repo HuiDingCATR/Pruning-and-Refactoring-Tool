@@ -24,11 +24,13 @@ function ownedAttribute(id, name, type, comment, assoc, isReadOnly, isOrdered, f
     this.defaultValue;
     this.status;
     this.isUses = false;
+    this.isReadOnly = !this.config;
     this.isAbstract = false;
     this.isleafRef = true;
     this.isInRealization = false;
     this.isStatic = false;              //new
     this.isUnique = true;               //new
+    this.partOfObjectKey = 0;           //new
     this.aggregation = "none";          //new
     this.visibility = "public";         //new
     this.rpcType;
