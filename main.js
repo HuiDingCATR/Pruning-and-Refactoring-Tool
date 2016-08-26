@@ -52,8 +52,8 @@ var keylist = [];
 var isInstantiated = [];//The array of case that the class is composited by the other class
 var fileName = [];
 var currentFileName;
-var supplierFileName = "SOURCE.uml";
-var clientFileName = "Target.uml";
+var supplierFileName = "source.uml";
+var clientFileName = "target.uml";
 var copyAndSplit;
 var copyClassId = [];
 var supplierId = "";
@@ -77,11 +77,11 @@ function main_Entrance(){
                     console.log(err.stack);
                     throw err.message;
                 } else{
+                    var fileNum = 0;
+                    var clientFileFlag = 0;
                     if(fs.existsSync("./project/CopyAndSplit.txt")){
                         readCopyAndSplit();
                     }
-                    var fileNum = 0;
-                    var clientFileFlag = 0;
                     for(var j = 0; j < files.length; j++) {
                         if(files[j].toLowerCase() == supplierFileName.toLowerCase()){
                             supplierFileName = files[j];
@@ -92,6 +92,7 @@ function main_Entrance(){
                         if(files[j].toLowerCase() == clientFileName.toLowerCase()){
                             currentFileName = files[j];
                             fileNum++;
+                            console.log("Client file already exists! We don't need copy.");
                             copyClass();
                             parseModule(files[j]);
                             clientFileFlag = 1;
@@ -259,8 +260,7 @@ function readCopyAndSplit(){
                     }
                 }
             }
-            //console.log('');
-
+            console.log("CopyAndSplit.txt read successfully!");
         }else{
             console.log('There is no \'CopyAndSplit.txt\'. Please recheck your files according to the guideline!');
         }
@@ -437,6 +437,27 @@ function copyClass(){
             data = data.substring(0, indexUmlEnd) + addData + data.substring(indexUmlEnd);
         }
 
+        //get all "uml:Association" packages
+        /*var indexStart = 0;
+        var indexEnd = 0;
+        var associationData = "";
+        var tab = 0;
+        while(data.indexOf("<packagedElement xmi:type=\"uml:Association\"", indexEnd) != -1){
+            tab++;
+            //console.log(tab);
+            indexStart = data.indexOf("<packagedElement xmi:type=\"uml:Association\"", indexStart + 10);
+            indexEnd = data.indexOf("</packagedElement>", indexStart);
+            associationData += data.substring(indexStart, indexEnd + "</packagedElement>".length) + "\r\n";
+
+
+
+        }*/
+        /*console.log(associationData);
+        xmlreader.read(associationData, function(error, model) {
+            console.log("test;");
+        });
+        console.log("End.");*/
+
 
         function addPostfix(element, count){
             var index = 0;
@@ -468,7 +489,6 @@ function copyClass(){
 
 
         fs.writeFileSync("./project/" + clientFileName, data);
-        console.log('There is no target file. We clone the source file as target file.');
     }catch (e){
         console.log(e.stack);
         throw (e.message);
@@ -590,7 +610,7 @@ function parseModule(filename){                     //XMLREADER read xml files
         if (error) {
             console.log('There was a problem reading data from ' + filename + '. Please check your xmlreader module and nodejs!\t\n' + error.stack);
         } else {
-            console.log(filename + " read success!");
+            console.log(filename + " read successfully!");
             var xmi;
             var flag = 0;
             var newxmi;
@@ -743,6 +763,7 @@ function parseModule(filename){                     //XMLREADER read xml files
                     console.log("empty file!");
                 }
             }
+            console.log("Parse " + filename + " successfully!");
             return;
         }
     });
@@ -1559,6 +1580,12 @@ function obj2yang(ele){
                         if(openModelAtt[k].passedByReference){
                             ele[i].attribute[j].isleafRef = true;
                         }
+                        if(openModelAtt[k].units){
+                            ele[i].attribute[j].units = openModelAtt[k].units;
+                        }
+                        if(openModelAtt[k].valueRange){
+                            ele[i].attribute[j].valueRange = openModelAtt[k].valueRange;
+                        }
                         break;
                     }
                 }
@@ -2211,8 +2238,8 @@ function writeUml() {
     var supplier;
     var comparisonAtt = "";
     var comparison = "";
-    var arrayAtt = ["name", "isReadOnly", "defaultValue", "isUses", "status", "isAbstract", "rpcType", "path", "support", "condition", "isleafRef", "isOrdered", "isStatic", "isUnique", "aggregation", "visibility", "min-elements", "max-elements", "partOfObjectKey"];
-    var arrayClass = ["name", "support", "condition", "status", "isAbstract", "isActive", "isLeaf", "visibility"];
+    var arrayAtt = ["name", "isReadOnly", "defaultValue", "isUses", "status", "isAbstract", "rpcType","valueRange", "units", "path", "support", "condition", "isleafRef", "isOrdered", "isStatic", "isUnique", "aggregation", "visibility", "min-elements", "max-elements", "partOfObjectKey"];
+    var arrayClass = ["name", "support", "condition", "status", "visibility", "isAbstract", "isActive", "isLeaf"];
     var arrayAssociation = ["name", "memberEnd1", "memberEnd2", "associationType", "type", "ownedEndName", "upperValue", "lowerValue"];
     var postfix = "";
     log += "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
@@ -2283,7 +2310,7 @@ function writeUml() {
                     if(attributeCompare[j].supplier[arrayAtt[k]] != undefined ||attributeCompare[j].client[arrayAtt[k]] != undefined){
                         //comparison += "\t\t\t" + array[k] + " : " + attributeCompare[j].supplier[array[k]] + "\t\t\t\t" + array[k] + " : " + attributeCompare[i].client[array[k]];
                         //array[k] = array[k].replace(/s$/g, "");
-                        if(arrayAtt[k] == "isUses" || arrayAtt[k] == "status" || arrayAtt[k] == "min-elements" || arrayAtt[k] == "max-elements"){
+                        if(arrayAtt[k] == "isUses" || arrayAtt[k] == "status" || arrayAtt[k] == "units" || arrayAtt[k] == "min-elements" || arrayAtt[k] == "max-elements"){
                             postfix = "";
                         }else{
                             postfix = "s";
@@ -2327,7 +2354,7 @@ function writeUml() {
                     }
                     if(typeof attributeCompare[j].supplier.type == "object" && typeof attributeCompare[j].client.type == "object"){
                         // var typeMumber =["name", "range", "units", "path"];
-                        var typeMumber =["name", "range", "units"];
+                        var typeMumber =["name"];
 
                         for(var m = 0; m < typeMumber.length; m++){
                             if(attributeCompare[j].client.type[typeMumber[m]] != undefined || attributeCompare[j].supplier.type[typeMumber[m]] != undefined){

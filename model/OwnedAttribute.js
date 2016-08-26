@@ -23,6 +23,8 @@ function ownedAttribute(id, name, type, comment, assoc, isReadOnly, isOrdered, f
     this.nodeType;
     this.defaultValue;
     this.status;
+    this.valueRange;
+    this.units;
     this.isUses = false;
     this.isReadOnly = !this.config;
     this.isAbstract = false;
