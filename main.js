@@ -311,14 +311,14 @@ function copyClass(){
     try{
         if(fs.existsSync("./project/CopyAndSplit.txt")){
             if(data.indexOf(copyAndSplit.copyClass[0] + "_cp") != -1){
-                console.log(" ");
+                //console.log(" ");
                 return;
             }
             var indexCopyClass,             //the index of the name of CopyClass
                 indexSearchClass,           //the index of "<packagedElement xmi:type="uml:Class""
                 indexNewLine,               //the index of "\r\n"
-                indexEndLocate,             //the index of "</packagedElement>"
-                indexUmlEnd;                //the index of "</uml:Package>"
+                indexEndLocate;             //the index of "</packagedElement>"
+
             //copy class
             for(var i = 0; i < copyAndSplit.copyClass.length; i++){
                 //copy "uml:Class" paragraph and add id postfix
@@ -359,6 +359,7 @@ function copyClass(){
                             copyclassid.classId = model.packagedElement.attributes()["xmi:id"];
                             copyclassid.className = copyAndSplit.copyClass[i];
                             copyclassid.attributeId = [];
+                            copyclassid.associationId = [];
                             if(model.packagedElement.ownedAttribute){
                                 model.packagedElement.ownedAttribute.array ? lenAttribute = model.packagedElement.ownedAttribute.array.length : lenAttribute = 1;
                                 for(var k = 0; k < lenAttribute; k++){
@@ -411,15 +412,57 @@ function copyClass(){
             if(copyAndSplit.copyClass.length != copyClassId.length){
                 console.warn("Warning: the length of copyClass is not consistent to the length of copyClassId.");
             }
-            indexUmlEnd = data.indexOf("</uml:Package>") + 14;
-            tempData = data.substring(indexUmlEnd);
+
+
+
+            //get all "uml:Association" packages
+            var indexStart = 0;
+            var indexEnd = 0;
+            var associationData = "";
+
             var addData = "";
-            var lineData;
+            var tempData = "";
+            //copyClassId[i].associationId = [];
+            while(data.indexOf("<packagedElement xmi:type=\"uml:Association\"", indexEnd) != -1){
+                indexStart = data.indexOf("<packagedElement xmi:type=\"uml:Association\"", indexEnd);
+                indexStart = data.indexOf("\r\n", indexStart - 20);
+                indexEnd = data.indexOf("</packagedElement>", indexStart);
+                indexEnd += "</packagedElement>".length;
+                associationData = data.substring(indexStart, indexEnd);
+                for(var i = 0; i < copyClassId.length; i++){
+                    if(associationData.indexOf(copyClassId[i].classId) != -1) {
+                        addData = "";
+                        //tempData = copyAssociation(associationData, copyClassId[i].classId);
+                        tempData = copyAssociation(associationData, i);
+                        for (var j = 0; j < copyAndSplit.copyNumber[i]; j++) {
+                            addData += tempData.replace(/_flag/g, "_cp" + (j + 1));
+                        }
+                        data = data.substring(0, indexEnd) + addData + data.substring(indexEnd);
+                        indexEnd += addData.length;
+                        //var flag = 1;
+                        break;
+                    }
+
+                    for(var j = 0; j < copyClassId[i].attributeId.length; j++){
+                        if(associationData.indexOf(copyClassId[i].attributeId[j]) != -1){
+                            addData = "";
+                            //tempData = copyAssociation(associationData, copyClassId[i].classId);
+                            tempData = copyAssociation(associationData, i);
+                            for(var k = 0; k < copyAndSplit.copyNumber[i]; k++){
+                                addData += tempData.replace(/_flag/g, "_cp" + (k + 1));
+                            }
+                            data = data.substring(0, indexEnd) + addData + data.substring(indexEnd);
+                            indexEnd += addData.length;
+                            break;
+                        }
+                    }
+
+                }
+            }
+            var indexUmlEnd = data.indexOf("</uml:Package>") + 14;
+            var openModelProfileData = data.substring(indexUmlEnd);         //openModel_Profile part
+            var addData = "";
             var id;
-            var indexId;
-            var indexXmiId;
-            var indexLineStart;
-            var indexLineEnd;
             var test = 0;
             for(var i = 0; i < copyClassId.length; i++){
                 id = copyClassId[i].classId;
@@ -430,46 +473,46 @@ function copyClass(){
                 for(var j = 0; j < copyClassId[i].attributeId.length; j++){
                     for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
                         id = copyClassId[i].attributeId[j];
-                        addPostfix("\"" + id + "\"", k + 1);
+                        //addPostfix("\"" + id + "\"", k + 1);
+                        addPostfix(id, k + 1);
+                    }
+                }
+                for(var j = 0; j < copyClassId[i].associationId.length; j++){
+                    for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
+                        id = copyClassId[i].associationId[j];
+                        //addPostfix("\"" + id + "\"", k + 1);
+                        addPostfix(id, k + 1);
                     }
                 }
             }
             data = data.substring(0, indexUmlEnd) + addData + data.substring(indexUmlEnd);
+
+            //console.log(associationData);
+            /*xmlreader.read(associationData, function(error, model) {
+                console.log("test;");
+            });*/
+            console.log("End.");
         }
 
-        //get all "uml:Association" packages
-        /*var indexStart = 0;
-        var indexEnd = 0;
-        var associationData = "";
-        var tab = 0;
-        while(data.indexOf("<packagedElement xmi:type=\"uml:Association\"", indexEnd) != -1){
-            tab++;
-            //console.log(tab);
-            indexStart = data.indexOf("<packagedElement xmi:type=\"uml:Association\"", indexStart + 10);
-            indexEnd = data.indexOf("</packagedElement>", indexStart);
-            associationData += data.substring(indexStart, indexEnd + "</packagedElement>".length) + "\r\n";
 
-
-
-        }*/
-        /*console.log(associationData);
-        xmlreader.read(associationData, function(error, model) {
-            console.log("test;");
-        });
-        console.log("End.");*/
 
 
         function addPostfix(element, count){
             var index = 0;
-            while(tempData.indexOf(element, index) != -1){
-                indexId = tempData.indexOf(element, index);
-                indexLineEnd = tempData.indexOf("\r\n", indexId);
+            var indexId = 0;
+            var indexLineEnd = 0;
+            var indexLineStart = 0;
+            var lineData = "";
+            //var addData = "";
+            while(openModelProfileData.indexOf(element, index) != -1){
+                indexId = openModelProfileData.indexOf(element, index);
+                indexLineEnd = openModelProfileData.indexOf("\r\n", indexId);
                 if(indexId < 160){
                     indexLineStart = 0;
                 }else{
-                    indexLineStart = tempData.indexOf("\r\n", indexId - 160);
+                    indexLineStart = openModelProfileData.indexOf("\r\n", indexId - 160);
                 }
-                lineData = tempData.substring(indexLineStart, indexLineEnd);
+                lineData = openModelProfileData.substring(indexLineStart, indexLineEnd);
                 var lineDataArray = lineData.split("\"");
                 lineDataArray[1] += "_cp" + count;
                 lineDataArray[3] += "_cp" + count;
@@ -513,6 +556,49 @@ function copyClass(){
             console.log('There is no target file. We clone the source file as target file.');
         });*!/
     });*/
+}
+
+function copyAssociation(associationData, i) {
+    var xmiLoc = 0;
+    var quoteLoc = 0;
+    xmlreader.read(associationData, function(error, model) {
+        if (error) {
+            console.log('There was a problem reading data in uml:Association');
+        }else{
+            var tempId = model.packagedElement.ownedEnd.attributes()["xmi:id"];
+            xmiLoc = 0;
+            quoteLoc = 0;
+            while(associationData.indexOf("name=\"",quoteLoc) != -1){         //add "_cp" postfix
+                xmiLoc = associationData.indexOf("name=\"",quoteLoc);
+                quoteLoc = associationData.indexOf("\"",xmiLoc + 6);
+                //tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+                associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+
+            }
+            xmiLoc = 0;
+            quoteLoc = 0;
+            while(associationData.indexOf("association=\"",quoteLoc) != -1){         //add "_cp" postfix
+                xmiLoc = associationData.indexOf("association=\"",quoteLoc);
+                quoteLoc = associationData.indexOf("\"",xmiLoc + 15);
+                // tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+                associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+
+            }
+            xmiLoc = 0;
+            quoteLoc = 0;
+            while(associationData.indexOf("xmi:id=\"",quoteLoc) != -1){         //add "_cp" postfix
+                xmiLoc = associationData.indexOf("xmi:id=\"",quoteLoc);
+                quoteLoc = associationData.indexOf("\"",xmiLoc + 10);
+                // tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+                associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+            }
+            associationData = associationData.replace(tempId, tempId + "_flag");
+            associationData = associationData.replace(copyClassId[i].classId, copyClassId[i].classId + "_flag");
+            copyClassId[i].associationId.push(model.packagedElement.attributes()["xmi:id"]);
+        }
+    });
+
+    return associationData;
 }
 
 var pflag;
@@ -2029,7 +2115,7 @@ function pruningAndRefactoring(realization){
     supplier = "";
     for(var i = 0; i < association.length; i++){
         for(var j = i + 1; j < association.length; j++){
-            if(association[i].id == association[j].id && association[i].fileName != association[j].fileName){
+            if(association[i].id.substring(0, 23) == association[j].id.substring(0, 23) && association[i].fileName != association[j].fileName){
                 if(association[i].fileName == clientFileName && association[j].fileName == supplierFileName){
                     client = association[i];
                     supplier = association[j];
