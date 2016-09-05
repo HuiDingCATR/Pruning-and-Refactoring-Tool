@@ -1,76 +1,235 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OpenModel_Profile="http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/OpenModel_Profile/_0tU-YNyQEeW6C_FaABjU5w/14 ../OpenModelProfile/OpenModel_Profile.profile.uml#_0tZP0NyQEeW6C_FaABjU5w">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OpenModel_Profile="http:///schemas/OpenModel_Profile/_zUTaADOEEeansfg7-s4Unw/16" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/OpenModel_Profile/_zUTaADOEEeansfg7-s4Unw/16 ../TapiModel/OpenModel_Profile.profile.uml#_zUTaATOEEeansfg7-s4Unw">
   <uml:Model xmi:id="_FVrMgBwSEeaTcI5su2FfNw" name="mapping">
+    <packagedElement xmi:type="uml:Package" xmi:id="_FVrMgBwSEeaTcI5su2FfNe" name="Imports">
+      <packageImport xmi:type="uml:PackageImport" xmi:id="_FVrMgBwSEeaTcI5su2Ffnj">
+        <importedPackage xmi:type="uml:Model" href="target.uml#_oZLBEG2LEeaNFtd-6iWCjQ"/>
+      </packageImport>
+      <packageImport xmi:type="uml:PackageImport" xmi:id="_FVrMgBwSEeaTcI5su2Ffnt">
+        <importedPackage xmi:type="uml:Model" href="source.uml#_oZLBEG2LEeaNFtd-6iWCjQ"/>
+      </packageImport>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_FVrMgBwSEeaTcI5su2Ffie" name="Classes and Attributes">
-      <packagedElement xmi:type="uml:Package" xmi:id="_abcdef_Class1_Package" name="Class1">
-        <packagedElement xmi:type="uml:Realization" xmi:id="_abcdef_Class1_PR" name="Class1">
-          <supplier xmi:type="uml:Class" href="source.uml#_abcdef_Class1"/>
-          <client xmi:type="uml:Class" href="target.uml#_abcdef_Class1"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class1_com1" annotatedElement="_abcdef_Class1_PR">
-            <body>name same.</body>
+      <packagedElement xmi:type="uml:Package" xmi:id="_yFuBIG9HEeaOdKrpfthYRA_pk" name="Class1">
+        <packagedElement xmi:type="uml:Realization" xmi:id="_yFuBIG9HEeaOdKrpfthYRA_PR" name="Class1">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_yFuBIG9HEeaOdKrpfthYRA_com1" annotatedElement="_yFuBIG9HEeaOdKrpfthYRA_PR">
+            <body>names are the same.</body>
           </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class1_com2" annotatedElement="_abcdef_Class1_PR">
-            <body>nodeType same.</body>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_yFuBIG9HEeaOdKrpfthYRA_com2" annotatedElement="_yFuBIG9HEeaOdKrpfthYRA_PR">
+            <body>visibilities are the same.</body>
           </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class1_com3" annotatedElement="_abcdef_Class1_PR">
-            <body>config same.</body>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_yFuBIG9HEeaOdKrpfthYRA_com3" annotatedElement="_yFuBIG9HEeaOdKrpfthYRA_PR">
+            <body>isAbstracts are the same.</body>
           </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_yFuBIG9HEeaOdKrpfthYRA_com4" annotatedElement="_yFuBIG9HEeaOdKrpfthYRA_PR">
+            <body>isActives are the same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_yFuBIG9HEeaOdKrpfthYRA_com5" annotatedElement="_yFuBIG9HEeaOdKrpfthYRA_PR">
+            <body>isLeafs are the same.</body>
+          </ownedComment>
+          <client xmi:type="uml:Class" href="target.uml#_yFuBIG9HEeaOdKrpfthYRA"/>
+          <supplier xmi:type="uml:Class" href="source.uml#_yFuBIG9HEeaOdKrpfthYRA"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Realization" xmi:id="_abcdef_assoc_class2_PR" name="class2">
-          <supplier xmi:type="uml:Attribute" href="source.uml#_abcdef_assoc_class2"/>
-          <client xmi:type="uml:Attribute" href="target.uml#_abcdef_assoc_class2"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com1" annotatedElement="_abcdef_assoc_class2_PR">
-            <body>config same.</body>
-          </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com2" annotatedElement="_abcdef_assoc_class2_PR">
-            <body>nodeType same.</body>
-          </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com3" annotatedElement="_abcdef_assoc_class2_PR">
-            <body>isUses same.</body>
-          </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com4" annotatedElement="_abcdef_assoc_class2_PR">
-            <body>isleafRef same.</body>
-          </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com5" annotatedElement="_abcdef_assoc_class2_PR">
-            <body>name of type same.</body>
-          </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_assoc_class2_com6" annotatedElement="_abcdef_assoc_class2_PR">
-            <body>path of type same.</body>
-          </ownedComment>
+        <packagedElement xmi:type="uml:Package" xmi:id="_yFuBIG9HEeaOdKrpfthYRA_apk" name="Attributes of Class1">
+          <packagedElement xmi:type="uml:Realization" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_PR" name="attr1">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com1" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>names are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com2" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>isReadOnlys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com3" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>isUses are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com4" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>isAbstracts are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com5" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>isleafRefs are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com6" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>isStatics are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com7" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>isUniques are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com8" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>aggregations are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com9" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>visibilitys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com10" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>partOfObjectKeys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_1_-3QG9HEeaOdKrpfthYRA_com11" annotatedElement="_1_-3QG9HEeaOdKrpfthYRA_PR">
+              <body>names of type are the same.</body>
+            </ownedComment>
+            <client xmi:type="uml:Property" href="target.uml#_1_-3QG9HEeaOdKrpfthYRA"/>
+            <supplier xmi:type="uml:Property" href="source.uml#_1_-3QG9HEeaOdKrpfthYRA"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Realization" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_PR" name="attr2">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com1" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>names are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com2" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>isReadOnlys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com3" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>isUses are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com4" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>isAbstracts are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com5" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>isleafRefs are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com6" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>isStatics are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com7" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>isUniques are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com8" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>aggregations are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com9" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>visibilitys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com10" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>partOfObjectKeys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_3uQW8G9HEeaOdKrpfthYRA_com11" annotatedElement="_3uQW8G9HEeaOdKrpfthYRA_PR">
+              <body>names of type are the same.</body>
+            </ownedComment>
+            <client xmi:type="uml:Property" href="target.uml#_3uQW8G9HEeaOdKrpfthYRA"/>
+            <supplier xmi:type="uml:Property" href="source.uml#_3uQW8G9HEeaOdKrpfthYRA"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Realization" xmi:id="_umeyxG9KEeaOdKrpfthYRA_PR" name="class2">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com1" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>names are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com2" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>isReadOnlys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com3" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>isUses are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com4" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>isAbstracts are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com5" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>isleafRefs are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com6" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>isStatics are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com7" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>isUniques are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com8" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>aggregations are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com9" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>visibilitys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com10" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>partOfObjectKeys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_umeyxG9KEeaOdKrpfthYRA_com11" annotatedElement="_umeyxG9KEeaOdKrpfthYRA_PR">
+              <body>names of type are the same.</body>
+            </ownedComment>
+            <client xmi:type="uml:Property" href="target.uml#_umeyxG9KEeaOdKrpfthYRA"/>
+            <supplier xmi:type="uml:Property" href="source.uml#_umeyxG9KEeaOdKrpfthYRA"/>
+          </packagedElement>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_abcdef_Class2_Package" name="Class2">
-        <packagedElement xmi:type="uml:Realization" xmi:id="_abcdef_Class2_PR" name="Class2">
-          <supplier xmi:type="uml:Class" href="source.uml#_abcdef_Class2"/>
-          <client xmi:type="uml:Class" href="target.uml#_abcdef_Class2"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class2_com1" annotatedElement="_abcdef_Class2_PR">
-            <body>name same.</body>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VX0x8G9KEeaOdKrpfthYRA_pk" name="Class2">
+        <packagedElement xmi:type="uml:Realization" xmi:id="_VX0x8G9KEeaOdKrpfthYRA_PR" name="Class2">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_VX0x8G9KEeaOdKrpfthYRA_com1" annotatedElement="_VX0x8G9KEeaOdKrpfthYRA_PR">
+            <body>names are the same.</body>
           </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class2_com2" annotatedElement="_abcdef_Class2_PR">
-            <body>nodeType same.</body>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_VX0x8G9KEeaOdKrpfthYRA_com2" annotatedElement="_VX0x8G9KEeaOdKrpfthYRA_PR">
+            <body>visibilities are the same.</body>
           </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Class2_com3" annotatedElement="_abcdef_Class2_PR">
-            <body>config same.</body>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_VX0x8G9KEeaOdKrpfthYRA_com3" annotatedElement="_VX0x8G9KEeaOdKrpfthYRA_PR">
+            <body>isAbstracts are the same.</body>
           </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_VX0x8G9KEeaOdKrpfthYRA_com4" annotatedElement="_VX0x8G9KEeaOdKrpfthYRA_PR">
+            <body>isActives are the same.</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_VX0x8G9KEeaOdKrpfthYRA_com5" annotatedElement="_VX0x8G9KEeaOdKrpfthYRA_PR">
+            <body>isLeafs are the same.</body>
+          </ownedComment>
+          <client xmi:type="uml:Class" href="target.uml#_VX0x8G9KEeaOdKrpfthYRA"/>
+          <supplier xmi:type="uml:Class" href="source.uml#_VX0x8G9KEeaOdKrpfthYRA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_VX0x8G9KEeaOdKrpfthYRA_apk" name="Attributes of Class2">
+          <packagedElement xmi:type="uml:Realization" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_PR" name="Attribute1">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com1" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>names are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com2" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>isReadOnlys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com3" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>isUses are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com4" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>isAbstracts are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com5" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>isleafRefs are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com6" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>isStatics are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com7" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>isUniques are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com8" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>aggregations are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com9" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>visibilitys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com10" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>partOfObjectKeys are the same.</body>
+            </ownedComment>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_com11" annotatedElement="_Zt1I4G9KEeaOdKrpfthYRA_PR">
+              <body>names of type are the same.</body>
+            </ownedComment>
+            <client xmi:type="uml:Property" href="target.uml#_Zt1I4G9KEeaOdKrpfthYRA"/>
+            <supplier xmi:type="uml:Property" href="source.uml#_Zt1I4G9KEeaOdKrpfthYRA"/>
+          </packagedElement>
         </packagedElement>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_JarZQOKxEeSq5fATALSQkQ" name="Associations">
-      <packagedElement xmi:type="uml:Realization" xmi:id="_abcdef_Association1_PR" name="undefined">
-        <supplier xmi:type="uml:Association" href="source.uml#_abcdef_Association1"/>
-        <client xmi:type="uml:Association" href="target.uml#_abcdef_Association1"/>
-        <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Association1_com1" annotatedElement="_abcdef_Association1_PR">
-          <body>memberEnd1 same.</body>
+      <packagedElement xmi:type="uml:Realization" xmi:id="_umeywG9KEeaOdKrpfthYRA_PR" name="undefined">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_umeywG9KEeaOdKrpfthYRA_com1" annotatedElement="_umeywG9KEeaOdKrpfthYRA_PR">
+          <body>memberEnd1s are the same.</body>
         </ownedComment>
-        <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Association1_com2" annotatedElement="_abcdef_Association1_PR">
-          <body>memberEnd2 same.</body>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_umeywG9KEeaOdKrpfthYRA_com2" annotatedElement="_umeywG9KEeaOdKrpfthYRA_PR">
+          <body>memberEnd2s are the same.</body>
         </ownedComment>
-        <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Association1_com3" annotatedElement="_abcdef_Association1_PR">
-          <body>associationType same.</body>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_umeywG9KEeaOdKrpfthYRA_com3" annotatedElement="_umeywG9KEeaOdKrpfthYRA_PR">
+          <body>associationTypes are the same.</body>
         </ownedComment>
-        <ownedComment xmi:type="uml:Comment" xmi:id="_abcdef_Association1_com4" annotatedElement="_abcdef_Association1_PR">
-          <body>upperValue same.</body>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_umeywG9KEeaOdKrpfthYRA_com4" annotatedElement="_umeywG9KEeaOdKrpfthYRA_PR">
+          <body>types are the same.</body>
         </ownedComment>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_umeywG9KEeaOdKrpfthYRA_com5" annotatedElement="_umeywG9KEeaOdKrpfthYRA_PR">
+          <body>ownedEndNames are the same.</body>
+        </ownedComment>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_umeywG9KEeaOdKrpfthYRA_com6" annotatedElement="_umeywG9KEeaOdKrpfthYRA_PR">
+          <body>upperValues are the same.</body>
+        </ownedComment>
+        <ownedComment xmi:type="uml:Comment" xmi:id="_umeywG9KEeaOdKrpfthYRA_com7" annotatedElement="_umeywG9KEeaOdKrpfthYRA_PR">
+          <body>lowerValues are the same.</body>
+        </ownedComment>
+        <client xmi:type="uml:Association" href="target.uml#_umeywG9KEeaOdKrpfthYRA"/>
+        <supplier xmi:type="uml:Association" href="source.uml#_umeywG9KEeaOdKrpfthYRA"/>
       </packagedElement>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_bty7UB5SEeaHceiWmTzrow">
@@ -86,9 +245,98 @@
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="../OpenModelProfile/OpenModel_Profile.profile.uml#_m1xqsHBgEd6FKu9XX1078A"/>
     </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_r7uOB3NuEeabGIBYPLYy4Q">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_r7uOCHNuEeabGIBYPLYy4Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../TapiModel/OpenModel_Profile.profile.uml#_zUTaATOEEeansfg7-s4Unw"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="../TapiModel/OpenModel_Profile.profile.uml#_m1xqsHBgEd6FKu9XX1078A"/>
+    </profileApplication>
   </uml:Model>
-  <OpenModel_Profile:PruneAndRefactor xmi:id="_abcdef_Class1_PR2" base_Realization="_abcdef_Class1_PR"/>
-  <OpenModel_Profile:PruneAndRefactor xmi:id="_abcdef_Class2_PR2" base_Realization="_abcdef_Class2_PR"/>
-  <OpenModel_Profile:PruneAndRefactor xmi:id="_abcdef_assoc_class2_PR2" base_Realization="_abcdef_assoc_class2_PR"/>
-  <OpenModel_Profile:PruneAndRefactor xmi:id="_abcdef_Association1_PR2" base_Realization="_abcdef_Association1_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_yFuBIG9HEeaOdKrpfthYRA_PR2" base_Realization="_yFuBIG9HEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_VX0x8G9KEeaOdKrpfthYRA_PR2" base_Realization="_VX0x8G9KEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_1_-3QG9HEeaOdKrpfthYRA_PR2" base_Realization="_1_-3QG9HEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_3uQW8G9HEeaOdKrpfthYRA_PR2" base_Realization="_3uQW8G9HEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_umeyxG9KEeaOdKrpfthYRA_PR2" base_Realization="_umeyxG9KEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_Zt1I4G9KEeaOdKrpfthYRA_PR2" base_Realization="_Zt1I4G9KEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:PruneAndRefactor xmi:id="_umeywG9KEeaOdKrpfthYRA_PR2" base_Realization="_umeywG9KEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-P9lXNuEeabGIBYPLYy4Q" base_Element="_FVrMgBwSEeaTcI5su2FfNw"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-P9lnNuEeabGIBYPLYy4Q" base_Element="_FVrMgBwSEeaTcI5su2FfNe"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-P9l3NuEeabGIBYPLYy4Q" base_Element="_FVrMgBwSEeaTcI5su2Ffnj"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-P9mHNuEeabGIBYPLYy4Q" base_Element="_FVrMgBwSEeaTcI5su2Ffnt"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZukHNuEeabGIBYPLYy4Q" base_Element="_FVrMgBwSEeaTcI5su2Ffie"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZukXNuEeabGIBYPLYy4Q" base_Element="_yFuBIG9HEeaOdKrpfthYRA_pk"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuknNuEeabGIBYPLYy4Q" base_Element="_yFuBIG9HEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zuk3NuEeabGIBYPLYy4Q" base_Element="_yFuBIG9HEeaOdKrpfthYRA_com1"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZulHNuEeabGIBYPLYy4Q" base_Element="_yFuBIG9HEeaOdKrpfthYRA_com2"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZulXNuEeabGIBYPLYy4Q" base_Element="_yFuBIG9HEeaOdKrpfthYRA_com3"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZulnNuEeabGIBYPLYy4Q" base_Element="_yFuBIG9HEeaOdKrpfthYRA_com4"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zul3NuEeabGIBYPLYy4Q" base_Element="_yFuBIG9HEeaOdKrpfthYRA_com5"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZumHNuEeabGIBYPLYy4Q" base_Element="_yFuBIG9HEeaOdKrpfthYRA_apk"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZumXNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZumnNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com1"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zum3NuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com2"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZunHNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com3"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZunXNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com4"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZunnNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com5"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zun3NuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com6"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuoHNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com7"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuoXNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com8"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuonNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com9"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zuo3NuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com10"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZupHNuEeabGIBYPLYy4Q" base_Element="_1_-3QG9HEeaOdKrpfthYRA_com11"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZupXNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZupnNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com1"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zup3NuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com2"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuqHNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com3"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuqXNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com4"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuqnNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com5"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zuq3NuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com6"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZurHNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com7"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZurXNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com8"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZurnNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com9"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zur3NuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com10"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZusHNuEeabGIBYPLYy4Q" base_Element="_3uQW8G9HEeaOdKrpfthYRA_com11"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZusXNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZusnNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com1"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zus3NuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com2"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZutHNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com3"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZutXNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com4"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZutnNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com5"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zut3NuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com6"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuuHNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com7"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuuXNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com8"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuunNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com9"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zuu3NuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com10"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuvHNuEeabGIBYPLYy4Q" base_Element="_umeyxG9KEeaOdKrpfthYRA_com11"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuvXNuEeabGIBYPLYy4Q" base_Element="_VX0x8G9KEeaOdKrpfthYRA_pk"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuvnNuEeabGIBYPLYy4Q" base_Element="_VX0x8G9KEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zuv3NuEeabGIBYPLYy4Q" base_Element="_VX0x8G9KEeaOdKrpfthYRA_com1"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuwHNuEeabGIBYPLYy4Q" base_Element="_VX0x8G9KEeaOdKrpfthYRA_com2"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuwXNuEeabGIBYPLYy4Q" base_Element="_VX0x8G9KEeaOdKrpfthYRA_com3"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuwnNuEeabGIBYPLYy4Q" base_Element="_VX0x8G9KEeaOdKrpfthYRA_com4"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zuw3NuEeabGIBYPLYy4Q" base_Element="_VX0x8G9KEeaOdKrpfthYRA_com5"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuxHNuEeabGIBYPLYy4Q" base_Element="_VX0x8G9KEeaOdKrpfthYRA_apk"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuxXNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuxnNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com1"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zux3NuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com2"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuyHNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com3"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuyXNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com4"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuynNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com5"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zuy3NuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com6"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuzHNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com7"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuzXNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com8"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-ZuznNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com9"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zuz3NuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com10"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu0HNuEeabGIBYPLYy4Q" base_Element="_Zt1I4G9KEeaOdKrpfthYRA_com11"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu0XNuEeabGIBYPLYy4Q" base_Element="_JarZQOKxEeSq5fATALSQkQ"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu0nNuEeabGIBYPLYy4Q" base_Element="_umeywG9KEeaOdKrpfthYRA_PR"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu03NuEeabGIBYPLYy4Q" base_Element="_umeywG9KEeaOdKrpfthYRA_com1"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu1HNuEeabGIBYPLYy4Q" base_Element="_umeywG9KEeaOdKrpfthYRA_com2"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu1XNuEeabGIBYPLYy4Q" base_Element="_umeywG9KEeaOdKrpfthYRA_com3"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu1nNuEeabGIBYPLYy4Q" base_Element="_umeywG9KEeaOdKrpfthYRA_com4"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu13NuEeabGIBYPLYy4Q" base_Element="_umeywG9KEeaOdKrpfthYRA_com5"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu2HNuEeabGIBYPLYy4Q" base_Element="_umeywG9KEeaOdKrpfthYRA_com6"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu2XNuEeabGIBYPLYy4Q" base_Element="_umeywG9KEeaOdKrpfthYRA_com7"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu2nNuEeabGIBYPLYy4Q" base_Element="_bty7UB5SEeaHceiWmTzrow"/>
+  <OpenModel_Profile:OpenModelElement xmi:id="_r-Zu23NuEeabGIBYPLYy4Q" base_Element="_r7uOB3NuEeabGIBYPLYy4Q"/>
 </xmi:XMI>
