@@ -360,6 +360,7 @@ function copyClass(){
                             copyclassid.className = copyAndSplit.copyClass[i];
                             copyclassid.attributeId = [];
                             copyclassid.associationId = [];
+                            copyclassid.fullAssociationId = [];
                             if(model.packagedElement.ownedAttribute){
                                 model.packagedElement.ownedAttribute.array ? lenAttribute = model.packagedElement.ownedAttribute.array.length : lenAttribute = 1;
                                 for(var k = 0; k < lenAttribute; k++){
@@ -407,7 +408,23 @@ function copyClass(){
                     copyData.push(tempData);
                 }
                 data = data.substring(0, indexEndLocate + 20) + copyData.join("\r\n") + "\r\n" + data.substring(indexEndLocate + 20);
-
+                indexEndLocate += 20 + copyData.join("\r\n").length;
+                var indent = 0;
+                if(tempData[0] == " "){
+                    indent = tempData.indexOf("<");
+                }else if(tempData[0] == "\r"){
+                    indent = tempData.indexOf("<") - 2;
+                }else{
+                    console.warn("Warning: There are some errors in copy class. Please recheck you uml files!");
+                }
+                copyData = fullConnectionAssociation(copyclassid, parseInt(copyAndSplit.copyNumber[i]), indent);
+                data = data.substring(0, indexEndLocate) + copyData + data.substring(indexEndLocate);
+                for(var j = 0; j < parseInt(copyAndSplit.copyNumber[i]); j++){
+                    for(var k = j + 1; k < parseInt(copyAndSplit.copyNumber[i]) + 1; k++){
+                        copyClassId[i].fullAssociationId.push(copyClassId[i].classId + "_cp" + j + "cp" + k);
+                        //break;
+                    }
+                }
             }
             if(copyAndSplit.copyClass.length != copyClassId.length){
                 console.warn("Warning: the length of copyClass is not consistent to the length of copyClassId.");
@@ -431,6 +448,10 @@ function copyClass(){
                 associationData = data.substring(indexStart, indexEnd);
                 for(var i = 0; i < copyClassId.length; i++){
                     if(associationData.indexOf(copyClassId[i].classId) != -1) {
+                        var subscript = associationData.indexOf(copyClassId[i].classId) + copyClassId[i].classId.length;
+                        if(associationData[subscript] != " " && associationData[subscript] != "\""){            // full connection association will affect the copyAssociation()
+                            break;
+                        }
                         addData = "";
                         //tempData = copyAssociation(associationData, copyClassId[i].classId);
                         tempData = copyAssociation(associationData, i);
@@ -467,22 +488,25 @@ function copyClass(){
             for(var i = 0; i < copyClassId.length; i++){
                 id = copyClassId[i].classId;
                 for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
-                    addPostfix(id, k + 1);
+                    addData += addPostfix(openModelProfileData, id, k + 1);
                 }
 
                 for(var j = 0; j < copyClassId[i].attributeId.length; j++){
                     for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
                         id = copyClassId[i].attributeId[j];
                         //addPostfix("\"" + id + "\"", k + 1);
-                        addPostfix(id, k + 1);
+                        addData += addPostfix(openModelProfileData, id, k + 1);
                     }
                 }
                 for(var j = 0; j < copyClassId[i].associationId.length; j++){
                     for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
                         id = copyClassId[i].associationId[j];
                         //addPostfix("\"" + id + "\"", k + 1);
-                        addPostfix(id, k + 1);
+                        addData += addPostfix(openModelProfileData, id, k + 1);
                     }
+                }
+                for(var j = 0; j < copyClassId[i].fullAssociationId.length; j++){
+                    addData += "\r\n  <OpenModel_Profile:OpenModelElement xmi:id=\"" + copyClassId[i].fullAssociationId[j] + "_\" base_Element=\"" + copyClassId[i].fullAssociationId[j] + "\"/>";
                 }
             }
             data = data.substring(0, indexUmlEnd) + addData + data.substring(indexUmlEnd);
@@ -497,37 +521,7 @@ function copyClass(){
 
 
 
-        function addPostfix(element, count){
-            var index = 0;
-            var indexId = 0;
-            var indexLineEnd = 0;
-            var indexLineStart = 0;
-            var lineData = "";
-            //var addData = "";
-            while(openModelProfileData.indexOf(element, index) != -1){
-                indexId = openModelProfileData.indexOf(element, index);
-                indexLineEnd = openModelProfileData.indexOf("\r\n", indexId);
-                if(indexId < 160){
-                    indexLineStart = 0;
-                }else{
-                    indexLineStart = openModelProfileData.indexOf("\r\n", indexId - 160);
-                }
-                lineData = openModelProfileData.substring(indexLineStart, indexLineEnd);
-                var lineDataArray = lineData.split("\"");
-                lineDataArray[1] += "_cp" + count;
-                lineDataArray[3] += "_cp" + count;
-                if(lineDataArray[5] != undefined && lineDataArray[5] == id){
-                    lineDataArray[5] += "_cp" + count;
-                }
-                test++;
-                lineData = lineDataArray.join("\"");
-                //console.log(lineData);
-
-                addData += lineData;
-                index = indexLineEnd;
-            }
-
-        }
+        
 
 
 
@@ -556,6 +550,78 @@ function copyClass(){
             console.log('There is no target file. We clone the source file as target file.');
         });*!/
     });*/
+}
+
+function addPostfix(openModelProfileData, element, count){
+    var index = 0;
+    var indexId = 0;
+    var indexLineEnd = 0;
+    var indexLineStart = 0;
+    var lineData = "";
+    var addData = "";
+    while(openModelProfileData.indexOf(element, index) != -1){
+        indexId = openModelProfileData.indexOf(element, index);
+        indexLineEnd = openModelProfileData.indexOf("\r\n", indexId);
+        if(indexId < 160){
+            indexLineStart = 0;
+        }else{
+            indexLineStart = openModelProfileData.indexOf("\r\n", indexId - 160);
+        }
+        lineData = openModelProfileData.substring(indexLineStart, indexLineEnd);
+        var lineDataArray = lineData.split("\"");
+        lineDataArray[1] += "_cp" + count;
+        lineDataArray[3] += "_cp" + count;
+        if(lineDataArray[5] != undefined && lineDataArray[5] == id){
+            lineDataArray[5] += "_cp" + count;
+        }
+        //test++;
+        lineData = lineDataArray.join("\"");
+        //console.log(lineData);
+
+        addData += lineData;
+        index = indexLineEnd;
+    }
+    return addData;
+
+}
+
+function fullConnectionAssociation(copyclassid, copyNumber, indent){
+    var associationData = "\r\n";
+    var postfix = "";
+    var postfix1 = "";
+    var postfix2 = "";
+    var PRE = "";
+    while(indent > 0){
+        PRE += " ";
+        indent--;
+    }
+    for(var i = 0; i < copyNumber; i++){
+        for(var j = i + 1; j < copyNumber + 1; j++){
+            postfix = "_cp" + i + "cp" + j;
+            postfix1 = "_cp" + i + "as" + j;
+            postfix2 = "_cp" + j + "as" + i;
+            associationData += "<packagedElement xmi:type=\"uml:Association\" xmi:id=\"" + copyclassid.classId + postfix + "\" name=\"" + copyclassid.className + postfix + "\" memberEnd=\""+ copyclassid.classId + postfix1 + " " + copyclassid.classId + postfix2 + "\">\r\n";
+            associationData += "  <eAnnotations xmi:type=\"ecore:EAnnotation\" xmi:id=\"" + copyclassid.classId + postfix + "_\" source=\"http://www.eclipse.org/uml2/2.0.0/UML\">\r\n";
+            associationData += "    <details xmi:type=\"ecore:EStringToStringMapEntry\" xmi:id=\"" + copyclassid.classId + postfix + "__\" key=\"names\"/>\r\n";
+            associationData += "  </eAnnotations>\r\n";
+            if(i == 0){
+                associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix1 + "\" name=\"" + copyclassid.className + postfix1 + "\" visibility=\"private\" type=\"" + copyclassid.classId +  "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+            }else{
+                associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix1 + "\" name=\"" + copyclassid.className + postfix1 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_cp" + i + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+            }
+            associationData += "    <lowerValue xmi:type=\"uml:LiteralInteger\" xmi:id=\"" + copyclassid.classId + postfix1 + "_\"/>\r\n";
+            associationData += "    <upperValue xmi:type=\"uml:LiteralUnlimitedNatural\" xmi:id=\"" + copyclassid.classId + postfix1 + "__\" value=\"1\"/>\r\n";
+            associationData += "  </ownedEnd>\r\n";
+            associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_cp" + j + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+            associationData += "    <lowerValue xmi:type=\"uml:LiteralInteger\" xmi:id=\"" + copyclassid.classId + postfix2 + "_\"/>\r\n";
+            associationData += "    <upperValue xmi:type=\"uml:LiteralUnlimitedNatural\" xmi:id=\"" + copyclassid.classId + postfix2 + "__\" value=\"1\"/>\r\n";
+            associationData += "  </ownedEnd>\r\n";
+            associationData += "</packagedElement>\r\n";
+        }
+    }
+    associationData = associationData.replace(/\r\n$/g, "");
+    associationData = associationData.replace(/\r\n/g, "\r\n" + PRE);
+    return associationData;
 }
 
 function copyAssociation(associationData, i) {
@@ -2388,6 +2454,8 @@ function writeUml() {
         log += "\t\t\t\t\t<client xmi:type=\"uml:Class\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
         log += "\t\t\t\t\t<supplier xmi:type=\"uml:Class\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
         log += "\t\t\t\t</packagedElement>\r\n";
+        log += "\t\t\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"" + client.id + "_apk\" name=\"Attributes of " + client.name + "\">\r\n";
+
         for(var j = 0; j < attributeCompare.length; j++){
             if(client.id == attributeCompare[j].clientClass.id){
                 temp = 1;
@@ -2474,13 +2542,14 @@ function writeUml() {
 
                 //comparisonAtt = comparisonAtt.replace(/\r\n$/g, '');
                 //comparisonAtt = comparisonAtt.replace(/\r\n/g, '\r\n\t\t\t\t\t\t');
-                log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].client.id + "_PR\" name=\"" + attributeCompare[j].client.name + "\">\r\n";
-                log += comparisonAtt;
-                log += "\t\t\t\t\t<client xmi:type=\"uml:Property\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
-                log += "\t\t\t\t\t<supplier xmi:type=\"uml:Property\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
-                log += "\t\t\t\t</packagedElement>\r\n";
+                log += "\t\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].client.id + "_PR\" name=\"" + attributeCompare[j].client.name + "\">\r\n";
+                log += "\t" + comparisonAtt;
+                log += "\t\t\t\t\t\t<client xmi:type=\"uml:Property\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
+                log += "\t\t\t\t\t\t<supplier xmi:type=\"uml:Property\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
+                log += "\t\t\t\t\t</packagedElement>\r\n";
             }
         }
+        log += "\t\t\t\t</packagedElement>\r\n";
         log += "\t\t\t</packagedElement>\r\n";
 
     }
@@ -2551,7 +2620,7 @@ function writeUml() {
     log += "</xmi:XMI>\r\n";
     log = log.replace(/\t/g, '  ');
     try{
-        fs.writeFile("./project/mapping/" + path,log,function (error) {
+        fs.writeFile("./project/" + path,log,function (error) {
             //fs.writeFile("./project/"+path,log,function (error) {
             if(error){
                 console.log(error.stack);
