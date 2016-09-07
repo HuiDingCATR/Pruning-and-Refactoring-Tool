@@ -480,7 +480,14 @@ function copyClass(){
 
                 }
             }
-            var indexUmlEnd = data.indexOf("</uml:Package>") + 14;
+            var indexUmlEnd;
+            if(data.indexOf("</uml:Package>") != -1){
+                indexUmlEnd = data.indexOf("</uml:Package>") + 14;
+            }else if(data.indexOf("</uml:Model>") != -1){
+                indexUmlEnd = data.indexOf("</uml:Model>") + 12;
+            }else{
+                console.warn("Warning :Can not find the tag 'uml:Package' or 'uml:Model' of" + clientFileName + "! Please check out the xml file")
+            }
             var openModelProfileData = data.substring(indexUmlEnd);         //openModel_Profile part
             var addData = "";
             var id;
@@ -552,15 +559,15 @@ function copyClass(){
     });*/
 }
 
-function addPostfix(openModelProfileData, element, count){
+function addPostfix(openModelProfileData, id, count){
     var index = 0;
     var indexId = 0;
     var indexLineEnd = 0;
     var indexLineStart = 0;
     var lineData = "";
     var addData = "";
-    while(openModelProfileData.indexOf(element, index) != -1){
-        indexId = openModelProfileData.indexOf(element, index);
+    while(openModelProfileData.indexOf(id, index) != -1){
+        indexId = openModelProfileData.indexOf(id, index);
         indexLineEnd = openModelProfileData.indexOf("\r\n", indexId);
         if(indexId < 160){
             indexLineStart = 0;
@@ -1516,6 +1523,8 @@ function createAssociation(obj) {
                 break;
             }
         }
+        obj.ownedEnd.upperValue != undefined ? upperValue = obj.ownedEnd.upperValue.attributes().value : upperValue = "*";
+        obj.ownedEnd.lowerValue != undefined ? lowerValue = obj.ownedEnd.lowerValue.attributes().value : lowerValue = 0;
     }else if(associationType == 2){
         if(obj.ownedEnd.array.length == 2){
             memberEnd1 = obj.ownedEnd.array[0].attributes().type;
@@ -1526,8 +1535,12 @@ function createAssociation(obj) {
     }
     type = "";
     //type = obj.ownedEnd.attributes()["type"];
-    obj.ownedEnd.upperValue ? upperValue = obj.ownedEnd.upperValue.attributes().value : upperValue = "*";
-    obj.ownedEnd.lowerValue ? lowerValue = obj.ownedEnd.lowerValue.attributes().value : lowerValue = 0;
+    /*if(obj.ownedEnd.upperValue == undefined){
+        
+    }else{
+        upperValue = obj.ownedEnd.upperValue.attributes().value;
+
+    }*/
 
     for(var i = 0; i < association.length; i++){
         if(id == association[i].id && currentFileName == association.fileName){
@@ -1652,6 +1665,10 @@ function obj2yang(ele){
                 for(var j = 0; j < ele[i].generalization.length; j++) {
                     for (var k = 0; k < Typedef.length; k++) {
                         if(ele[i].generalization[j] == Typedef[k].id && ele[i].fileName == Typedef[k].fileName){
+                            //console.log("");
+                            if(ele[i].attribute.length == 0){
+                                break;
+                            }
                             ele[i].attribute[0].children = Typedef[k].attribute[0].children.concat(ele[i].attribute[0].children);
                             break;
                         }
