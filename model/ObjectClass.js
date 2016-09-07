@@ -51,7 +51,10 @@ Class.prototype.buildEnum = function(obj) {
     var enumComment;
     var enumValue;
     var enumNode;
-    if (literal.array) {
+    if(literal == undefined){
+        return;
+    }
+    if (literal.array != undefined) {
         // More than one enumerated value
         for (var i = 0; i < literal.array.length; i++) {
             enumValue = literal.array[i].attributes().name;
@@ -120,7 +123,10 @@ Class.prototype.buildAttribute = function(att){
                 }
             }
         }else if(att['ownedComment'].body){
-            comment = att['ownedComment'].body.text();
+            //console.log("ownedComment " +  att.attributes()["xmi:id"]);
+            //if(att['ownedComment'].body.text()){
+                comment = att['ownedComment'].body.text();
+            //}
         }else{
             console.log("The comment of Class " + att.attributes().name + " is undefined!")
         }
