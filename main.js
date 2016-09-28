@@ -12,6 +12,7 @@
 ****************************************************************************************************/
 var xmlreader = require('xmlreader'),
     xmlwriter = require('xml-writer'),
+    xmlbuilder = require('xmlbuilder'),
     fs = require('fs'),
     repl = require('repl'),
     readline = require('readline'),
@@ -56,6 +57,8 @@ var supplierFileName = "source.uml";
 var clientFileName = "target.uml";
 var copyAndSplit;
 var copyClassId = [];
+var copyAttributeId = [];
+var copyAssociationId = [];
 var supplierId = "";
 var clientId = "";
 
@@ -260,6 +263,19 @@ function readCopyAndSplit(){
                     }
                 }
             }
+
+            //parse copyNumber and splitNumber to int
+            if(copyAndSplit.copyNumber){
+                for(var i = 0; i < copyAndSplit.copyNumber.length; i++){
+                    copyAndSplit.copyNumber[i] = parseInt(copyAndSplit.copyNumber[i]);
+                }
+            }
+            if(copyAndSplit.splitNumber){
+                for(var i = 0; i < copyAndSplit.splitNumber.length; i++){
+                    copyAndSplit.splitNumber[i] = parseInt(copyAndSplit.splitNumber[i]);
+                }
+            }
+
             console.log("CopyAndSplit.txt read successfully!");
         }else{
             console.log('There is no \'CopyAndSplit.txt\'. Please recheck your files according to the guideline!');
@@ -347,13 +363,15 @@ function copyClass(){
                 }
                 indexEndLocate = data.indexOf("</packagedElement>", indexCopyClass);
                 var copyData = [];
+                // get data of origin class
                 var tempData = data.substring(indexNewLine + 2, indexEndLocate + 18);
                 var copyclassid = {};
                 var lenAttribute;
                 var obj;
+                //var fullAssociationFlag = false;
                 xmlreader.read(tempData, function(error, model) {
                     if (error) {
-                        console.log('There was a problem reading data from ' + filename + '. Please check your xmlreader module and nodejs!\t\n' + error.stack);
+                        console.log('There was a problem reading data from ' + clientFileName + '. Please check your xmlreader module and nodejs!\t\n' + error.stack);
                     } else {
                         if(model.packagedElement.attributes()["xmi:type"] == "uml:Class"){
                             copyclassid.classId = model.packagedElement.attributes()["xmi:id"];
@@ -364,16 +382,20 @@ function copyClass(){
                             if(model.packagedElement.ownedAttribute){
                                 model.packagedElement.ownedAttribute.array ? lenAttribute = model.packagedElement.ownedAttribute.array.length : lenAttribute = 1;
                                 for(var k = 0; k < lenAttribute; k++){
-                                    lenAttribute == 1 ? obj = model.packagedElement.ownedAttribute : obj = obj = model.packagedElement.ownedAttribute.array[k];
+                                    lenAttribute == 1 ? obj = model.packagedElement.ownedAttribute : obj = model.packagedElement.ownedAttribute.array[k];
                                     copyclassid.attributeId.push(obj.attributes()["xmi:id"]);
+                                    /*if(obj.attributes().type && (obj.attributes().type == copyclassid.classId)){
+                                        fullAssociationFlag = true;
+                                    }*/
                                     //copyclassid.attributeName.push(obj.attributes()["name"]);
                                 }
                             }
                             copyClassId.push(copyclassid);
                         }
                     }
-                })
-                for(var j = 0; j < parseInt(copyAndSplit.copyNumber[i]); j++){
+                });
+                var originData = data.substring(indexNewLine + 2, indexEndLocate + 18);
+                for(var j = 0; j < copyAndSplit.copyNumber[i]; j++){
                     //get "uml:Class" paragraph
                     var copyLoc = 0;
                     var quoteLoc = 0;
@@ -404,7 +426,9 @@ function copyClass(){
                         tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
                         copyLoc = quoteLoc;
                     }
-
+                    /*if(fullAssociationFlag){
+                        tempData = addAssociationAttribute(tempData, j + 1, i);
+                    }*/
                     copyData.push(tempData);
                 }
                 data = data.substring(0, indexEndLocate + 20) + copyData.join("\r\n") + "\r\n" + data.substring(indexEndLocate + 20);
@@ -417,14 +441,26 @@ function copyClass(){
                 }else{
                     console.warn("Warning: There are some errors in copy class. Please recheck you uml files!");
                 }
-                copyData = fullConnectionAssociation(copyclassid, parseInt(copyAndSplit.copyNumber[i]), indent);
-                data = data.substring(0, indexEndLocate) + copyData + data.substring(indexEndLocate);
-                for(var j = 0; j < parseInt(copyAndSplit.copyNumber[i]); j++){
-                    for(var k = j + 1; k < parseInt(copyAndSplit.copyNumber[i]) + 1; k++){
+                /*if(fullAssociationFlag){
+                    copyData = fullConnectionAssociation(copyclassid, copyAndSplit.copyNumber[i], indent);
+                }else{
+                    copyData = "";
+                }*/
+                //data = data.substring(0, indexEndLocate) + copyData + data.substring(indexEndLocate);
+                /*if(fullAssociationFlag){
+                    data = data.replace(originData, addAssociationAttribute(originData, 0, i));
+                }*/
+
+                for(var j = 0; j < copyAndSplit.copyNumber[i]; j++){
+                    for(var k = j + 1; k < copyAndSplit.copyNumber[i] + 1; k++){
                         copyClassId[i].fullAssociationId.push(copyClassId[i].classId + "_cp" + j + "cp" + k);
                         //break;
                     }
                 }
+                //tempData = data.substring(indexNewLine + 2, indexEndLocate + 18);
+                //data = data.substring(0, indexNewLine + 2) + addAssociationAttribute(tempData, 0, i); + data.substring(indexEndLocate + 18);
+
+                
             }
             if(copyAndSplit.copyClass.length != copyClassId.length){
                 console.warn("Warning: the length of copyClass is not consistent to the length of copyClassId.");
@@ -443,10 +479,55 @@ function copyClass(){
             while(data.indexOf("<packagedElement xmi:type=\"uml:Association\"", indexEnd) != -1){
                 indexStart = data.indexOf("<packagedElement xmi:type=\"uml:Association\"", indexEnd);
                 indexStart = data.indexOf("\r\n", indexStart - 20);
+                /*var indexTemp = data.indexOf(/\r\n\s+<packagedElement xmi:type="uml:Association"/g, indexEnd);
+                if(indexTemp == indexStart){
+                    console.log("equal.");
+                }else{
+                    console.log("not equal.");
+                }
+                */
                 indexEnd = data.indexOf("</packagedElement>", indexStart);
                 indexEnd += "</packagedElement>".length;
                 associationData = data.substring(indexStart, indexEnd);
-                for(var i = 0; i < copyClassId.length; i++){
+                var associationId;
+                xmlreader.read(associationData, function(error, model) {
+                    if (error) {
+                        console.log('There was a problem reading data from ' + clientFileName + '. Please check your xmlreader module and nodejs!\t\n' + error.stack);
+                    } else {
+                        associationId = model.packagedElement.attributes()["xmi:id"];
+                    }
+                });
+                for(var j = 0; j < association.length; j++){
+                    if(associationId == association[j].id){
+                        console.log(" ");
+                        var copyFlag1 = false;
+                        var copyFlag2 = false;
+                        /*if(association[j].associationType == 0){
+                            copyFlag1 = copyAssociationOrNot(association[j].memberEnd1, "attribute");
+                            copyFlag2 = copyAssociationOrNot(association[j].memberEnd2, "attribute");
+                        }else if(association[j].associationType == 1){
+                            copyFlag1 = copyAssociationOrNot(association[j].memberEnd1, "attribute");
+                            copyFlag2 = copyAssociationOrNot(association[j].memberEnd2, "class");
+                        }else if(association[j].associationType == 2){
+                            copyFlag1 = copyAssociationOrNot(association[j].memberEnd1, "class");
+                            copyFlag2 = copyAssociationOrNot(association[j].memberEnd2, "class");
+                        }*/
+                        if(association[j].associationType == 1){
+                            copyFlag1 = copyAssociationOrNot(association[j].memberEnd1, "attribute");
+                            copyFlag2 = copyAssociationOrNot(association[j].memberEnd2, "class");
+                            if(copyFlag1 != false && copyFlag2 != false){
+                                tempData = copyAssociation(associationData, copyFlag1, copyFlag2, association[j])
+                                data = data.substring(0, indexEnd) + tempData + data.substring(indexEnd);
+                                //addAssociationAttribute(association.memberEnd1, num1, num2);
+                                indexEnd += tempData.length;
+                            }
+
+                        }
+                        break;
+                    }
+                }
+
+                /*for(var i = 0; i < copyClassId.length; i++){
                     if(associationData.indexOf(copyClassId[i].classId) != -1) {
                         var subscript = associationData.indexOf(copyClassId[i].classId) + copyClassId[i].classId.length;
                         if(associationData[subscript] != " " && associationData[subscript] != "\""){            // full connection association will affect the copyAssociation()
@@ -478,8 +559,130 @@ function copyClass(){
                         }
                     }
 
+                }*/
+            }
+            //fs.writeFileSync("./project/test.uml", data);
+
+            indexStart = 0;
+            indexEnd = 0;
+            var attributeData = "";
+            var copyData = "";
+            var test = 0;
+            for(var i = 0; i < copyAssociationId.length; i++){
+                indexStart = 0;
+                indexEnd = 0;
+                while(data.indexOf("<ownedAttribute xmi:type=\"uml:Property\" xmi:id=\"" + copyAssociationId[i].attributeId, indexEnd) != -1){
+                    indexStart = data.indexOf("<ownedAttribute xmi:type=\"uml:Property\" xmi:id=\"" + copyAssociationId[i].attributeId, indexEnd);
+                    indexStart = data.lastIndexOf("\r\n", indexStart);
+                    var bracketLeft = data.indexOf("<", indexStart);
+                    var bracketRight;
+                    var bracketLast = bracketLeft;
+                    var minus = 1;
+                    //var reg=new RegExp('</w', 'g');
+                    while(minus != 0){
+                        bracketLeft = data.indexOf("<", bracketLast + 2);
+                        while(data[bracketLeft + 1] == "/"){
+                            bracketLeft = data.indexOf("<", bracketLeft + 2);
+                        }
+                        bracketRight = data.indexOf("/", bracketLast + 2);
+                        while(data[bracketRight + 1] != ">" && data[bracketRight - 1] != "<"){
+                            bracketRight = data.indexOf("/", bracketRight + 2);
+                        }
+                        //bracketRight = data.indexOf("/", bracketLast + 1);
+                        if(bracketLeft < bracketRight){
+                            bracketLast = bracketLeft;
+                            minus++;
+                        }else if(bracketLeft > bracketRight){
+                            bracketLast = bracketRight;
+                            minus--;
+                        }
+                    }
+                    indexEnd = data.indexOf(">", bracketRight) + 1;
+
+                    /*indexEnd = data.indexOf("</ownedAttribute>", indexStart);
+                    indexEnd += "</ownedAttribute>".length;*/
+                    attributeData = data.substring(indexStart, indexEnd);
+                    var xmiLoc = attributeData.indexOf("xmi:id=");
+                    var quoteLoc = attributeData.indexOf("\"", xmiLoc + 10);
+                    var id = attributeData.substring(xmiLoc + "xmi:id=\"".length, quoteLoc);
+                    xmiLoc = 0;
+                    quoteLoc = 0;
+                    while(attributeData.indexOf("xmi:id=\"",quoteLoc) != -1){
+                        xmiLoc = attributeData.indexOf("xmi:id=\"",quoteLoc);
+                        quoteLoc = attributeData.indexOf("\"",xmiLoc + "xmi:id=\"".length);
+                        attributeData = attributeData.substring(0, quoteLoc) + "_flag" + attributeData.substring(quoteLoc);
+                    }
+                    xmiLoc = 0;
+                    quoteLoc = 0;
+                    while(attributeData.indexOf("name=\"",quoteLoc) != -1){
+                        xmiLoc = attributeData.indexOf("name=\"",quoteLoc);
+                        quoteLoc = attributeData.indexOf("\"",xmiLoc + "name=\"".length);
+                        attributeData = attributeData.substring(0, quoteLoc) + "_flag" + attributeData.substring(quoteLoc);
+                    }
+                    xmiLoc = 0;
+                    quoteLoc = 0;
+                    while(attributeData.indexOf(" type=\"",quoteLoc) != -1){
+                        xmiLoc = attributeData.indexOf(" type=\"",quoteLoc);
+                        quoteLoc = attributeData.indexOf("\"",xmiLoc + " type=\"".length);
+                        attributeData = attributeData.substring(0, quoteLoc) + "_typeflag" + attributeData.substring(quoteLoc);
+                    }
+                    xmiLoc = 0;
+                    quoteLoc = 0;
+                    while(attributeData.indexOf("association=\"",quoteLoc) != -1){
+                        xmiLoc = attributeData.indexOf("association=\"",quoteLoc);
+                        quoteLoc = attributeData.indexOf("\"",xmiLoc + "association=\"".length);
+                        attributeData = attributeData.substring(0, quoteLoc) + "_assoflag" + attributeData.substring(quoteLoc);
+                    }
+                    copyData = ""
+                    if(id.split("_cp").length == 2){
+                        for(var j = 0; j <= copyAssociationId[i].num2; j++){
+                            var tempData = attributeData;
+                            tempData = tempData.replace(/_flag/g, "as" + j);
+                            tempData = tempData.replace(/_typeflag/g, "_cp" + j);
+                            tempData = tempData.replace(/_assoflag/g, "_cp" + id.split("_cp")[1] + "cp" + j);
+                            copyData += tempData;
+
+                        }
+                        copyData = copyData.replace(/_cp0"/g, "\"");
+                        data = data.substring(0, indexStart) + copyData + data.substring(indexEnd);
+                        indexEnd = copyData.length + indexStart;
+                    }else if(id.split("_cp").length == 1){
+                        for(var j = 1; j <= copyAssociationId[i].num2; j++){
+                            var tempData = attributeData;
+                            tempData = tempData.replace(/_flag/g, "_cp0as" + j);
+                            tempData = tempData.replace(/_typeflag/g, "_cp" + j);
+                            tempData = tempData.replace(/_assoflag/g, "_cp0cp" + j);
+                            copyData += tempData;
+                        }
+                        copyData = tempData.replace(/_cp0"/g, "\"");
+                        data = data.substring(0, indexEnd) + copyData + data.substring(indexEnd);
+                        indexEnd += copyData.length;
+                    }else{
+                        console.log("something wrong.")
+
+                    }
+                    /*if(test < 10){
+                     fs.writeFileSync("./project/test" + test + ".uml", data);
+                     }*/
+                    //indexEnd += copyData.length + indexEnd - indexStart;
+                    //console.log("test" + (test++));
                 }
             }
+
+            for(var i = 0; i < copyClassId.length; i++){
+                for(var j = 0; j < copyClassId[i].attributeId.length; j++){
+                    for(var k = 0; k < copyAssociationId.length; k++){
+                        if(copyClassId[i].attributeId[j] == copyAssociationId[k].attributeId){
+                            copyClassId[i].attributeId.splice(j--, 1);
+                            //copyClassId[i].attributeId.remove(copyAssociationId[k].attributeId);
+                            console.log("test.");
+
+                        }
+                    }
+                }
+            }
+
+
             var indexUmlEnd;
             if(data.indexOf("</uml:Package>") != -1){
                 indexUmlEnd = data.indexOf("</uml:Package>") + 14;
@@ -491,32 +694,45 @@ function copyClass(){
             var openModelProfileData = data.substring(indexUmlEnd);         //openModel_Profile part
             var addData = "";
             var id;
-            var test = 0;
             for(var i = 0; i < copyClassId.length; i++){
                 id = copyClassId[i].classId;
-                for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
-                    addData += addPostfix(openModelProfileData, id, k + 1);
-                }
+                openModelProfileData = addPostfix(openModelProfileData, id, "class", copyAndSplit.copyNumber[i]);
 
                 for(var j = 0; j < copyClassId[i].attributeId.length; j++){
-                    for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
-                        id = copyClassId[i].attributeId[j];
-                        //addPostfix("\"" + id + "\"", k + 1);
-                        addData += addPostfix(openModelProfileData, id, k + 1);
-                    }
+                    id = copyClassId[i].attributeId[j];
+                    //addPostfix("\"" + id + "\"", k + 1);
+                    openModelProfileData = addPostfix(openModelProfileData, id, "attribute", copyAndSplit.copyNumber[i]);
                 }
-                for(var j = 0; j < copyClassId[i].associationId.length; j++){
-                    for(var k = 0; k < parseInt(copyAndSplit.copyNumber[i]); k++){
+                /*for(var j = 0; j < copyClassId[i].associationId.length; j++){
+                    for(var k = 0; k < copyAndSplit.copyNumber[i]; k++){
                         id = copyClassId[i].associationId[j];
                         //addPostfix("\"" + id + "\"", k + 1);
-                        addData += addPostfix(openModelProfileData, id, k + 1);
+                        openModelProfileData = addPostfix(openModelProfileData, id, k + 1);
                     }
-                }
-                for(var j = 0; j < copyClassId[i].fullAssociationId.length; j++){
+                }*/
+                /*for(var j = 0; j < copyClassId[i].fullAssociationId.length; j++){
                     addData += "\r\n  <OpenModel_Profile:OpenModelElement xmi:id=\"" + copyClassId[i].fullAssociationId[j] + "_\" base_Element=\"" + copyClassId[i].fullAssociationId[j] + "\"/>";
-                }
+                }*/
+                /*if(fullAssociationFlag){
+                    for(var j = 0; j < copyAndSplit.copyNumber[i]; j++){
+                        for(var k = 0; k < copyAndSplit.copyNumber[i]; k++){
+                            if(j == k){
+                                continue;
+                            }
+                            var postfix = "_cp" + j + "as" + k;
+                            addData += "\r\n  <OpenModel_Profile:Attribute xmi:id=\"" + copyClassId[i].classId + postfix + "_\" base_Element=\"" + copyClassId[i].classId + postfix + "\"/>";
+                        }
+                    }
+                }*/
+
             }
-            data = data.substring(0, indexUmlEnd) + addData + data.substring(indexUmlEnd);
+            for(var i = 0; i < copyAssociationId.length; i++){
+                openModelProfileData = addPostfix(openModelProfileData, copyAssociationId[i].associationId, "association", copyAssociationId[i].num1, copyAssociationId[i].num2);
+                openModelProfileData = addPostfix(openModelProfileData, copyAssociationId[i].attributeId, "addattribute", copyAssociationId[i].num1, copyAssociationId[i].num2);
+
+            }
+            //data = data.substring(0, indexUmlEnd) + addData + data.substring(indexUmlEnd);
+            data = data.substring(0, indexUmlEnd) + openModelProfileData;
 
             //console.log(associationData);
             /*xmlreader.read(associationData, function(error, model) {
@@ -559,7 +775,56 @@ function copyClass(){
     });*/
 }
 
-function addPostfix(openModelProfileData, id, count){
+function copyAssociationOrNot(memberEnd, type){
+    if(type == "class"){
+        for(var i = 0; i < copyClassId.length; i++){
+            if(memberEnd == copyClassId[i].classId){
+                return copyAndSplit.copyNumber[i];
+                break;
+            }
+        }
+        if(i == copyClassId.length){
+            return false;
+        }
+    }
+    //var flag = true;
+    if(type == "attribute"){
+        for(var i = 0; i < copyClassId.length; i++){
+            for(var j = 0; j < copyClassId[i].attributeId.length; j++){
+                if(memberEnd == copyClassId[i].attributeId[j]){
+                    return copyAndSplit.copyNumber[i];
+                }
+            }
+        }
+        return false;
+    }
+}
+
+/*function addAssociationAttribute(data, currentIndex, copyClassIndex){
+    var indent = data.indexOf("<") + 2;
+    var PRE = "";
+    while(indent-- > 0){
+        PRE += " ";
+    }
+    var id = copyClassId[copyClassIndex].classId;
+    var name = copyClassId[copyClassIndex].className;
+    var length = parseInt(copyAndSplit.copyNumber[copyClassIndex]);
+
+    var tempData = "<ownedAttribute xmi:type=\"uml:Property\" xmi:id=\"" + id + "_cp" + currentIndex + "as_flag" + "\" name=\"" + name + "_cp" + currentIndex + "as_flag\" visibility=\"public\" type=\"" + id + "_cp" + currentIndex + "\" association=\"" + id + "_cp" + currentIndex + "cp_flag\"/>";
+    var addData = "";
+    tempData = tempData.replace(/_cp0"/g, "\"");
+    for(var i = 0; i <= length; i++){
+        if(i == currentIndex){
+            continue;
+        }
+        addData += "\r\n" + PRE + tempData.replace(/_flag/g, i);
+    }
+    var insertIndex = data.indexOf("\r\n", data.length - 35);
+    data = data.substring(0, insertIndex) + addData + data.substring(insertIndex);
+    return data;
+}*/
+
+function addPostfix(openModelProfileData, id, type, count1, count2){
     var index = 0;
     var indexId = 0;
     var indexLineEnd = 0;
@@ -569,32 +834,57 @@ function addPostfix(openModelProfileData, id, count){
     while(openModelProfileData.indexOf(id, index) != -1){
         indexId = openModelProfileData.indexOf(id, index);
         indexLineEnd = openModelProfileData.indexOf("\r\n", indexId);
-        if(indexId < 160){
+        indexLineStart = openModelProfileData.lastIndexOf("\r\n", indexId);
+        /*if(indexId < 160){
             indexLineStart = 0;
         }else{
             indexLineStart = openModelProfileData.indexOf("\r\n", indexId - 160);
-        }
+        }*/
         lineData = openModelProfileData.substring(indexLineStart, indexLineEnd);
         var lineDataArray = lineData.split("\"");
-        lineDataArray[1] += "_cp" + count;
-        lineDataArray[3] += "_cp" + count;
+        lineDataArray[1] += "_flag";
+        lineDataArray[3] += "_flag";
         if(lineDataArray[5] != undefined && lineDataArray[5] == id){
-            lineDataArray[5] += "_cp" + count;
+            lineDataArray[5] += "_flag";
         }
         //test++;
         lineData = lineDataArray.join("\"");
-        //console.log(lineData);
+        if(type == "class" || type == "attribute"){
+            for(var i = 1; i <= count1; i++){
+                addData += lineData.replace(/_flag/g, "_cp" + i);
+            }
+        }else if(type == "association"){
+            for(var i = 0; i <= count1; i++){
+                for(var j = 0; j <= count2; j++){
+                    if(i == 0 && j == 0){
+                        continue;
+                    }
+                    addData += lineData.replace(/_flag/g, "_cp" + i + "cp" + j);
+                }
+            }
+        }else if(type == "addattribute"){
+            for(var i = 0; i <= count1; i++){
+                for(var j = 0; j <= count2; j++){
+                    if(i == 0 && j == 0){
+                        continue;
+                    }
+                    addData += lineData.replace(/_flag/g, "_cp" + i + "as" + j);
+                }
+            }
+        }
 
-        addData += lineData;
-        index = indexLineEnd;
+        openModelProfileData = openModelProfileData.substring(0, indexLineEnd) + addData + openModelProfileData.substring(indexLineEnd);
+        //addData += lineData;
+        index = indexLineEnd + addData.length;
     }
-    return addData;
+    return openModelProfileData;
 
 }
 
-function fullConnectionAssociation(copyclassid, copyNumber, indent){
+/*function fullConnectionAssociation(copyclassid, copyNumber, indent){
     var associationData = "\r\n";
     var postfix = "";
+    var postfixTemp = "";
     var postfix1 = "";
     var postfix2 = "";
     var PRE = "";
@@ -602,76 +892,138 @@ function fullConnectionAssociation(copyclassid, copyNumber, indent){
         PRE += " ";
         indent--;
     }
-    for(var i = 0; i < copyNumber; i++){
-        for(var j = i + 1; j < copyNumber + 1; j++){
+    for(var i = 0; i <= copyNumber; i++){
+        for(var j = 0; j <= copyNumber; j++){
+            if(i == j){
+                continue;
+            }
             postfix = "_cp" + i + "cp" + j;
+            if(j == 0){
+                postfixTemp = "";
+            }else{
+                postfixTemp = "_cp" + j;
+            }
             postfix1 = "_cp" + i + "as" + j;
-            postfix2 = "_cp" + j + "as" + i;
+            postfix2 = "_as" + i + "cp" + j;
             associationData += "<packagedElement xmi:type=\"uml:Association\" xmi:id=\"" + copyclassid.classId + postfix + "\" name=\"" + copyclassid.className + postfix + "\" memberEnd=\""+ copyclassid.classId + postfix1 + " " + copyclassid.classId + postfix2 + "\">\r\n";
             associationData += "  <eAnnotations xmi:type=\"ecore:EAnnotation\" xmi:id=\"" + copyclassid.classId + postfix + "_\" source=\"http://www.eclipse.org/uml2/2.0.0/UML\">\r\n";
-            associationData += "    <details xmi:type=\"ecore:EStringToStringMapEntry\" xmi:id=\"" + copyclassid.classId + postfix + "__\" key=\"names\"/>\r\n";
+            associationData += "    <details xmi:type=\"ecore:EStringToStringMapEntry\" xmi:id=\"" + copyclassid.classId + postfix + "-\" key=\"names\"/>\r\n";
             associationData += "  </eAnnotations>\r\n";
-            if(i == 0){
-                associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix1 + "\" name=\"" + copyclassid.className + postfix1 + "\" visibility=\"private\" type=\"" + copyclassid.classId +  "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+            associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + postfixTemp + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+            /!*if(i == 0){
+                associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId +  "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
             }else{
-                associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix1 + "\" name=\"" + copyclassid.className + postfix1 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_cp" + i + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
-            }
-            associationData += "    <lowerValue xmi:type=\"uml:LiteralInteger\" xmi:id=\"" + copyclassid.classId + postfix1 + "_\"/>\r\n";
-            associationData += "    <upperValue xmi:type=\"uml:LiteralUnlimitedNatural\" xmi:id=\"" + copyclassid.classId + postfix1 + "__\" value=\"1\"/>\r\n";
+                associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_cp" + j + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+            }*!/
+            associationData += "    <lowerValue xmi:type=\"uml:LiteralInteger\" xmi:id=\"" + copyclassid.classId + postfix2 + "_\"/>\r\n";
+            associationData += "    <upperValue xmi:type=\"uml:LiteralUnlimitedNatural\" xmi:id=\"" + copyclassid.classId + postfix2 + "-\" value=\"1\"/>\r\n";
             associationData += "  </ownedEnd>\r\n";
-            associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_cp" + j + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+            /!*associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_cp" + j + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
             associationData += "    <lowerValue xmi:type=\"uml:LiteralInteger\" xmi:id=\"" + copyclassid.classId + postfix2 + "_\"/>\r\n";
             associationData += "    <upperValue xmi:type=\"uml:LiteralUnlimitedNatural\" xmi:id=\"" + copyclassid.classId + postfix2 + "__\" value=\"1\"/>\r\n";
-            associationData += "  </ownedEnd>\r\n";
+            associationData += "  </ownedEnd>\r\n";*!/
             associationData += "</packagedElement>\r\n";
         }
     }
     associationData = associationData.replace(/\r\n$/g, "");
     associationData = associationData.replace(/\r\n/g, "\r\n" + PRE);
     return associationData;
-}
+}*/
+//var count = 0;
+function copyAssociation(associationData, flag1, flag2, association) {
+    var num1 = flag1;
+    var num2 = flag2;
+    var returnData = "";
+    /*if(flag1 == false){
+        num1 = 0;
+    }else{
+        num1 = copyAndSplit.copyNumber[flag1];
+    }
+    if(flag2 == false){
+        num2 = 0;
+    }else{
+        num2 = copyAndSplit.copyNumber[flag2];
+    }*/
 
-function copyAssociation(associationData, i) {
+
+
     var xmiLoc = 0;
     var quoteLoc = 0;
-    xmlreader.read(associationData, function(error, model) {
-        if (error) {
-            console.log('There was a problem reading data in uml:Association');
-        }else{
-            var tempId = model.packagedElement.ownedEnd.attributes()["xmi:id"];
-            xmiLoc = 0;
-            quoteLoc = 0;
-            while(associationData.indexOf("name=\"",quoteLoc) != -1){         //add "_cp" postfix
-                xmiLoc = associationData.indexOf("name=\"",quoteLoc);
-                quoteLoc = associationData.indexOf("\"",xmiLoc + 6);
-                //tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
-                associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+    while(associationData.indexOf("name=\"",quoteLoc) != -1){         //add "_cp" postfix
+        xmiLoc = associationData.indexOf("name=\"",quoteLoc);
+        quoteLoc = associationData.indexOf("\"",xmiLoc + 6);
+        //tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+        associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
 
-            }
-            xmiLoc = 0;
-            quoteLoc = 0;
-            while(associationData.indexOf("association=\"",quoteLoc) != -1){         //add "_cp" postfix
-                xmiLoc = associationData.indexOf("association=\"",quoteLoc);
-                quoteLoc = associationData.indexOf("\"",xmiLoc + 15);
-                // tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
-                associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+    }
+    xmiLoc = 0;
+    quoteLoc = 0;
+    while(associationData.indexOf(" association=\"",quoteLoc) != -1){         //add "_cp" postfix
+        xmiLoc = associationData.indexOf(" association=\"",quoteLoc);
+        quoteLoc = associationData.indexOf("\"",xmiLoc + 16);
+        // tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+        associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
 
+    }
+    xmiLoc = 0;
+    quoteLoc = 0;
+    while(associationData.indexOf("xmi:id=\"",quoteLoc) != -1){         //add "_cp" postfix
+        xmiLoc = associationData.indexOf("xmi:id=\"",quoteLoc);
+        quoteLoc = associationData.indexOf("\"",xmiLoc + 10);
+        // tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+        associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
+    }
+    xmiLoc = 0;
+    quoteLoc = 0;
+    while(associationData.indexOf(" type=\"",quoteLoc) != -1){         //add "_cp" postfix
+        xmiLoc = associationData.indexOf(" type=\"",quoteLoc);
+        quoteLoc = associationData.indexOf("\"",xmiLoc + 7);
+        associationData = associationData.substring(0, quoteLoc) + "_class" + associationData.substring(quoteLoc);
+    }
+    xmiLoc = 0;
+    quoteLoc = 0;
+    var memberEnd = [];
+    xmiLoc = associationData.indexOf("memberEnd=\"",quoteLoc);
+    quoteLoc = associationData.indexOf("\"",xmiLoc + 12);
+    memberEnd = associationData.substring(xmiLoc + 11, quoteLoc).split(" ");
+    if(memberEnd[0] == association.memberEnd1){
+        associationData = associationData.replace(memberEnd[1], memberEnd[1] + "_flag");
+    }else{
+        associationData = associationData.replace(memberEnd[0], memberEnd[0] + "_flag");
+    }
+    associationData = associationData.replace(association.memberEnd1, association.memberEnd1 + "_attribute");
+    //associationData = associationData.replace(association.memberEnd2, association.memberEnd2 + "_class");
+    var tempData = "";
+    var test = 0
+    for(var i = 0; i < num1 + 1; i++){
+        for(var j = 0; j < num2 + 1; j++){
+            if(i == 0 && j == 0){
+                continue;
             }
-            xmiLoc = 0;
-            quoteLoc = 0;
-            while(associationData.indexOf("xmi:id=\"",quoteLoc) != -1){         //add "_cp" postfix
-                xmiLoc = associationData.indexOf("xmi:id=\"",quoteLoc);
-                quoteLoc = associationData.indexOf("\"",xmiLoc + 10);
-                // tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
-                associationData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
-            }
-            associationData = associationData.replace(tempId, tempId + "_flag");
-            associationData = associationData.replace(copyClassId[i].classId, copyClassId[i].classId + "_flag");
-            copyClassId[i].associationId.push(model.packagedElement.attributes()["xmi:id"]);
+            tempData = associationData;
+            tempData = tempData.replace(/_flag/g, "_cp" + i + "cp" + j);
+            tempData = tempData.replace(/_attribute/g, "_cp" + i + "as" + j);
+            tempData = tempData.replace(/_class/g, "_cp" + i);
+            tempData = tempData.replace(/_cp0 /g, " ");
+            tempData = tempData.replace(/_cp0"/g, "\"");
+            //tempData = tempData.replace(new RegExp("_cp" + i + "cp" + j + "_", 'g'), "_cp" + i + "cp" + j);
+            //console.log(test++);
+            returnData += tempData;
         }
-    });
+    }
+    /*var copyattributeid = {};
+    copyattributeid.attributeId = association.memberEnd1;
+    copyattributeid.num1 = num1;
+    copyattributeid.num2 = num2;
+    copyAssociationId.push(copyattributeid);*/
+    var copyassociationid = {};
+    copyassociationid.associationId = association.id;
+    copyassociationid.attributeId = association.memberEnd1;
+    copyassociationid.num1 = num1;
+    copyassociationid.num2 = num2;
+    copyAssociationId.push(copyassociationid);
 
-    return associationData;
+    return returnData;
 }
 
 var pflag;
@@ -1167,7 +1519,8 @@ function createElement(xmi){
 
                     var comment = "";
                     if (xmi["ownedComment"]) {
-                        if(xmi['ownedComment'].array){
+                        comment = parseComment(xmi);
+                        /*if(xmi['ownedComment'].array){
                             //comment = "";
                             comment += xmi['ownedComment'].array[0].body.text();
                             for(var i = 1; i < xmi['ownedComment'].array.length; i++){
@@ -1177,7 +1530,7 @@ function createElement(xmi){
                             }
                         }else if(xmi['ownedComment'].body){
                             comment = xmi['ownedComment'].body.text();
-                        }
+                        }*/
                     }
 
                     var m = new Module(modName.join("-"), namespace, "", modName.join("-"), "", "", "", comment, currentFileName);//create a new module by recursion
@@ -1208,7 +1561,7 @@ function createElement(xmi){
                             createRealization(obj);
                             break;
                         case "uml:Association":
-                            createAssociation(obj);
+                            createAssociation(obj, currentFileName);
                             break;
                         case "uml:Signal":
                             createClass(obj, "notification");
@@ -1241,8 +1594,10 @@ function createClass(obj, nodeType) {
         }else{
             path = modName.join("-");
         }
+        var comment = "";
         if (obj["ownedComment"]) {
-            var len;
+            comment = parseComment(obj);
+            /*var len;
             var comment = "";
             obj["ownedComment"].array ? len = obj["ownedComment"].array.length : len = 1;
             if(obj['ownedComment'].array){
@@ -1255,7 +1610,7 @@ function createClass(obj, nodeType) {
                 }
             }else if(obj['ownedComment'].body){
                 comment = obj['ownedComment'].body.text();
-            }
+            }*/
         }
         var node = new CLASS(name, id, type, comment, nodeType, path, config, isOrdered, currentFileName);
         if (obj.attributes().isAbstract == "true") {
@@ -1478,7 +1833,7 @@ function createClass(obj, nodeType) {
     }
 }
 
-function createAssociation(obj) {
+function createAssociation(obj, fileName) {
     var id = obj.attributes()["xmi:id"];
     var memberEnd = [];
     var memberEnd1,             //[memberEnd]中出现过的那个
@@ -1507,12 +1862,23 @@ function createAssociation(obj) {
     }else if(associationType == 1){
         if(memberEnd[0] == obj.ownedEnd.attributes()["xmi:id"]){
             memberEnd1 = memberEnd[1];
+            //memberEnd2 = obj.ownedEnd.attributes().type;
         }else if(memberEnd[1] == obj.ownedEnd.attributes()["xmi:id"]){
             memberEnd1 = memberEnd[0];
+            //memberEnd2 = obj.ownedEnd.attributes().type;
         }else{
             console.warn("Warning!!!");
         }
+        //var test = 0;
         for(var i = 0; i < Class.length; i++){
+            for(var j = 0; j < Class[i].attribute.length; j++){
+                //console.log("test " + (test++));
+                if(memberEnd1 == Class[i].attribute[j].id && fileName == Class[i].fileName){
+                    memberEnd2 = Class[i].attribute[j].type;
+                }
+            }
+        }
+        /*for(var i = 0; i < Class.length; i++){
             for(var j = 0; j < Class[i].attribute.length; j++){
                 if(Class[i].attribute[j].association == id){
                     memberEnd2 = Class[i].attribute[j].id;
@@ -1522,7 +1888,7 @@ function createAssociation(obj) {
             if(memberEnd2 != undefined){
                 break;
             }
-        }
+        }*/
         obj.ownedEnd.upperValue != undefined ? upperValue = obj.ownedEnd.upperValue.attributes().value : upperValue = "*";
         obj.ownedEnd.lowerValue != undefined ? lowerValue = obj.ownedEnd.lowerValue.attributes().value : lowerValue = 0;
     }else if(associationType == 2){
@@ -1603,7 +1969,8 @@ function createRealization(obj) {
         console.log("Warning: The supplier of " + id + " does not exist!");
     }
     if (obj["ownedComment"]) {
-        comment = "";
+        comment = parseComment(obj);
+        /*comment = "";
         if(obj['ownedComment'].array){
             comment += obj['ownedComment'].array[0].body.text();
             for(var i = 1; i < obj['ownedComment'].array.length; i++){
@@ -1613,13 +1980,30 @@ function createRealization(obj) {
             }
         }else if(obj['ownedComment'].body){
             comment = obj['ownedComment'].body.text();
-        }
+        }*/
     }
     temp = new Realization(id, client, supplier,currentFileName, supplierFile, comment, currentFileName);
     realization.push(temp);
 
 
 
+}
+
+function parseComment(xmi){
+    var comment = "";
+    if(xmi['ownedComment'].array){
+        for(var j = 0; j < xmi['ownedComment'].array.length; j++){
+            if(xmi['ownedComment'].array[j].hasOwnProperty("body") && xmi['ownedComment'].array[j].body.hasOwnProperty("text")){
+                comment += xmi['ownedComment'].array[j].body.text() + "\r\n";
+            }
+        }
+        comment = comment.replace(/\r\n$/g, "");
+    }else if(xmi['ownedComment'].hasOwnProperty("body") && xmi['ownedComment'].body.hasOwnProperty("text")){
+        comment = xmi['ownedComment'].body.text();
+    }else{
+        console.log("The comment of xmi:id=\"" + xmi.attributes()["xmi:id"] + "\" is undefined!");
+    }
+    return comment;
 }
 
 function obj2yang(ele){
@@ -2445,6 +2829,11 @@ function writeUml() {
                     comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
                     if(arrayClass[j] == "visibility"){
                         comparison += "\t\t\t\t\t\t<body>visibilities are the same." + "</body>\r\n";
+                    }else if(arrayClass[j] == "status"){
+                        comparison += "\t\t\t\t\t\t<body>" + arrayClass[j] + postfix + " are the same." + "\r\n";
+                        comparison += "\t\t\t\t\t\t\t\t\t\tSupplier : " + supplier[arrayClass[j]] + "\r\n";
+                        comparison += "\t\t\t\t\t\t\t\t\t\tClient   : " + client[arrayClass[j]] + "\r\n";
+                        comparison += "\t\t\t\t\t\t</body>\r\n";
                     }else{
                         comparison += "\t\t\t\t\t\t<body>" + arrayClass[j] + postfix + " are the same." + "</body>\r\n";
                     }
@@ -2489,9 +2878,19 @@ function writeUml() {
                         if(attributeCompare[j].supplier[arrayAtt[k]] == attributeCompare[j].client[arrayAtt[k]]){
                             //comparisonAtt += arrayAtt[k] + " same." + "\r\n";
                             //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+
                             comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
-                            comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + postfix + " are the same." + "</body>\r\n";
+                            if(arrayAtt[k] == "status"){
+                                comparison += "\t\t\t\t\t\t<body>" + arrayAtt[k] + postfix + " are the same." + "\r\n";
+                                comparison += "\t\t\t\t\t\t\t\t\t\tSupplier : " + attributeCompare[j].supplier[arrayAtt[k]] + "\r\n";
+                                comparison += "\t\t\t\t\t\t\t\t\t\tClient   : " + attributeCompare[j].client[arrayAtt[k]] + "\r\n";
+                                comparison += "\t\t\t\t\t\t</body>\r\n";
+                            }else{
+                                comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + postfix + " are the same." + "</body>\r\n";
+                            }
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
+
+
                         }else{
                             //comparisonAtt += arrayAtt[k] + " not same." + "\r\n";
                             //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";

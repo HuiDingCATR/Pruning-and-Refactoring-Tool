@@ -82,14 +82,19 @@ Class.prototype.buildEnum = function(obj) {
         if(literal["ownedComment"]){
             enumComment = "";
             if (literal["ownedComment"].array) {
-                enumComment = literal["ownedComment"].array[0].body.text();
-                for (var j = 1; j < literal["ownedComment"].array.length; j++) {
-                    enumComment += "\r\n" + literal["ownedComment"].array[j].body.text();
+                for (var j = 0; j < literal["ownedComment"].array.length; j++) {
+                    if(literal["ownedComment"].array[j].hasOwnProperty("body") && literal["ownedComment"].array[j].body.hasOwnProperty("text")){
+                        enumComment += literal["ownedComment"].array[j].body.text() + "\r\n";
+                    }
                 }
-            } else {
+                enumComment = enumComment.replace(/\r\n$/g, "");
+            } else if(literal["ownedComment"].hasOwnProperty("body") && literal["ownedComment"].body.hasOwnProperty("text")){
                 enumComment = literal["ownedComment"].body.text();
+            }else{
+                console.log("The comment of xmi:id=\"" + literal.attributes()["xmi:id"] + "\" is undefined!");
             }
         }
+        enumValue = enumValue.replace(/[^\w\.-]+/g,'_');
         enumNode = new Node(enumValue, enumComment, "enum");
         enumNode.fileName = this.fileName;
         node.children.push(enumNode);
@@ -110,25 +115,24 @@ Class.prototype.buildAttribute = function(att){
     var id = att.attributes()['xmi:id'];
     var name;
     att.attributes().name ? name = att.attributes().name : console.log("ERROR:The attribute 'name' of tag 'xmi:id=" + att.attributes()["xmi:id"] + "' in this file is empty!");
-    name = name.replace(/^[^A-Za-z|_]+|[^A-Za-z|_\d]+$/g, "");
-    name = name.replace(/[^\w]+/g, '_');
-    var comment;
+    if(name){
+        name=name.replace(/^[^A-Za-z|_]+|[^A-Za-z|_\d]+$/g, "");
+        name=name.replace(/[^\w\.-]+/g, '_');
+    }
+    var comment = "";
     if(att['ownedComment']){
         if(att['ownedComment'].array){
-            comment = "";
-            comment += att['ownedComment'].array[0].body.text();
-            for(var i = 1; i < att['ownedComment'].array.length; i++){
-                if(att['ownedComment'].array[i].body.hasOwnProperty("text")){
-                    comment += "\r\n" + att['ownedComment'].array[i].body.text();
+            for(var i = 0; i < att['ownedComment'].array.length; i++){
+                if(att['ownedComment'].array[i].hasOwnProperty("body") && att['ownedComment'].array[i].body.hasOwnProperty("text")){
+                    comment += att['ownedComment'].array[i].body.text() + "\r\n";
                 }
             }
-        }else if(att['ownedComment'].body){
-            //console.log("ownedComment " +  att.attributes()["xmi:id"]);
-            //if(att['ownedComment'].body.text()){
-                comment = att['ownedComment'].body.text();
-            //}
+            comment = comment.replace(/\r\n$/g, "");
+        }else if(att['ownedComment'].hasOwnProperty("body") && att['ownedComment'].body.hasOwnProperty("text")){
+            comment = att['ownedComment'].body.text();
         }else{
-            console.log("The comment of Class " + att.attributes().name + " is undefined!")
+            console.log("The comment of xmi:id=\"" + att.attributes()["xmi:id"] + "\" is undefined!");
+
         }
     }
     var association;
@@ -148,7 +152,7 @@ Class.prototype.buildAttribute = function(att){
         if (type['xmi:type'] == 'uml:PrimitiveType') {
             type = type.href.split('#')[1].toLocaleLowerCase() ;
             isLeaf = true;
-        }else if(type['xmi:type'] == "uml:Class" || type['xmi:type'] == "uml:DataType" || type['xmi:type'] == "uml:Enumeration"){
+        }else if(type['xmi:type'] == "uml:Class" || type['xmi:type'] == "uml:DataType" || type['xmi:type'] == "uml:Enumeration" || type['xmi:type'] == "uml:Signal"){
             type = type.href.split('#')[1];
             isLeaf = false;
         }
@@ -157,7 +161,7 @@ Class.prototype.buildAttribute = function(att){
         }
     }
     else{
-        console.warn("Warning:The type of attribute 'xmi:id=" + id + "' is undefined!");
+        console.warn("Warning:The type of attribute xmi:id=\"" + id + "\" is undefined!" + this.fileName + " " + name);
         type = "string";
         isLeaf = true;
     }
@@ -223,15 +227,29 @@ Class.prototype.buildOperate = function(para){
         type = "string";
         isLeaf = true;
     }
-    var comment;
-    para['ownedComment'] ? comment = att['ownedComment'].body.text() : comment = null;
+    var comment = "";
+    //para['ownedComment'] ? comment = att['ownedComment'].body.text() : comment = null;
+    if(para["ownedComment"]){
+        if(para['ownedComment'].array){
+            for(var i = 0; i < para['ownedComment'].array.length; i++){
+                if(para['ownedComment'].array[i].hasOwnProperty("body") && para['ownedComment'].array[i].body.hasOwnProperty("text")){
+                    comment += para['ownedComment'].array[i].body.text() + "\r\n";
+                }
+            }
+            comment = comment.replace(/\r\n$/g, "");
+        }else if(para['ownedComment'].hasOwnProperty("body") && para['ownedComment'].body.hasOwnProperty("text")){
+            comment = para['ownedComment'].body.text();
+        }else{
+            console.log("The comment of xmi:id=\"" + para.attributes()["xmi:id"] + "\" is undefined!");
+        }
+    }
     var association;
     para.attributes().association ? association = para.attributes().association : association=null;
     var isReadOnly;
     para.attributes().isReadOnly ? isReadOnly = para.attributes().isReadOnly : isReadOnly = false;
     var isOrdered;
-    para.attributes().isOrdered ? isOrdered = para.attributes().isOrdered : isOrdered = false;
-    var parameter = new Attribute(id, name, type, comment, association, isReadOnly, isOrdered);
+    para.attributes().isOrdered ? isOrdered =para.attributes().isOrdered : isOrdered = false;
+    var parameter = new Attribute(id, name, type, comment, association, isReadOnly, isOrdered, this.fileName);
     parameter.giveValue(para);
     parameter.giveNodeType(isLeaf);
     var r = parameter.returnType();
