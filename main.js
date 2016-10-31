@@ -330,7 +330,7 @@ function copyClass(){
             if(copyAndSplit.copyClass == null){
                 return;
             }
-            if(data.indexOf(copyAndSplit.copyClass[0] + "_cp") != -1){
+            if(data.indexOf(copyAndSplit.copyClass[0] + "_Cp") != -1){
                 return;
             }
             var indexCopyClass,             //the index of the name of CopyClass
@@ -405,10 +405,10 @@ function copyClass(){
                     var xmiLoc = 0;
                     //var tempCopyData;
                     tempData = data.substring(indexNewLine + 2, indexEndLocate + 18);
-                    while(tempData.indexOf("xmi:id=\"",copyLoc) != -1){         //add "_cp" postfix
+                    while(tempData.indexOf("xmi:id=\"",copyLoc) != -1){         //add "_Cp" postfix
                         xmiLoc = tempData.indexOf("xmi:id=\"",copyLoc);
                         quoteLoc = tempData.indexOf("\"",xmiLoc + 10);
-                        tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                        tempData = tempData.substring(0, quoteLoc) + "_Cp" + (j + 1) + tempData.substring(quoteLoc);
                         copyLoc = quoteLoc;
                     }
                     copyLoc = 0;
@@ -417,7 +417,7 @@ function copyClass(){
                     while(tempData.indexOf("annotatedElement",copyLoc) != -1){
                         xmiLoc = tempData.indexOf("annotatedElement",copyLoc);
                         quoteLoc = tempData.indexOf("\"",xmiLoc + 20);
-                        tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                        tempData = tempData.substring(0, quoteLoc) + "_Cp" + (j + 1) + tempData.substring(quoteLoc);
                         copyLoc = quoteLoc;
                     }
                     copyLoc = 0;
@@ -426,7 +426,7 @@ function copyClass(){
                     while(tempData.indexOf("name=\"",copyLoc) != -1){
                         xmiLoc = tempData.indexOf("name=\"",copyLoc);
                         quoteLoc = tempData.indexOf("\"",xmiLoc + 7);
-                        tempData = tempData.substring(0, quoteLoc) + "_cp" + (j + 1) + tempData.substring(quoteLoc);
+                        tempData = tempData.substring(0, quoteLoc) + "_Cp" + (j + 1) + tempData.substring(quoteLoc);
                         copyLoc = quoteLoc;
                     }
                     /*if(fullAssociationFlag){
@@ -456,7 +456,7 @@ function copyClass(){
 
                 for(var j = 0; j < copyAndSplit.copyNumber[i]; j++){
                     for(var k = j + 1; k < copyAndSplit.copyNumber[i] + 1; k++){
-                        copyClassId[i].fullAssociationId.push(copyClassId[i].classId + "_cp" + j + "cp" + k);
+                        copyClassId[i].fullAssociationId.push(copyClassId[i].classId + "_Cp" + j + "cp" + k);
                         //break;
                     }
                 }
@@ -502,7 +502,7 @@ function copyClass(){
                 });
                 for(var j = 0; j < association.length; j++){
                     if(associationId == association[j].id){
-                        console.log(" ");
+                        //console.log(" ");
                         var copyFlag1 = false;
                         var copyFlag2 = false;
                         /*if(association[j].associationType == 0){
@@ -540,7 +540,7 @@ function copyClass(){
                         //tempData = copyAssociation(associationData, copyClassId[i].classId);
                         tempData = copyAssociation(associationData, i);
                         for (var j = 0; j < copyAndSplit.copyNumber[i]; j++) {
-                            addData += tempData.replace(/_flag/g, "_cp" + (j + 1));
+                            addData += tempData.replace(/_flag/g, "_Cp" + (j + 1));
                         }
                         data = data.substring(0, indexEnd) + addData + data.substring(indexEnd);
                         indexEnd += addData.length;
@@ -554,7 +554,7 @@ function copyClass(){
                             //tempData = copyAssociation(associationData, copyClassId[i].classId);
                             tempData = copyAssociation(associationData, i);
                             for(var k = 0; k < copyAndSplit.copyNumber[i]; k++){
-                                addData += tempData.replace(/_flag/g, "_cp" + (k + 1));
+                                addData += tempData.replace(/_flag/g, "_Cp" + (k + 1));
                             }
                             data = data.substring(0, indexEnd) + addData + data.substring(indexEnd);
                             indexEnd += addData.length;
@@ -637,32 +637,31 @@ function copyClass(){
                         attributeData = attributeData.substring(0, quoteLoc) + "_assoflag" + attributeData.substring(quoteLoc);
                     }
                     copyData = ""
-                    if(id.split("_cp").length == 2){
+                    if(id.split("_Cp").length == 2){
                         for(var j = 0; j <= copyAssociationId[i].num2; j++){
                             var tempData = attributeData;
                             tempData = tempData.replace(/_flag/g, "as" + j);
-                            tempData = tempData.replace(/_typeflag/g, "_cp" + j);
-                            tempData = tempData.replace(/_assoflag/g, "_cp" + id.split("_cp")[1] + "cp" + j);
+                            tempData = tempData.replace(/_typeflag/g, "_Cp" + j);
+                            tempData = tempData.replace(/_assoflag/g, "_Cp" + id.split("_Cp")[1] + "cp" + j);
                             copyData += tempData;
 
                         }
-                        copyData = copyData.replace(/_cp0"/g, "\"");
+                        copyData = copyData.replace(/_Cp0"/g, "\"");
                         data = data.substring(0, indexStart) + copyData + data.substring(indexEnd);
                         indexEnd = copyData.length + indexStart;
-                    }else if(id.split("_cp").length == 1){
+                    }else if(id.split("_Cp").length == 1){
                         for(var j = 1; j <= copyAssociationId[i].num2; j++){
                             var tempData = attributeData;
-                            tempData = tempData.replace(/_flag/g, "_cp0as" + j);
-                            tempData = tempData.replace(/_typeflag/g, "_cp" + j);
-                            tempData = tempData.replace(/_assoflag/g, "_cp0cp" + j);
+                            tempData = tempData.replace(/_flag/g, "_Cp0as" + j);
+                            tempData = tempData.replace(/_typeflag/g, "_Cp" + j);
+                            tempData = tempData.replace(/_assoflag/g, "_Cp0cp" + j);
                             copyData += tempData;
                         }
-                        copyData = tempData.replace(/_cp0"/g, "\"");
+                        copyData = tempData.replace(/_Cp0"/g, "\"");
                         data = data.substring(0, indexEnd) + copyData + data.substring(indexEnd);
                         indexEnd += copyData.length;
                     }else{
                         console.log("something wrong.")
-
                     }
                     /*if(test < 10){
                      fs.writeFileSync("./project/test" + test + ".uml", data);
@@ -678,8 +677,6 @@ function copyClass(){
                         if(copyClassId[i].attributeId[j] == copyAssociationId[k].attributeId){
                             copyClassId[i].attributeId.splice(j--, 1);
                             //copyClassId[i].attributeId.remove(copyAssociationId[k].attributeId);
-                            console.log("test.");
-
                         }
                     }
                 }
@@ -722,7 +719,7 @@ function copyClass(){
                             if(j == k){
                                 continue;
                             }
-                            var postfix = "_cp" + j + "as" + k;
+                            var postfix = "_Cp" + j + "as" + k;
                             addData += "\r\n  <OpenModel_Profile:Attribute xmi:id=\"" + copyClassId[i].classId + postfix + "_\" base_Element=\"" + copyClassId[i].classId + postfix + "\"/>";
                         }
                     }
@@ -740,7 +737,7 @@ function copyClass(){
             /*xmlreader.read(associationData, function(error, model) {
                 console.log("test;");
             });*/
-            console.log("End.");
+            console.log("The module of copy class finished.");
         }
 
 
@@ -812,9 +809,9 @@ function copyAssociationOrNot(memberEnd, type){
     var name = copyClassId[copyClassIndex].className;
     var length = parseInt(copyAndSplit.copyNumber[copyClassIndex]);
 
-    var tempData = "<ownedAttribute xmi:type=\"uml:Property\" xmi:id=\"" + id + "_cp" + currentIndex + "as_flag" + "\" name=\"" + name + "_cp" + currentIndex + "as_flag\" visibility=\"public\" type=\"" + id + "_cp" + currentIndex + "\" association=\"" + id + "_cp" + currentIndex + "cp_flag\"/>";
+    var tempData = "<ownedAttribute xmi:type=\"uml:Property\" xmi:id=\"" + id + "_Cp" + currentIndex + "as_flag" + "\" name=\"" + name + "_Cp" + currentIndex + "as_flag\" visibility=\"public\" type=\"" + id + "_Cp" + currentIndex + "\" association=\"" + id + "_Cp" + currentIndex + "cp_flag\"/>";
     var addData = "";
-    tempData = tempData.replace(/_cp0"/g, "\"");
+    tempData = tempData.replace(/_Cp0"/g, "\"");
     for(var i = 0; i <= length; i++){
         if(i == currentIndex){
             continue;
@@ -835,9 +832,9 @@ function addPostfix(openModelProfileData, id, type, copyOrSplit, count1, count2)
     var addData = "";
     var postfix = "";
     if(copyOrSplit == "copy"){
-        postfix = "_cp";
+        postfix = "_Cp";
     }else if(copyOrSplit == "split"){
-        postfix = "_sp";
+        postfix = "_Sp";
     }
     while(openModelProfileData.indexOf(id, index) != -1){
         indexId = openModelProfileData.indexOf(id, index);
@@ -906,13 +903,13 @@ function addPostfix(openModelProfileData, id, type, copyOrSplit, count1, count2)
             if(i == j){
                 continue;
             }
-            postfix = "_cp" + i + "cp" + j;
+            postfix = "_Cp" + i + "cp" + j;
             if(j == 0){
                 postfixTemp = "";
             }else{
-                postfixTemp = "_cp" + j;
+                postfixTemp = "_Cp" + j;
             }
-            postfix1 = "_cp" + i + "as" + j;
+            postfix1 = "_Cp" + i + "as" + j;
             postfix2 = "_as" + i + "cp" + j;
             associationData += "<packagedElement xmi:type=\"uml:Association\" xmi:id=\"" + copyclassid.classId + postfix + "\" name=\"" + copyclassid.className + postfix + "\" memberEnd=\""+ copyclassid.classId + postfix1 + " " + copyclassid.classId + postfix2 + "\">\r\n";
             associationData += "  <eAnnotations xmi:type=\"ecore:EAnnotation\" xmi:id=\"" + copyclassid.classId + postfix + "_\" source=\"http://www.eclipse.org/uml2/2.0.0/UML\">\r\n";
@@ -922,12 +919,12 @@ function addPostfix(openModelProfileData, id, type, copyOrSplit, count1, count2)
             /!*if(i == 0){
                 associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId +  "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
             }else{
-                associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_cp" + j + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+                associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_Cp" + j + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
             }*!/
             associationData += "    <lowerValue xmi:type=\"uml:LiteralInteger\" xmi:id=\"" + copyclassid.classId + postfix2 + "_\"/>\r\n";
             associationData += "    <upperValue xmi:type=\"uml:LiteralUnlimitedNatural\" xmi:id=\"" + copyclassid.classId + postfix2 + "-\" value=\"1\"/>\r\n";
             associationData += "  </ownedEnd>\r\n";
-            /!*associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_cp" + j + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
+            /!*associationData += "  <ownedEnd xmi:type=\"uml:Property\" xmi:id=\"" + copyclassid.classId + postfix2 + "\" name=\"" + copyclassid.className + postfix2 + "\" visibility=\"private\" type=\"" + copyclassid.classId + "_Cp" + j + "\" association=\"" + copyclassid.classId + postfix + "\">\r\n";
             associationData += "    <lowerValue xmi:type=\"uml:LiteralInteger\" xmi:id=\"" + copyclassid.classId + postfix2 + "_\"/>\r\n";
             associationData += "    <upperValue xmi:type=\"uml:LiteralUnlimitedNatural\" xmi:id=\"" + copyclassid.classId + postfix2 + "__\" value=\"1\"/>\r\n";
             associationData += "  </ownedEnd>\r\n";*!/
@@ -958,7 +955,7 @@ function copyAssociation(associationData, flag1, flag2, association) {
 
     var xmiLoc = 0;
     var quoteLoc = 0;
-    while(associationData.indexOf("name=\"",quoteLoc) != -1){         //add "_cp" postfix
+    while(associationData.indexOf("name=\"",quoteLoc) != -1){         //add "_Cp" postfix
         xmiLoc = associationData.indexOf("name=\"",quoteLoc);
         quoteLoc = associationData.indexOf("\"",xmiLoc + 6);
         //tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
@@ -967,7 +964,7 @@ function copyAssociation(associationData, flag1, flag2, association) {
     }
     xmiLoc = 0;
     quoteLoc = 0;
-    while(associationData.indexOf(" association=\"",quoteLoc) != -1){         //add "_cp" postfix
+    while(associationData.indexOf(" association=\"",quoteLoc) != -1){         //add "_Cp" postfix
         xmiLoc = associationData.indexOf(" association=\"",quoteLoc);
         quoteLoc = associationData.indexOf("\"",xmiLoc + 16);
         // tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
@@ -976,7 +973,7 @@ function copyAssociation(associationData, flag1, flag2, association) {
     }
     xmiLoc = 0;
     quoteLoc = 0;
-    while(associationData.indexOf("xmi:id=\"",quoteLoc) != -1){         //add "_cp" postfix
+    while(associationData.indexOf("xmi:id=\"",quoteLoc) != -1){         //add "_Cp" postfix
         xmiLoc = associationData.indexOf("xmi:id=\"",quoteLoc);
         quoteLoc = associationData.indexOf("\"",xmiLoc + 10);
         // tempData = associationData.substring(0, quoteLoc) + "_flag" + associationData.substring(quoteLoc);
@@ -984,7 +981,7 @@ function copyAssociation(associationData, flag1, flag2, association) {
     }
     xmiLoc = 0;
     quoteLoc = 0;
-    while(associationData.indexOf(" type=\"",quoteLoc) != -1){         //add "_cp" postfix
+    while(associationData.indexOf(" type=\"",quoteLoc) != -1){         //add "_Cp" postfix
         xmiLoc = associationData.indexOf(" type=\"",quoteLoc);
         quoteLoc = associationData.indexOf("\"",xmiLoc + 7);
         associationData = associationData.substring(0, quoteLoc) + "_class" + associationData.substring(quoteLoc);
@@ -1010,12 +1007,12 @@ function copyAssociation(associationData, flag1, flag2, association) {
                 continue;
             }
             tempData = associationData;
-            tempData = tempData.replace(/_flag/g, "_cp" + i + "cp" + j);
-            tempData = tempData.replace(/_attribute/g, "_cp" + i + "as" + j);
-            tempData = tempData.replace(/_class/g, "_cp" + i);
-            tempData = tempData.replace(/_cp0 /g, " ");
-            tempData = tempData.replace(/_cp0"/g, "\"");
-            //tempData = tempData.replace(new RegExp("_cp" + i + "cp" + j + "_", 'g'), "_cp" + i + "cp" + j);
+            tempData = tempData.replace(/_flag/g, "_Cp" + i + "cp" + j);
+            tempData = tempData.replace(/_attribute/g, "_Cp" + i + "as" + j);
+            tempData = tempData.replace(/_class/g, "_Cp" + i);
+            tempData = tempData.replace(/_Cp0 /g, " ");
+            tempData = tempData.replace(/_Cp0"/g, "\"");
+            //tempData = tempData.replace(new RegExp("_Cp" + i + "cp" + j + "_", 'g'), "_Cp" + i + "cp" + j);
             //console.log(test++);
             returnData += tempData;
         }
@@ -1039,7 +1036,7 @@ function splitClass(){
     var data = fs.readFileSync("./project/" + clientFileName, {encoding: 'utf8'});
     try{
         if(fs.existsSync("./project/CopyAndSplit.txt")) {
-            if (data.indexOf(copyAndSplit.splitClass[0] + "_sp") != -1) {
+            if (data.indexOf(copyAndSplit.splitClass[0] + "_Sp") != -1) {
                 //console.log(" ");
                 return;
                 fs.writeFileSync("./project/" + clientFileName, data);
@@ -1077,16 +1074,26 @@ function splitClass(){
                 var addData = "";
                 var tempData = "";
                 var addAttributeData = "";
-                var attributeData = '\r\n' + PRE + '  <ownedAttribute xmi:type="uml:Property" xmi:id="' + splitclassid.classId + '_flag1flag2" name="' + splitclassid.className + '_flag1flag2" type="' + splitclassid.classId + '_flag3"/>';
+                var name = splitclassid.className;
+                if(name[0].search(new RegExp("[A-Z]")) != -1){
+                    name = "_" + name[0].toLowerCase() + name.substring(1);
+                }else{
+                    console.warn("Warning :The name of xmi:id=\"" + splitclassid.classId + "\" is invalid. Please recheck your files.");
+                }
+                //if(name[])
+                var attributeData = '\r\n' + PRE + '  <ownedAttribute xmi:type="uml:Property" xmi:id="' + splitclassid.classId + '_flag1flag2" name="' + name + '_flag1flag2" type="' + splitclassid.classId + '_flag3">';
+                attributeData += "\r\n" + PRE + '    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="' + splitclassid.classId + '_flag1flag2_"/>';
+                attributeData += "\r\n" + PRE + '    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="' + splitclassid.classId + '_flag1flag2-" value="1"/>';
+                attributeData += '\r\n' + PRE + '  </ownedAttribute>';
 
                 reg = new RegExp("\\s+<ownedAttribute");
                 var insertIndex = originData.search(reg);
                 for (var j = 1; j <= copyAndSplit.splitNumber[i]; j++) {
                     addAttributeData = attributeData;
-                    addAttributeData = addAttributeData.replace(/flag1/g, "sp0");
+                    addAttributeData = addAttributeData.replace(/flag1/g, "Sp0");
                     addAttributeData = addAttributeData.replace(/flag2/g, "as" + j);
-                    addAttributeData = addAttributeData.replace(/flag3/g, "sp" + j);
-                    addAttributeData = addAttributeData.replace(/_sp0"/g, "\"");
+                    addAttributeData = addAttributeData.replace(/flag3/g, "Sp" + j);
+                    addAttributeData = addAttributeData.replace(/_Sp0"/g, "\"");
                     tempData += addAttributeData;
                 }
                 addData += originData.substring(0, insertIndex) + tempData + originData.substring(insertIndex);
@@ -1103,19 +1110,20 @@ function splitClass(){
                     addAttributeData = ""
                     for (var k = j + 1; k <= copyAndSplit.splitNumber[i]; k++) {
                         addAttributeData += attributeData;
-                        addAttributeData = addAttributeData.replace(/flag1/g, "sp" + j);
+                        addAttributeData = addAttributeData.replace(/flag1/g, "Sp" + j);
                         addAttributeData = addAttributeData.replace(/flag2/g, "as" + k);
-                        addAttributeData = addAttributeData.replace(/flag3/g, "sp" + k);
+                        addAttributeData = addAttributeData.replace(/flag3/g, "Sp" + k);
                     }
                     tempData += splitData.substring(0, splitData.indexOf("\r\n", 1)) + addAttributeData + splitData.substring(splitData.indexOf("\r\n", 1));
                     //tempData = tempData.replace(/\r\n/g, "\r\n" + PRE);
-                    tempData = tempData.replace(/_flag/g, "_sp" + j);
+                    tempData = tempData.replace(/_flag/g, "_Sp" + j);
                     addData += tempData;
                 }
                 data = data.replace(originData, addData);
 
                 //add association
                 insertIndex = data.indexOf(addData) + addData.length;
+                var name =
                 originData = "";
                 originData += "\r\n<packagedElement xmi:type=\"uml:Association\" xmi:id=\"" + splitclassid.classId + "_flag1flag2\" name=\"" + copyAndSplit.splitClass[i] + "_flag1flag2\" memberEnd=\"" + splitclassid.classId + "_flag1flag2_ " + splitclassid.classId + "_flag1flag3\">"
                 originData += "\r\n\t<eAnnotations xmi:type=\"ecore:EAnnotation\" xmi:id=\"" + splitclassid.classId + "_flag1flag2-\" source=\"http://www.eclipse.org/uml2/2.0.0/UML\">";
@@ -1130,13 +1138,13 @@ function splitClass(){
                 for (var j = 0; j <= copyAndSplit.splitNumber[i]; j++) {
                     for (var k = j + 1; k <= copyAndSplit.splitNumber[i]; k++) {
                         addData += originData;
-                        addData = addData.replace(/flag1/g, "sp" + j);
+                        addData = addData.replace(/flag1/g, "Sp" + j);
                         addData = addData.replace(/flag2/g, "sp" + k);
                         addData = addData.replace(/flag3/g, "as" + k);
                     }
                 }
                 addData = addData.replace(/\r\n/g, "\r\n" + PRE);
-                addData = addData.replace(/_sp0"/g, "\"");
+                addData = addData.replace(/_Sp0"/g, "\"");
                 data = data.substring(0, insertIndex) + addData + data.substring(insertIndex);
             }
                 //add openModelProfile
@@ -1165,14 +1173,14 @@ function splitClass(){
                 for(var j = 0; j < copyAndSplit.splitNumber[i]; j++){
                     for(var k = j + 1; k <= copyAndSplit.splitNumber[i]; k++){
                         lineData += lineAttributeData;
-                        lineData = lineData.replace(/flag1/g, "sp" + j);
+                        lineData = lineData.replace(/flag1/g, "Sp" + j);
                         lineData = lineData.replace(/flag2/g, "as" + k);
                     }
                 }
                 for(var j = 0; j < copyAndSplit.splitNumber[i]; j++){
                     for(var k = j + 1; k <= copyAndSplit.splitNumber[i]; k++){
                         lineData += lineAssociationData;
-                        lineData = lineData.replace(/flag1/g, "sp" + j);
+                        lineData = lineData.replace(/flag1/g, "Sp" + j);
                         lineData = lineData.replace(/flag2/g, "sp" + k);
                     }
                 }
@@ -3001,7 +3009,7 @@ function writeUml() {
                     postfix = "s";
                 }
                 if (supplier[arrayClass[j]] == client[arrayClass[j]]) {
-                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_Com" + temp++ + "\" annotatedElement=\"" + client.id + "_Pr\">\r\n";
                     if(arrayClass[j] == "visibility"){
                         comparison += "\t\t\t\t\t\t<body>visibilities are the same." + "</body>\r\n";
                     }else if(arrayClass[j] == "status"){
@@ -3014,7 +3022,7 @@ function writeUml() {
                     }
                     comparison += "\t\t\t\t\t</ownedComment>\r\n";
                 } else {
-                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    comparison += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_Com" + temp++ + "\" annotatedElement=\"" + client.id + "_Pr\">\r\n";
                     if(arrayClass[j] == "visibility"){
                         comparison += "\t\t\t\t\t\t<body>visibilities are not same." + "\r\n";
                     }else{
@@ -3029,13 +3037,13 @@ function writeUml() {
 
             }
         }
-        log += "\t\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"" + client.id + "_pk\" name=\"" + client.name + "\">\r\n";
-        log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + client.id + "_PR\" name=\"" + client.name + "\">\r\n";
+        log += "\t\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"" + client.id + "_Pk\" name=\"" + client.name + "\">\r\n";
+        log += "\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + client.id + "_Pr\" name=\"" + client.name + "\">\r\n";
         log += comparison;
         log += "\t\t\t\t\t<client xmi:type=\"uml:Class\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
         log += "\t\t\t\t\t<supplier xmi:type=\"uml:Class\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
         log += "\t\t\t\t</packagedElement>\r\n";
-        log += "\t\t\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"" + client.id + "_apk\" name=\"Attributes of " + client.name + "\">\r\n";
+        log += "\t\t\t\t<packagedElement xmi:type=\"uml:Package\" xmi:id=\"" + client.id + "_Apk\" name=\"Attributes of " + client.name + "\">\r\n";
 
         for(var j = 0; j < attributeCompare.length; j++){
             if(client.id == attributeCompare[j].clientClass.id){
@@ -3052,9 +3060,9 @@ function writeUml() {
                         }
                         if(attributeCompare[j].supplier[arrayAtt[k]] == attributeCompare[j].client[arrayAtt[k]]){
                             //comparisonAtt += arrayAtt[k] + " same." + "\r\n";
-                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
 
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
                             if(arrayAtt[k] == "status"){
                                 comparison += "\t\t\t\t\t\t<body>" + arrayAtt[k] + postfix + " are the same." + "\r\n";
                                 comparison += "\t\t\t\t\t\t\t\t\t\tSupplier : " + attributeCompare[j].supplier[arrayAtt[k]] + "\r\n";
@@ -3068,8 +3076,8 @@ function writeUml() {
 
                         }else{
                             //comparisonAtt += arrayAtt[k] + " not same." + "\r\n";
-                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" name=\"" + arrayAtt[k] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
                             //comparisonAtt += "\t\t\t\t\t<body>" + arrayAtt[k] + " not same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>" + arrayAtt[k] + postfix + " are not same." + "\r\n";
                             comparisonAtt += "\t\t\t\t\t\t\t\t\t\tSupplier : " + attributeCompare[j].supplier[arrayAtt[k]] + "\r\n";
@@ -3085,14 +3093,14 @@ function writeUml() {
                     if(typeof attributeCompare[j].supplier.type == "string" && typeof attributeCompare[j].client.type == "string"){
                         if(attributeCompare[j].supplier.type == attributeCompare[j].client.type){
                             //comparisonAtt += "type same.\r\n";
-                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>types are the same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }else{
                             //comparisonAtt += "type note same.\r\n";
-                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
-                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                            //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" name=\"type\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
+                            comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
                             comparisonAtt += "\t\t\t\t\t\t<body>types are not same." + "</body>\r\n";
                             comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                         }
@@ -3110,14 +3118,14 @@ function writeUml() {
                                 }
                                 if(attributeCompare[j].supplier.type[typeMumber[m]] == attributeCompare[j].client.type[typeMumber[m]]){
                                     //comparisonAtt += typeMumber[m] + " of type same." + "\r\n";
-                                    //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
-                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                                    //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
+                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
                                     comparisonAtt += "\t\t\t\t\t\t<body>" + typeMumber[m] + postfix + " of type are the same." + "</body>\r\n";
                                     comparisonAtt += "\t\t\t\t\t</ownedComment>\r\n";
                                 }else{
                                     //comparisonAtt += typeMumber[m] + " of type not same." + "\r\n";
-                                    //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
-                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_PR\">\r\n";
+                                    //comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" name=\"" + typeMumber[m] + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
+                                    comparisonAtt += "\t\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + attributeCompare[j].client.id + "_Com" + temp++ + "\" annotatedElement=\"" + attributeCompare[j].client.id + "_Pr\">\r\n";
                                     comparisonAtt += "\t\t\t\t\t\t<body>" + typeMumber[m] + postfix + " of type are not same." + "\r\n";
                                     comparisonAtt += "\t\t\t\t\t\t\t\t\t\tSupplier : " + attributeCompare[j].supplier.type[typeMumber[m]] + "\r\n";
                                     comparisonAtt += "\t\t\t\t\t\t\t\t\t\tClient   : " + attributeCompare[j].client.type[typeMumber[m]] + "\r\n";
@@ -3133,7 +3141,7 @@ function writeUml() {
 
                 //comparisonAtt = comparisonAtt.replace(/\r\n$/g, '');
                 //comparisonAtt = comparisonAtt.replace(/\r\n/g, '\r\n\t\t\t\t\t\t');
-                log += "\t\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].client.id + "_PR\" name=\"" + attributeCompare[j].client.name + "\">\r\n";
+                log += "\t\t\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + attributeCompare[j].client.id + "_Pr\" name=\"" + attributeCompare[j].client.name + "\">\r\n";
                 log += "\t" + comparisonAtt;
                 log += "\t\t\t\t\t\t<client xmi:type=\"uml:Property\" href=\"" + client.fileName + "#" + attributeCompare[j].client.id + "\"/>\r\n";
                 log += "\t\t\t\t\t\t<supplier xmi:type=\"uml:Property\" href=\"" + supplier.fileName + "#" + attributeCompare[j].supplier.id + "\"/>\r\n";
@@ -3155,21 +3163,21 @@ function writeUml() {
         for(var j = 0; j < arrayAssociation.length; j++) {
             if (supplier[arrayAssociation[j]] != undefined || client[arrayAssociation[j]] != undefined) {
                 if (supplier[arrayAssociation[j]] == client[arrayAssociation[j]]) {
-                    //comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
-                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    //comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_Com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + client.id + "_Pr\">\r\n";
+                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_Com" + temp++ + "\" annotatedElement=\"" + client.id + "_Pr\">\r\n";
                     comparison += "\t\t\t\t\t<body>" + arrayAssociation[j] + postfix + " are the same." + "</body>\r\n";
                     comparison += "\t\t\t\t</ownedComment>\r\n";
                 } else {
                     //comparison += arrayAtt[k] + " not same." + "\r\n";
-                    //comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
-                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_com" + temp++ + "\" annotatedElement=\"" + client.id + "_PR\">\r\n";
+                    //comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_Com" + temp++ + "\" name=\"" + arrayAssociation[j] + "\" annotatedElement=\"" + client.id + "_Pr\">\r\n";
+                    comparison += "\t\t\t\t<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"" + client.id + "_Com" + temp++ + "\" annotatedElement=\"" + client.id + "_Pr\">\r\n";
                     comparison += "\t\t\t\t\t<body>" + arrayAssociation[j] + postfix + " are not same." + "</body>\r\n";
                     comparison += "\t\t\t\t</ownedComment>\r\n";
                 }
 
             }
         }
-        log += "\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + client.id + "_PR\" name=\"" + client.name + "\">\r\n";
+        log += "\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + client.id + "_Pr\" name=\"" + client.name + "\">\r\n";
         log += comparison;
         log += "\t\t\t\t<client xmi:type=\"uml:Association\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
         log += "\t\t\t\t<supplier xmi:type=\"uml:Association\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
@@ -3182,7 +3190,7 @@ function writeUml() {
     for(var i = 0; i < classWithAssociation.length; i++){
         client = classWithAssociation[i].client;
         supplier = classWithAssociation[i].supplier;
-        log += "\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + client.id + "_PR\" name=\"" + client.name + "\">\r\n";
+        log += "\t\t\t<packagedElement xmi:type=\"uml:Realization\" xmi:id=\"" + client.id + "_Pr\" name=\"" + client.name + "\">\r\n";
         log += "\t\t\t\t<client xmi:type=\"uml:Association\" href=\"" + client.fileName + "#" + client.id + "\"/>\r\n";
         log += "\t\t\t\t<supplier xmi:type=\"uml:Class\" href=\"" + supplier.fileName + "#" + supplier.id + "\"/>\r\n";
         log += "\t\t\t</packagedElement>\r\n";
@@ -3190,7 +3198,7 @@ function writeUml() {
     log += "\t\t</packagedElement>\r\n";
 
 
-    /*<packagedElement xmi:type="uml:Realization" xmi:id="_oGqm3FLNEeO75dO39GbF8Q_PR" name="FdContainsFcs">
+    /*<packagedElement xmi:type="uml:Realization" xmi:id="_oGqm3FLNEeO75dO39GbF8Q_Pr" name="FdContainsFcs">
         <client xmi:type="uml:Association" href="target.uml#_oGqm3FLNEeO75dO39GbF8Q"/>
         <supplier xmi:type="uml:Association" href="source.uml#_oGqm3FLNEeO75dO39GbF8Q"/>
     </packagedElement>*/
@@ -3212,16 +3220,16 @@ function writeUml() {
 
     log += "\t</uml:Model>\r\n";
     for(var i = 0;i < classCompare.length; i++){
-        log += "\t<OpenModel_Profile:PruneAndRefactor xmi:id=\"" + classCompare[i].client.id + "_PR2\" base_Realization=\"" + classCompare[i].client.id + "_PR\"/>\r\n";
+        log += "\t<OpenModel_Profile:PruneAndRefactor xmi:id=\"" + classCompare[i].client.id + "_Pr2\" base_Realization=\"" + classCompare[i].client.id + "_Pr\"/>\r\n";
     }
     for(var i = 0;i < attributeCompare.length; i++){
-        log += "\t<OpenModel_Profile:PruneAndRefactor xmi:id=\"" + attributeCompare[i].client.id + "_PR2\" base_Realization=\"" + attributeCompare[i].client.id + "_PR\"/>\r\n";
+        log += "\t<OpenModel_Profile:PruneAndRefactor xmi:id=\"" + attributeCompare[i].client.id + "_Pr2\" base_Realization=\"" + attributeCompare[i].client.id + "_Pr\"/>\r\n";
     }
     for(var i = 0;i < associationCompare.length; i++){
-        log += "\t<OpenModel_Profile:PruneAndRefactor xmi:id=\"" + associationCompare[i].client.id + "_PR2\" base_Realization=\"" + associationCompare[i].client.id + "_PR\"/>\r\n";
+        log += "\t<OpenModel_Profile:PruneAndRefactor xmi:id=\"" + associationCompare[i].client.id + "_Pr2\" base_Realization=\"" + associationCompare[i].client.id + "_Pr\"/>\r\n";
     }
     for(var i = 0;i < classWithAssociation.length; i++){
-        log += "\t<OpenModel_Profile:PruneAndRefactor xmi:id=\"" + classWithAssociation[i].client.id + "_PR2\" base_Realization=\"" + classWithAssociation[i].client.id + "_PR\"/>\r\n";
+        log += "\t<OpenModel_Profile:PruneAndRefactor xmi:id=\"" + classWithAssociation[i].client.id + "_Pr2\" base_Realization=\"" + classWithAssociation[i].client.id + "_Pr\"/>\r\n";
     }
 
 
