@@ -1036,6 +1036,9 @@ function splitClass(){
     var data = fs.readFileSync("./project/" + clientFileName, {encoding: 'utf8'});
     try{
         if(fs.existsSync("./project/CopyAndSplit.txt")) {
+            if(copyAndSplit.splitClass == null){
+                return;
+            }
             if (data.indexOf(copyAndSplit.splitClass[0] + "_Sp") != -1) {
                 //console.log(" ");
                 return;
