@@ -1,4 +1,4 @@
-{"copyClass":["ForwardingDomain"],
-"copyNumber":["1"],
-"splitClass":null,
-"splitNumber":null}
+{"copyClass":null,
+"copyNumber":null,
+"splitClass":["Class2"],
+"splitNumber":["1"]}

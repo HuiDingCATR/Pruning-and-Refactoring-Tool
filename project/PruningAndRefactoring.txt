@@ -2,8 +2,10 @@
 * Name: Pruning and Refactoring Tool
 * Copyright 2015 CAICT (China Academy of Information and Communication Technology (former China Academy of Telecommunication Research)). All Rights Reserved.
 *
-* Time : 2016-09-05 21:39:57
-* Input  File : source.uml
+* Time : Mon Nov 28 2016 15:49:29 GMT+0800 (中国标准时间)
+* Input  File : mapping.uml
+*               source.uml
+*               target.uml
 *               
 * Output File : PruningAndRefactoring.txt
 *
@@ -15,27 +17,31 @@ Class Comparison     :
 
 supplier     : Class1				client     : Class1			Class'name isn't changed.
 supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Class1				client     : Class1_Cp1			Class'name is changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
 supplier     : Class2				client     : Class2			Class'name isn't changed.
+supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
+supplier     : Class2				client     : Class2_Sp1			Class'name is changed.
 supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
 
 Attribute Comparison : 
 
-supplier      : attr1			client      : attr1			Attribute'name isn't changed.
+supplier      : attribute11			client      : attribute11			Attribute'name isn't changed.
 supplierClass : Class1			clientClass : Class1
 supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
 			config : true				config : true			Attribute's configs are the same.
 			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
 	Types Comparison :
 				name : string				name : string			names of types are the same.
-supplier      : attr2			client      : attr2			Attribute'name isn't changed.
-supplierClass : Class1			clientClass : Class1
+supplier      : attribute11			client      : attribute11_Cp1			Attribute'name is changed.
+supplierClass : Class1			clientClass : Class1_Cp1
 supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
 			config : true				config : true			Attribute's configs are the same.
 			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
 	Types Comparison :
-				name : uint64				name : uint64			names of types are the same.
-supplier      : class2			client      : class2			Attribute'name isn't changed.
-supplierClass : Class1			clientClass : Class1
+				name : string				name : string			names of types are the same.
+supplier      : _class1			client      : _class1			Attribute'name isn't changed.
+supplierClass : Class2			clientClass : Class2
 supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
 			config : true				config : true			Attribute's configs are the same.
 			nodeType : leaf				nodeType : leaf			Attribute's nodeTypes are the same.
@@ -44,8 +50,8 @@ supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
 			isleafRef : true				isleafRef : true			Attribute's isleafRefs are the same.
 	Types Comparison :
 				name : leafref				name : leafref			names of types are the same.
-				path : path '/Class2/'				path : path '/Class2/'			paths of types are the same.
-supplier      : Attribute1			client      : Attribute1			Attribute'name isn't changed.
+				path : path '/Class1/'				path : path '/Class1/'			paths of types are the same.
+supplier      : attribute21			client      : attribute21			Attribute'name isn't changed.
 supplierClass : Class2			clientClass : Class2
 supplierFile : source.uml				clientFile : target.uml			File name isn't the same.
 			config : true				config : true			Attribute's configs are the same.
