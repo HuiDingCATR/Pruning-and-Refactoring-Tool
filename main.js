@@ -637,7 +637,7 @@ function copyClass(){
                         quoteLoc = attributeData.indexOf("\"",xmiLoc + "association=\"".length);
                         attributeData = attributeData.substring(0, quoteLoc) + "_assoflag" + attributeData.substring(quoteLoc);
                     }
-                    copyData = ""
+                    copyData = "";
                     if(id.split("_Cp").length == 2){
                         for(var j = 0; j <= copyAssociationId[i].num2; j++){
                             var tempData = attributeData;
@@ -658,7 +658,7 @@ function copyClass(){
                             tempData = tempData.replace(/_assoflag/g, "_Cp0cp" + j);
                             copyData += tempData;
                         }
-                        copyData = tempData.replace(/_Cp0"/g, "\"");
+                        copyData = copyData.replace(/_Cp0"/g, "\"");
                         data = data.substring(0, indexEnd) + copyData + data.substring(indexEnd);
                         indexEnd += copyData.length;
                     }else{
