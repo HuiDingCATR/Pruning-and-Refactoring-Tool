@@ -94,7 +94,7 @@ function main_Entrance(){
                         if(files[j].toLowerCase() == clientFileName.toLowerCase()){
                             currentFileName = files[j];
                             fileNum++;
-                            console.log("Client file already exists! We don't need copy.");
+                            //console.log("Client file already exists! We don't need copy.");
                             copyClass();
                             splitClass();
                             parseModule(files[j]);
@@ -221,6 +221,7 @@ function readCopyAndSplit(){
     var data = fs.readFileSync("./project/CopyAndSplit.txt", {encoding: 'utf8'});
     try{
         if(data){
+            data = data.substring(data.indexOf("{"));
             data = data.replace(/\r\n/g, "");
             copyAndSplit = JSON.parse(data);
             var tempObj1,
@@ -341,17 +342,17 @@ function copyClass(){
             //copy class
             for(var i = 0; i < copyAndSplit.copyClass.length; i++){
                 //copy "uml:Class" paragraph and add id postfix
-                indexCopyClass = data.indexOf(copyAndSplit.copyClass[i]);
-                indexSearchClass = data.indexOf("<packagedElement xmi:type=\"uml:Class\"");
-                while(indexCopyClass - indexSearchClass > 100){
+                indexCopyClass = data.indexOf("\"" + copyAndSplit.copyClass[i] + "\"");
+                indexSearchClass = data.lastIndexOf("<packagedElement xmi:type=\"uml:Class\"", indexCopyClass);
+                /*while(indexCopyClass - indexSearchClass > 100){
                     indexSearchClass = data.indexOf("<packagedElement xmi:type=\"uml:Class\"", indexSearchClass + 1);
                     if(indexSearchClass == -1){
                         break;
                     }
-                }
-                if(indexSearchClass == -1){
-                    console.warn("Warning: There is no class named \"" + copyAndSplit.copyClass[i] + "\". Please recheck your source file and CopyAndSplit file!")
-                    break;
+                }*/
+                if(indexSearchClass == -1 || indexCopyClass == -1){
+                    console.warn("Warning: There is no class named \"" + copyAndSplit.copyClass[i] + "\" in " + clientFileName + ". Please recheck your input file and CopyAndSplit file!")
+                    throw (e);
                 }
                 indexNewLine = data.indexOf('\r\n');
                 while(indexSearchClass - indexNewLine > 20 && indexSearchClass > indexNewLine){
@@ -518,7 +519,7 @@ function copyClass(){
                         if(association[j].associationType == 1){
                             copyFlag1 = copyAssociationOrNot(association[j].memberEnd1, "attribute");
                             copyFlag2 = copyAssociationOrNot(association[j].memberEnd2, "class");
-                            if(copyFlag1 != false && copyFlag2 != false){
+                            if(copyFlag1 != false || copyFlag2 != false){
                                 tempData = copyAssociation(associationData, copyFlag1, copyFlag2, association[j])
                                 data = data.substring(0, indexEnd) + tempData + data.substring(indexEnd);
                                 //addAssociationAttribute(association.memberEnd1, num1, num2);
@@ -636,7 +637,7 @@ function copyClass(){
                         quoteLoc = attributeData.indexOf("\"",xmiLoc + "association=\"".length);
                         attributeData = attributeData.substring(0, quoteLoc) + "_assoflag" + attributeData.substring(quoteLoc);
                     }
-                    copyData = ""
+                    copyData = "";
                     if(id.split("_Cp").length == 2){
                         for(var j = 0; j <= copyAssociationId[i].num2; j++){
                             var tempData = attributeData;
@@ -657,7 +658,7 @@ function copyClass(){
                             tempData = tempData.replace(/_assoflag/g, "_Cp0cp" + j);
                             copyData += tempData;
                         }
-                        copyData = tempData.replace(/_Cp0"/g, "\"");
+                        copyData = copyData.replace(/_Cp0"/g, "\"");
                         data = data.substring(0, indexEnd) + copyData + data.substring(indexEnd);
                         indexEnd += copyData.length;
                     }else{
@@ -940,19 +941,12 @@ function copyAssociation(associationData, flag1, flag2, association) {
     var num1 = flag1;
     var num2 = flag2;
     var returnData = "";
-    /*if(flag1 == false){
+    if(flag1 == false){
         num1 = 0;
-    }else{
-        num1 = copyAndSplit.copyNumber[flag1];
     }
     if(flag2 == false){
         num2 = 0;
-    }else{
-        num2 = copyAndSplit.copyNumber[flag2];
-    }*/
-
-
-
+    }
     var xmiLoc = 0;
     var quoteLoc = 0;
     while(associationData.indexOf("name=\"",quoteLoc) != -1){         //add "_Cp" postfix
@@ -1046,6 +1040,10 @@ function splitClass(){
             }
             for(var i = 0; i < copyAndSplit.splitClass.length; i++) {
                 var reg = new RegExp('\\s+<packagedElement xmi:type="uml:Class".*' + copyAndSplit.splitClass[i] + '"[\\s\\S]*?</packagedElement>');
+                if(data.match(reg) == null){
+                    console.warn("Warning: There is no class named \"" + copyAndSplit.splitClass[i] + "\" in " + clientFileName + ". Please recheck your input file and CopyAndSplit file!")
+                    throw (e);
+                }
                 var originData = data.match(reg)[0];
                 var splitclassid = {};
                 xmlreader.read(originData, function (error, model) {
